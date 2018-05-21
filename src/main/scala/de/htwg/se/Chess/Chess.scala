@@ -1,8 +1,8 @@
-package de.htwg.se.yourgame
+package de.htwg.se.Chess
 
-import de.htwg.se.yourgame.model.Player
+import de.htwg.se.Chess.model.Player
 
-object YourGame {
+object Chess {
   def main(args: Array[String]): Unit = {
     val student = Player("Your Name")
     println("Hello, " + student.name)
