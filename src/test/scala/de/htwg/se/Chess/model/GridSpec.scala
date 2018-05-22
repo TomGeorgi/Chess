@@ -1,6 +1,5 @@
 package de.htwg.se.Chess.model
 
-import de.htwg.se.Chess.model.Cell
 import org.junit.runner.RunWith
 import org.scalatest.{Matchers, WordSpec}
 import org.scalatest.junit.JUnitRunner
@@ -46,19 +45,6 @@ class GridSpec extends WordSpec with Matchers {
         smallGrid.cell(0, 1) should be(Cell(2))
         smallGrid.cell(1, 0) should be(Cell(3))
         smallGrid.cell(1, 1) should be(Cell(4))
-      }
-      "have Houses with the right Cells" in {
-        tinyGrid.row(0).cell(0) should be(Cell(1))
-        tinyGrid.col(0).cell(0) should be(Cell(1))
-
-        smallGrid.row(0).cell(0) should be(Cell(1))
-        smallGrid.row(0).cell(1) should be(Cell(2))
-        smallGrid.row(1).cell(0) should be(Cell(3))
-        smallGrid.row(1).cell(1) should be(Cell(4))
-        smallGrid.col(0).cell(0) should be(Cell(1))
-        smallGrid.col(0).cell(1) should be(Cell(3))
-        smallGrid.col(1).cell(0) should be(Cell(2))
-        smallGrid.col(1).cell(1) should be(Cell(4))
       }
     }
   }
