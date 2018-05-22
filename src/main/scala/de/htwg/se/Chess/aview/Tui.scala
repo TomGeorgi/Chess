@@ -7,8 +7,8 @@ class Tui {
     input match {
       case "g" => grid
       case "n" => new Grid(8)
-      case _ => input.toList.filter(c => c != ' ').map(c => c.toString.toInt) match {
-          case row :: column :: value :: Nil => grid.set(row, column, value)
+      case _ => input.toList.filter(c => c != ' ').map(c => c.toString) match {
+          case row :: column :: value :: Nil => grid.set(row.toInt - 1, column.toInt - 1, value)
           case _ => grid
         }
     }

@@ -15,8 +15,8 @@ class GridSpec extends WordSpec with Matchers {
         val awkwardGrid = new Grid(2)
       }
       "for test purposes only created with a Matrix of Cells" in {
-        val awkwardGrid = Grid(new Matrix(2, Cell(0)))
-        val testGrid = Grid(Matrix[Cell](Vector(Vector(Cell(0), Cell(0)), Vector(Cell(0), Cell(0)))))
+        val awkwardGrid = Grid(new Matrix(2, Cell("0")))
+        val testGrid = Grid(Matrix[Cell](Vector(Vector(Cell("0"), Cell("0")), Vector(Cell("0"), Cell("0")))))
       }
     }
     "created properly but empty" should {
@@ -25,26 +25,26 @@ class GridSpec extends WordSpec with Matchers {
       val normalGrid = new Grid(9)
       val awkwardGrid = new Grid(2)
       "give access to its Cells" in {
-        tinygrid.cell(0, 0) should be(Cell(0))
-        smallGrid.cell(0, 0) should be(Cell(0))
-        smallGrid.cell(0, 1) should be(Cell(0))
-        smallGrid.cell(1, 0) should be(Cell(0))
-        smallGrid.cell(1, 1) should be(Cell(0))
+        tinygrid.cell(0, 0) should be(Cell("0"))
+        smallGrid.cell(0, 0) should be(Cell("0"))
+        smallGrid.cell(0, 1) should be(Cell("0"))
+        smallGrid.cell(1, 0) should be(Cell("0"))
+        smallGrid.cell(1, 1) should be(Cell("0"))
       }
       "allow to set individual Cells and remain immutable" in {
-        val changedGrid = smallGrid.set(0, 0, 1)
-        changedGrid.cell(0, 0) should be(Cell(1))
-        smallGrid.cell(0, 0) should be(Cell(0))
+        val changedGrid = smallGrid.set(0, 0, 1.toString)
+        changedGrid.cell(0, 0) should be(Cell("1"))
+        smallGrid.cell(0, 0) should be(Cell("0"))
       }
     }
     "prefilled with values 1 to n" should {
-      val tinyGrid = Grid(new Matrix[Cell](Vector(Vector(Cell(1)))))
-      val smallGrid = Grid(new Matrix[Cell](Vector(Vector(Cell(1), Cell(2)), Vector(Cell(3), Cell(4)))))
+      val tinyGrid = Grid(new Matrix[Cell](Vector(Vector(Cell("1")))))
+      val smallGrid = Grid(new Matrix[Cell](Vector(Vector(Cell("1"), Cell("2")), Vector(Cell("3"), Cell("4")))))
       "have the right values in the right places" in {
-        smallGrid.cell(0, 0) should be(Cell(1))
-        smallGrid.cell(0, 1) should be(Cell(2))
-        smallGrid.cell(1, 0) should be(Cell(3))
-        smallGrid.cell(1, 1) should be(Cell(4))
+        smallGrid.cell(0, 0) should be(Cell("1"))
+        smallGrid.cell(0, 1) should be(Cell("2"))
+        smallGrid.cell(1, 0) should be(Cell("3"))
+        smallGrid.cell(1, 1) should be(Cell("4"))
       }
     }
   }

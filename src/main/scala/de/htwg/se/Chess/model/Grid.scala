@@ -4,11 +4,11 @@ case class Grid(private val cells:Matrix[Cell]) {
 
   val size:Int = cells.size
 
-  def this(size:Int) = this(new Matrix[Cell](size, Cell(0)))
+  def this(size:Int) = this(new Matrix[Cell](size, Cell("0")))
 
 
   def cell(row:Int, col:Int):Cell = cells.cell(row, col)
-  def set(row:Int, col:Int, value:Int):Grid = copy(cells.replaceCell(row, col, Cell(value)))
+  def set(row:Int, col:Int, value:String):Grid = copy(cells.replaceCell(row, col, Cell(value)))
 
   override def toString: String = {
     val lineseparator = "|" + "---+" * (size-1) + "---|\n"

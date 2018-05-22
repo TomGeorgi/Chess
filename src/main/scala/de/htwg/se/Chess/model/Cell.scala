@@ -1,9 +1,9 @@
 package de.htwg.se.Chess.model
 
-case class Cell(value:Int) {
-  def isSet:Boolean = value != 0
+case class Cell(value:String) {
+  def isSet:Boolean = value != 0.toString
 
   override def toString: String = {
-    value.toString
+    value
   }
 }
