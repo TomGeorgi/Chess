@@ -1,10 +1,10 @@
 package de.htwg.se.Chess.model
 
 
-case class Pawnwhite() {
+case class Pawn_white() {
 
 }
 
-case class Pawnblack() {
+case class Pawn_black() {
 
 }
