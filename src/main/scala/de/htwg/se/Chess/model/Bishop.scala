@@ -5,5 +5,5 @@ case class Bishop_white() {
 }
 
 case class Bishop_black() {
-  
+
 }
