@@ -8,7 +8,7 @@ class Tui {
       case "g" => grid
       case "n" => new Grid(8)
       case _ => input.toList.filter(c => c != ' ').map(c => c.toString) match {
-          case column :: row :: value :: Nil => grid.set(8 - row.toInt, charToValue(column) - 1, value)
+          case value :: column :: row :: Nil => grid.set(8 - row.toInt, charToValue(column) - 1, value)
           case _ => grid
         }
     }
@@ -16,14 +16,14 @@ class Tui {
 
   def charToValue(col: String): Int = {
     col match {
-      case "A" => 1
-      case "B" => 2
-      case "C" => 3
-      case "D" => 4
-      case "E" => 5
-      case "F" => 6
-      case "G" => 7
-      case "H" => 8
+      case "A" | "a" => 1
+      case "B" | "b" => 2
+      case "C" | "c" => 3
+      case "D" | "d" => 4
+      case "E" | "e" => 5
+      case "F" | "f" => 6
+      case "G" | "g" => 7
+      case "H" | "h" => 8
 
     }
   }
