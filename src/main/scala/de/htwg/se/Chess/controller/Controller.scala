@@ -19,7 +19,7 @@ class Controller(var grid: Grid, var player: (Player, Player)) extends Observabl
   def setNextPlayer: Unit = player = player.swap
 
   def createEmptyGrid(player: (String, String)): Unit = {
-    val grid = new Grid(8)
+    val grid = new Grid(8).fill()
     this.grid = grid
     this.player = (Player(player._1, Color.WHITE), Player(player._2, Color.BLACK))
     notifyObservers
@@ -28,13 +28,13 @@ class Controller(var grid: Grid, var player: (Player, Player)) extends Observabl
   def gridToString: String = grid.toString
 
   def set(col: Int, row: Int, value: String, color: String): Unit = {
-    var c = color match {
-      case "w" => Color.WHITE;
-      case "b" => Color.BLACK;
-      case "_" => Color.EMPTY;
+    val c = color match {
+      case "w" => Color.WHITE
+      case "b" => Color.BLACK
+      case "_" => Color.EMPTY
     }
 
-    var fig : Figure = value match {
+    val fig : Figure = value match {
       case "Bauer" | "Pawn" => Pawn(c)
       case "Turm" | "Rook" => Rook(c)
       case "Springer" | "Knight" => Knight(c)

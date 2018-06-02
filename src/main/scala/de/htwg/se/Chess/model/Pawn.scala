@@ -17,6 +17,5 @@ case class Pawn(c: Color.Value) extends Figure {
       case Color.BLACK => "♟"
       case Color.WHITE => "♙"
     }
-
   }
 }

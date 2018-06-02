@@ -9,7 +9,7 @@ import scala.io.StdIn.readLine
 
 object Chess {
 
-  var controller = new Controller(new Grid(8), "Player 1", "Player 2")
+  var controller = new Controller(new Grid(8).fill(), "Player 1", "Player 2")
   val tui = new Tui(controller)
 
   def main(args: Array[String]): Unit = {

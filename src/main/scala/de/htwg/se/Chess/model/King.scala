@@ -9,4 +9,11 @@ case class King(c: Color.Value) extends Figure {
   }
 
   override def getType(): FigureType.Value = typ
+
+  override def toString: String = {
+    color match {
+      case Color.BLACK => "♚"
+      case Color.WHITE => "♔"
+    }
+  }
 }
