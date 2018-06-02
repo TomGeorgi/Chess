@@ -1,16 +1,50 @@
 package de.htwg.se.Chess.aview
 
+import de.htwg.se.Chess.controller.Controller
 import de.htwg.se.Chess.model._
+import de.htwg.se.Chess.util.Observer
 
-class Tui {
-  def processInputLines(input: String, grid: Grid): Grid = {
-    input match {
-      case "g" => grid
-      case "n" => new Grid(8)
-      case _ => input.toList.filter(c => c != ' ').map(c => c.toString) match {
-          case value :: column :: row :: Nil => grid.set(8 - row.toInt, charToValue(column) - 1, value)
-          case _ => grid
-        }
+class Tui(controller: Controller) extends Observer {
+
+  controller.add(this)
+
+  val player: (String, String) = ("Player 1", "Player 2")
+
+  println("Eingabeformat: Figur Spalte Reihe")
+  println("Figur: Bauer(B) Turm(T) Läufer(L) Springer(S) König(K) Dame(Q)")
+  println("Spalte: von A bis H")
+  println("Reihe: von 1 bis 8")
+  update
+
+
+  def processInputLine(input: String): Unit = {
+    val in = input.split(" ")
+    in(0) match {
+      case "up" => update
+      case "q" =>
+      case "n" => {
+        if (input.length >= 3) controller.createEmptyGrid((in(1), in(2))) else controller.createEmptyGrid(player)
+      }
+      case "set" => trySet(in)
+      case _ => {
+        processInputMove(in)
+
+      }
+    }
+  }
+
+  def trySet(in: Array[String]): Unit = {
+    in.toList.filter(c => c != " ").map(c => c.toString) match {
+      case set :: pC :: pR :: value :: color :: Nil => controller.set(charToValue(pC)-1, 8 - pR.toInt, value, color)
+    }
+  }
+
+  def processInputMove(in: Array[String]): Unit = {
+    //noinspection ScalaStyle
+    in.toList.filter(c => c != " ").map(c => c.toString) match {
+      case placeCol :: placeRow :: newPlaceCol:: newPlaceRow :: Nil =>
+        controller.turn(charToValue(placeCol) - 1, 8 - placeRow.toInt , charToValue(newPlaceCol) - 1, 8 - newPlaceRow.toInt)
+      case _ =>
     }
   }
 
@@ -26,5 +60,9 @@ class Tui {
       case "H" | "h" => 8
 
     }
+  }
+
+  override def update: Unit = {
+    println(controller.gridToString)
   }
 }
