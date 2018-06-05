@@ -12,7 +12,7 @@ class TurnCommand(oldCol: Int, oldRow: Int, newCol: Int, newRow: Int, controller
     memento = (controller.grid, controller.player)
 
     val whichPlayer = controller.playerAtTurn
-    val oldValue = controller.grid.cell(oldRow, oldCol).getValue
+    val oldValue = controller.grid.cell(oldRow, oldCol).value
     var canSet: Boolean = false
     var color: Color.Value = Color.EMPTY
 
@@ -46,6 +46,7 @@ class TurnCommand(oldCol: Int, oldRow: Int, newCol: Int, newRow: Int, controller
           }
         }
       }
+      case None =>
     }
 
     if (canSet) {
