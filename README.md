@@ -1,9 +1,9 @@
 # Htwg Scala Seed Project 
 =====================================================
 ## the easiest way to start a project for the lecture SE
-[![Build Status](https://travis-ci.org/TomGeorgi/Chess.svg?branch=master)](https://travis-ci.org/TomGeorgi/Chess)
+[![Build Status](https://travis-ci.com/TomGeorgi/Chess.svg?branch=Dev)](https://travis-ci.com/TomGeorgi/Chess)
 
-[![Coverage Status](https://coveralls.io/repos/github/TomGeorgi/Chess/badge.svg?branch=master)](https://coveralls.io/github/TomGeorgi/Chess?branch=master)
+[![Coverage Status](https://coveralls.io/repos/github/TomGeorgi/Chess/badge.svg?branch=dev)](https://coveralls.io/github/TomGeorgi/Chess?branch=dev)
 
 This is a seed project to create a basic scala project as used in the
 class Software Engineering at the University of Applied Science HTWG Konstanz.
