@@ -3,7 +3,7 @@
 ## the easiest way to start a project for the lecture SE
 [![Build Status](https://travis-ci.org/TomGeorgi/Chess.svg?branch=Dev)](https://travis-ci.org/TomGeorgi/Chess) - Dev
 
-[![Build Status](https://travis-ci.org/TomGeorgi/Chess.svg?branch=Dev-TomGeorgi)](https://travis-ci.org/TomGeorgi/Chess)
+[![Build Status](https://travis-ci.org/TomGeorgi/Chess.svg?branch=Dev-TomGeorgi)](https://travis-ci.org/TomGeorgi/Chess) - Tom
 
 [![Build Status](https://travis-ci.org/TomGeorgi/Chess.svg?branch=master)](https://travis-ci.org/TomGeorgi/Chess) - Master
 
