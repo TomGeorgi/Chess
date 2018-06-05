@@ -1,7 +1,9 @@
 # Htwg Scala Seed Project 
 =====================================================
 ## the easiest way to start a project for the lecture SE
-[![Build Status](https://travis-ci.org/TomGeorgi/Chess.svg?branch=Dev)](https://travis-ci.org/TomGeorgi/Chess)
+[![Build Status](https://travis-ci.org/TomGeorgi/Chess.svg?branch=Dev)](https://travis-ci.org/TomGeorgi/Chess) - Dev
+
+[![Build Status](https://travis-ci.org/TomGeorgi/Chess.svg?branch=Dev-TomGeorgi)](https://travis-ci.org/TomGeorgi/Chess) - Tom
 
 [![Coverage Status](https://coveralls.io/repos/github/TomGeorgi/Chess/badge.svg?branch=Dev)](https://coveralls.io/github/TomGeorgi/Chess?branch=Dev)
 
