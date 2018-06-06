@@ -5,6 +5,7 @@
 
 [![Build Status](https://travis-ci.org/TomGeorgi/Chess.svg?branch=Dev-TomGeorgi)](https://travis-ci.org/TomGeorgi/Chess) [![Coverage Status](https://coveralls.io/repos/github/TomGeorgi/Chess/badge.svg?branch=Dev-TomGeorgi)](https://coveralls.io/github/TomGeorgi/Chess?branch=Dev-TomGeorgi) - Tom
 
+[![Coverage Status](https://coveralls.io/repos/github/TomGeorgi/Chess/badge.svg?branch=Dev-TomGeorgi)](https://coveralls.io/github/TomGeorgi/Chess?branch=Dev-TomGeorgi)
 
 This is a seed project to create a basic scala project as used in the
 class Software Engineering at the University of Applied Science HTWG Konstanz.
