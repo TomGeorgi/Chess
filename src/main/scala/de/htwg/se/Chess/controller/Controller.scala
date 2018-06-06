@@ -24,13 +24,13 @@ class Controller(var grid: Grid, var player: (Player, Player)) extends Observabl
 
   def gridToString: String = grid.toString
 
-  def turn(placeCol: Int, placeRow: Int, newPlaceCol: Int, newPlaceRow: Int): Unit = {
-    undoManager.doStep(new TurnCommand(placeCol, placeRow, newPlaceCol, newPlaceRow, this))
+  def turn(placeRow: Int, placeCol: Int, newPlaceRow: Int, newPlaceCol: Int): Unit = {
+    undoManager.doStep(new TurnCommand(placeRow, placeCol, newPlaceRow, newPlaceCol, this))
     notifyObservers
   }
 
-  def set(col: Int, row: Int, value: String, color: String): Unit = {
-    undoManager.doStep(new SetCommand(col, row, value, color, this))
+  def set(row: Int, col: Int, value: String, color: String): Unit = {
+    undoManager.doStep(new SetCommand(row, col, value, color, this))
     notifyObservers
   }
 

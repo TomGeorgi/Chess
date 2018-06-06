@@ -5,7 +5,7 @@ case class Bishop(c: Color.Value) extends Figure {
   override val typ: FigureType.Value = FigureType.BISHOP
 
 
-  override def move(oldCol: Int, oldRow: Int, newCol: Int, newRow: Int, grid: Grid): Boolean = {
+  override def move(oldRow: Int, oldCol: Int, newRow: Int, newCol: Int, grid: Grid): Boolean = {
     true
   }
 

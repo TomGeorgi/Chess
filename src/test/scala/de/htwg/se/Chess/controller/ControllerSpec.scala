@@ -30,7 +30,7 @@ class ControllerSpec extends WordSpec with Matchers {
       "notify its Observer after setting a cell" in {
         controller.set(0, 6, "Rook", "w")
         observer.updated should be(true)
-        controller.grid.cell(6, 0).value should be(Some(Rook(Color.WHITE)))
+        controller.grid.cell(0, 6).value should be(Some(Rook(Color.WHITE)))
       }
     }
   }
@@ -38,13 +38,13 @@ class ControllerSpec extends WordSpec with Matchers {
     val grid = new Grid(8)
     val controller = new Controller(grid, "Player 1", "Player 2")
     "handle undo/redo after a pull" in {
-      controller.grid.cell(4, 0).isSet should be(false)
+      controller.grid.cell(0, 4).isSet should be(false)
       controller.set(0, 4, "Rook", "w")
-      controller.grid.cell(4, 0).isSet should be(true)
+      controller.grid.cell(0, 4).isSet should be(true)
       controller.undo
-      controller.grid.cell(4, 0).isSet should be(false)
+      controller.grid.cell(0, 4).isSet should be(false)
       controller.redo
-      controller.grid.cell(4, 0).isSet should be(true)
+      controller.grid.cell(0, 4).isSet should be(true)
     }
   }
 }

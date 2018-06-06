@@ -3,13 +3,13 @@ package de.htwg.se.Chess.controller
 import de.htwg.se.Chess.model._
 import de.htwg.se.Chess.util.Command
 
-class SetCommand(col: Int, row: Int, value: String, color: String, controller: Controller) extends Command {
+class SetCommand(row: Int, col: Int, value: String, color: String, controller: Controller) extends Command {
 
-  override def doStep: Unit = controller.grid = controller.grid.set(col, row, valueToFigure(value, color))
+  override def doStep: Unit = controller.grid = controller.grid.set(row, col, valueToFigure(value, color))
 
-  override def undoStep: Unit = controller.grid = controller.grid.set(col, row, None)
+  override def undoStep: Unit = controller.grid = controller.grid.set(row, col, None)
 
-  override def redoStep: Unit = controller.grid = controller.grid.set(col, row, valueToFigure(value, color))
+  override def redoStep: Unit = controller.grid = controller.grid.set(row, col, valueToFigure(value, color))
 
 
   def valueToFigure(value: String, color: String): Option[Figure] = {

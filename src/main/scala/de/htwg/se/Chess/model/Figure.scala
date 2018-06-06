@@ -7,7 +7,7 @@ trait Figure {
 
   def getType(): FigureType.Value
 
-  def move(oldCol: Int, oldRow: Int, newCol: Int, newRow: Int, grid: Grid): Boolean
+  def move(oldRow: Int, oldCol: Int, newRow: Int, newCol: Int, grid: Grid): Boolean
 }
 
 object FigureType extends Enumeration {
