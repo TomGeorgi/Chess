@@ -42,23 +42,23 @@ class Tui(controller: Controller) extends Observer {
   def processInputMove(in: Array[String]): Unit = {
     //noinspection ScalaStyle
     in.toList.filter(c => c != " ").map(c => c.toString) match {
-      case _ :: pC :: pR :: value :: color :: Nil => controller.set(charToValue(pC)-1, 8 - pR.toInt, value, color)
       case placeCol :: placeRow :: newPlaceCol:: newPlaceRow :: Nil =>
-        controller.turn(charToValue(placeCol) - 1, 8 - placeRow.toInt , charToValue(newPlaceCol) - 1, 8 - newPlaceRow.toInt)
+        controller.turn(8 - placeRow.toInt, charToValue(placeCol),8 - newPlaceRow.toInt, charToValue(newPlaceCol))
+      case _ :: pC :: pR :: value :: color :: Nil => controller.set(8 - pR.toInt, charToValue(pC),  value, color)
       case _ =>
     }
   }
 
   def charToValue(col: String): Int = {
     col match {
-      case "A" | "a" => 1
-      case "B" | "b" => 2
-      case "C" | "c" => 3
-      case "D" | "d" => 4
-      case "E" | "e" => 5
-      case "F" | "f" => 6
-      case "G" | "g" => 7
-      case "H" | "h" => 8
+      case "A" | "a" => 0
+      case "B" | "b" => 1
+      case "C" | "c" => 2
+      case "D" | "d" => 3
+      case "E" | "e" => 4
+      case "F" | "f" => 5
+      case "G" | "g" => 6
+      case "H" | "h" => 7
 
     }
   }

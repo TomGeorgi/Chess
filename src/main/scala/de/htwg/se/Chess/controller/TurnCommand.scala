@@ -4,7 +4,7 @@ import de.htwg.se.Chess.model._
 import de.htwg.se.Chess.model.GameStatus._
 import de.htwg.se.Chess.util.Command
 
-class TurnCommand(oldCol: Int, oldRow: Int, newCol: Int, newRow: Int, controller: Controller) extends Command {
+class TurnCommand(oldRow: Int, oldCol: Int, newRow: Int, newCol: Int, controller: Controller) extends Command {
 
   var memento: (Grid, (Player, Player)) = (controller.grid, controller.player)
 
@@ -22,22 +22,22 @@ class TurnCommand(oldCol: Int, oldRow: Int, newCol: Int, newRow: Int, controller
         if (color == whichPlayer.color) {
           canSet = res.typ match {
             case FigureType.PAWN => {
-              Pawn(color).move(oldCol, oldRow, newCol, newRow, controller.grid)
+              Pawn(color).move(oldRow, oldCol, newRow, newCol, controller.grid)
             }
             case FigureType.ROOK => {
-              Rook(color).move(oldCol, oldRow, newCol, newRow, controller.grid)
+              Rook(color).move(oldRow, oldCol, newRow, newCol, controller.grid)
             }
             case FigureType.KNIGHT => {
-              Knight(color).move(oldCol, oldRow, newCol, newRow, controller.grid)
+              Knight(color).move(oldRow, oldCol, newRow, newCol, controller.grid)
             }
             case FigureType.BISHOP => {
-              Bishop(color).move(oldCol, oldRow, newCol, newRow, controller.grid)
+              Bishop(color).move(oldRow, oldCol, newRow, newCol, controller.grid)
             }
             case FigureType.QUEEN => {
-              Queen(color).move(oldCol, oldRow, newCol, newRow, controller.grid)
+              Queen(color).move(oldRow, oldCol, newRow, newCol, controller.grid)
             }
             case FigureType.KING => {
-              King(color).move(oldCol, oldRow, newCol, newRow, controller.grid)
+              King(color).move(oldRow, oldCol, newRow, newCol, controller.grid)
             }
             case FigureType.EMPTY => {
               controller.gameStatus = NO_FIGURE
@@ -50,8 +50,8 @@ class TurnCommand(oldCol: Int, oldRow: Int, newCol: Int, newRow: Int, controller
     }
 
     if (canSet) {
-      controller.grid = controller.grid.set(oldCol, oldRow, None)
-      controller.grid = controller.grid.set(newCol, newRow, oldValue)
+      controller.grid = controller.grid.set(oldRow, oldCol, None)
+      controller.grid = controller.grid.set(newRow, newCol, oldValue)
       controller.setNextPlayer
       controller.gameStatus = NEXT_PLAYER
     } else {

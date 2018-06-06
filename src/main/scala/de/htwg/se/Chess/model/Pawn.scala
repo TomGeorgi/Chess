@@ -10,7 +10,9 @@ case class Pawn(c: Color.Value) extends Figure {
     typ
   }
 
-  override def move(oldCol: Int, oldRow: Int, newCol: Int, newRow: Int, grid: Grid): Boolean = true
+  override def move(oldRow: Int, oldCol: Int, newRow: Int, newCol: Int, grid: Grid): Boolean = {
+    true
+  }
 
   override def toString: String = {
     color match {
