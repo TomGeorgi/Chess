@@ -1,6 +1,7 @@
 package de.htwg.se.Chess.model
 
 case class Queen(c: Color.Value) extends Figure {
+
   override val color: Color.Value = c
   override val typ: FigureType.Value = FigureType.QUEEN
 
@@ -8,7 +9,10 @@ case class Queen(c: Color.Value) extends Figure {
     true
   }
 
-  override def getType(): FigureType.Value = typ
+  override def colorReverse(color: Color.Value): Color.Value = color match {
+    case Color.WHITE => Color.BLACK
+    case Color.BLACK => Color.WHITE
+  }
 
   override def toString: String = {
     color match {

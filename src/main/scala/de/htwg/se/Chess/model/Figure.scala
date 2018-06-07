@@ -5,9 +5,9 @@ trait Figure {
   val color: Color.Value
   val typ: FigureType.Value
 
-  def getType(): FigureType.Value
-
   def move(oldRow: Int, oldCol: Int, newRow: Int, newCol: Int, grid: Grid): Boolean
+
+  def colorReverse(color: Color.Value): Color.Value
 }
 
 object FigureType extends Enumeration {

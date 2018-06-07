@@ -33,9 +33,7 @@ class Tui(controller: Controller) extends Observer {
         println("Input format: column - row - new column - new row\n column: from A to H\n Row: from 1 to 8\n For More Information type help")
         update
       }
-      case _ => {
-        processInputMove(in)
-      }
+      case _ => processInputMove(in)
     }
   }
 

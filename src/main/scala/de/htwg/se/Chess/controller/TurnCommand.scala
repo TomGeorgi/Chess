@@ -21,24 +21,12 @@ class TurnCommand(oldRow: Int, oldCol: Int, newRow: Int, newCol: Int, controller
         color = res.color
         if (color == whichPlayer.color) {
           canSet = res.typ match {
-            case FigureType.PAWN => {
-              Pawn(color).move(oldRow, oldCol, newRow, newCol, controller.grid)
-            }
-            case FigureType.ROOK => {
-              Rook(color).move(oldRow, oldCol, newRow, newCol, controller.grid)
-            }
-            case FigureType.KNIGHT => {
-              Knight(color).move(oldRow, oldCol, newRow, newCol, controller.grid)
-            }
-            case FigureType.BISHOP => {
-              Bishop(color).move(oldRow, oldCol, newRow, newCol, controller.grid)
-            }
-            case FigureType.QUEEN => {
-              Queen(color).move(oldRow, oldCol, newRow, newCol, controller.grid)
-            }
-            case FigureType.KING => {
-              King(color).move(oldRow, oldCol, newRow, newCol, controller.grid)
-            }
+            case FigureType.PAWN => Pawn(color).move(oldRow, oldCol, newRow, newCol, controller.grid)
+            case FigureType.ROOK => Rook(color).move(oldRow, oldCol, newRow, newCol, controller.grid)
+            case FigureType.KNIGHT => Knight(color).move(oldRow, oldCol, newRow, newCol, controller.grid)
+            case FigureType.BISHOP => Bishop(color).move(oldRow, oldCol, newRow, newCol, controller.grid)
+            case FigureType.QUEEN => Queen(color).move(oldRow, oldCol, newRow, newCol, controller.grid)
+            case FigureType.KING => King(color).move(oldRow, oldCol, newRow, newCol, controller.grid)
             case FigureType.EMPTY => {
               controller.gameStatus = NO_FIGURE
               false
