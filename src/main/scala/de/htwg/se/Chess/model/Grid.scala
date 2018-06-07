@@ -35,7 +35,7 @@ case class Grid(private val cells:Matrix[Cell]) {
       col <- 0 until size
     } fillGrid = fillGrid.set(6, col, Some(Pawn(Color.WHITE)))
 
-    return fillGrid
+    fillGrid
   }
 
   override def toString: String = {
