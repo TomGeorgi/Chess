@@ -8,7 +8,10 @@ case class King(c: Color.Value) extends Figure {
     true
   }
 
-  override def getType(): FigureType.Value = typ
+  override def colorReverse(color: Color.Value): Color.Value = color match {
+    case Color.WHITE => Color.BLACK
+    case Color.BLACK => Color.WHITE
+  }
 
   override def toString: String = {
     color match {
