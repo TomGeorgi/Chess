@@ -1,14 +1,5 @@
 package de.htwg.se.Chess.model
 
-<<<<<<< HEAD
-case class Knight_white() {
-
-}
-
-case class Knight_black() {
-
-}
-=======
 case class Knight(c: Color.Value) extends Figure {
   override val color: Color.Value = c
   override val typ: FigureType.Value = FigureType.KNIGHT
@@ -46,4 +37,3 @@ case class Knight(c: Color.Value) extends Figure {
     }
   }
 }
->>>>>>> Dev
