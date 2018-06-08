@@ -1,14 +1,5 @@
 package de.htwg.se.Chess.model
 
-<<<<<<< HEAD
-
-case class Pawn_white() {
-
-}
-
-case class Pawn_black() {
-
-=======
 case class Pawn(c: Color.Value) extends Figure {
 
   override val color: Color.Value = c
@@ -29,5 +20,4 @@ case class Pawn(c: Color.Value) extends Figure {
       case Color.WHITE => "♙"
     }
   }
->>>>>>> Dev
 }
