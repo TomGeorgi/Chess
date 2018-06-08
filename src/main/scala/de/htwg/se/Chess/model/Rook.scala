@@ -3,6 +3,7 @@ package de.htwg.se.Chess.model
 case class Rook(c: Color.Value) extends Figure {
 
   override val color: Color.Value = c
+  <<<<<<< HEAD
   override val typ: FigureType.Value = FigureType.Rook
 
   override def move(oldRow: Int, oldCol: Int, newRow: Int, newCol: Int, grid: Grid): Boolean = {
@@ -18,32 +19,48 @@ case class Rook(c: Color.Value) extends Figure {
               if(grid.cell(move._1, move._2).iSet) {
                 grid.cell(move._1, move._2).value match {
                   case Some(res) => res.Color match {
-                      case 'color' => return false
+                    case 'color' => return false
                     case 'revColor' => return true
                   }
                   case None => return true
                 }
               } else return true
-            } else return false
+            }
           }
         }
       }
+      false
     }
-    false
-  }
 
-  def wayIsBlocked(odPlace: (Int, Int), newPlace: (Int, Int), direction: (Int, Int), grid): Unit = {
-    val len: Int = oldPlace._1 - newPlace._1
-    for(i <- 1 to len) {
-      val move: (Int, Int) = (oldPlace._1 + direction._1 * i, oldPlace._2 + direction._2 * i)
-      if(grid.cell(move._1, move._2).iSet) return true
+    def wayIsBlocked(odPlace: (Int, Int), newPlace: (Int, Int), direction: (Int, Int), grid): Unit = {
+      val len: Int = oldPlace._1 - newPlace._1
+      for(i <- 1 to len) {
+        val move: (Int, Int) = (oldPlace._1 + direction._1 * i, oldPlace._2 + direction._2 * i)
+        if(grid.cell(move._1, move._2).iSet) return true
+      }
+      false
     }
-    false
-  }
 
-  override def colorReverse(color: Color.Value): Color.Value = color match {
+    override def colorReverse(color: Color.Value): Color.Value = color match {
       case Color.WHITE => Color.BLACK
       case Color.BLACK => Color.WHITE
-  }
+    }
 
-}
+    =======
+
+    override val typ: FigureType.Value = FigureType.ROOK
+
+    override def move(oldRow: Int, oldCol: Int, newRow: Int, newCol: Int, grid: Grid): Boolean = {
+      true
+    }
+
+    override def getType(): FigureType.Value = typ
+
+    override def toString: String = {
+      color match {
+        case Color.BLACK => "♜"
+        case Color.WHITE => "♖"
+      }
+    }
+    >>>>>>> Dev
+  }
