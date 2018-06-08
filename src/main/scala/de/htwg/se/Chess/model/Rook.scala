@@ -36,7 +36,8 @@ case class Rook(c: Color.Value) extends Figure {
       val len: Int = oldPlace._1 - newPlace._1
       for(i <- 1 to len) {
         val move: (Int, Int) = (oldPlace._1 + direction._1 * i, oldPlace._2 + direction._2 * i)
-        if(grid.cell(move._1, move._2).iSet) return true
+        if (move == newPlace) return false
+        if (grid.cell(move._1, move._2).iSet) return true
       }
       false
     }
