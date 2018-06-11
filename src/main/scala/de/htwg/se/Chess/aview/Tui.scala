@@ -57,7 +57,6 @@ class Tui(controller: Controller) extends Observer {
       case "F" | "f" => 5
       case "G" | "g" => 6
       case "H" | "h" => 7
-
     }
   }
 

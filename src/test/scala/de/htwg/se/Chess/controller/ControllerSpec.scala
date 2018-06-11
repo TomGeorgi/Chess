@@ -39,10 +39,9 @@ class ControllerSpec extends WordSpec with Matchers {
         controller.grid.cell(2, 0).isSet should be(false)
         controller.grid.cell(1, 0).value should be(Some(Pawn(Color.BLACK)))
         controller.set(1, 0, "Bishop", "w")
-        controller.set(2, 0, "Pawn", "w")
-        println(controller.gridToString)
+        controller.set(2, 0, "Pawn", "b")
         controller.grid.cell(2, 0).isSet should be(true)
-        controller.grid.cell(2, 0).value should be(Some(Pawn(Color.WHITE)))
+        controller.grid.cell(2, 0).value should be(Some(Pawn(Color.BLACK)))
         controller.grid.cell(1, 0).value should be(Some(Bishop(Color.WHITE)))
         controller.undo
         controller.grid.cell(2, 0).isSet should be(false)
@@ -52,8 +51,12 @@ class ControllerSpec extends WordSpec with Matchers {
         controller.redo
         controller.redo
         controller.grid.cell(2, 0).isSet should be(true)
-        controller.grid.cell(2, 0).value should be(Some(Pawn(Color.WHITE)))
+        controller.grid.cell(2, 0).value should be(Some(Pawn(Color.BLACK)))
         controller.grid.cell(1, 0).value should be(Some(Bishop(Color.WHITE)))
+        controller.set(5, 2, "Knight", "b")
+        controller.grid.cell(5, 2).value should be(Some(Knight(Color.BLACK)))
+        controller.undo
+        controller.grid.cell(5, 2).isSet should be(false)
       }
     }
     "when a player does a turn at the begin of a game" should {
@@ -92,7 +95,6 @@ class ControllerSpec extends WordSpec with Matchers {
         controller.gameStatus should be(GameStatus.MOVE_NOT_VALID)
       }
     }
-
     "observed by an Observer" should {
       val newGrid = new Grid(8)
       val controller = new Controller(newGrid, "Player 1", "Player 2")
