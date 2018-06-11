@@ -57,6 +57,10 @@ class ControllerSpec extends WordSpec with Matchers {
         controller.grid.cell(5, 2).value should be(Some(Knight(Color.BLACK)))
         controller.undo
         controller.grid.cell(5, 2).isSet should be(false)
+        controller.set(3, 6, "Queen", "b")
+        controller.grid.cell(3, 6).value should be(Some(Queen(Color.BLACK)))
+        controller.undo
+        controller.grid.cell(3, 6).isSet should be(false)
       }
     }
     "when a player does a turn at the begin of a game" should {
