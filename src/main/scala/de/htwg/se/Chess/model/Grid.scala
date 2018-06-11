@@ -35,11 +35,10 @@ case class Grid(private val cells:Matrix[Cell]) {
       col <- 0 until size
     } fillGrid = fillGrid.set(6, col, Some(Pawn(Color.WHITE)))
 
-    return fillGrid
+    fillGrid
   }
 
   override def toString: String = {
-    var i = 1
     val lineseparator = "|" + "---+" * (size-1) + "---|\n"
     val line = "| x " * size + "|\n"
     print("  A   B   C   D   E   F   G   H")
