@@ -61,8 +61,12 @@ class TuiSpec extends WordSpec with Matchers {
       tui.processInputLine("g 2 g 4")
       controller.grid.cell(4, 6).value should be(Some(Pawn(Color.WHITE)))
       tui.processInputLine("z")
+      controller.grid.cell(4, 6).value should be(None)
+      tui.processInputLine("y")
+      controller.grid.cell(4, 6).value should be(Some(Pawn(Color.WHITE)))
     }
     "set a cell on to white at 'h 2 h 4'" in {
+      tui.processInputLine("z")
       tui.processInputLine("h 2 h 4")
       controller.grid.cell(4, 7).value should be(Some(Pawn(Color.WHITE)))
 
