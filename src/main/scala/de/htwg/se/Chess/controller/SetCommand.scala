@@ -5,11 +5,24 @@ import de.htwg.se.Chess.util.Command
 
 class SetCommand(row: Int, col: Int, value: String, color: String, controller: Controller) extends Command {
 
-  override def doStep: Unit = controller.grid = controller.grid.set(row, col, valueToFigure(value, color))
+  var memento: Grid = controller.grid
 
-  override def undoStep: Unit = controller.grid = controller.grid.set(row, col, None)
+  override def doStep: Unit = {
+    memento = controller.grid
+    controller.grid = controller.grid.set(row, col, valueToFigure(value, color))
+  }
 
-  override def redoStep: Unit = controller.grid = controller.grid.set(row, col, valueToFigure(value, color))
+  override def undoStep: Unit = {
+    val new_memento = controller.grid
+    controller.grid = memento
+    memento = new_memento
+  }
+
+  override def redoStep: Unit = {
+    val new_memento = controller.grid
+    controller.grid = memento
+    memento = new_memento
+  }
 
 
   def valueToFigure(value: String, color: String): Option[Figure] = {

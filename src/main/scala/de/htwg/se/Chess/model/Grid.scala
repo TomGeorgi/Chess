@@ -39,7 +39,6 @@ case class Grid(private val cells:Matrix[Cell]) {
   }
 
   override def toString: String = {
-    var i = 1
     val lineseparator = "|" + "---+" * (size-1) + "---|\n"
     val line = "| x " * size + "|\n"
     print("  A   B   C   D   E   F   G   H")
