@@ -3,7 +3,8 @@ package de.htwg.se.Chess.model
 case class Rook(c: Color.Value) extends Figure {
 
   override val color: Color.Value = c
-  override val typ: FigureType.Value = FigureType.Rook
+
+  override val typ: FigureType.Value = FigureType.ROOK
 
   override def move(oldRow: Int, oldCol: Int, newRow: Int, newCol: Int, grid: Grid): Boolean = {
     val revColor = colorReverse(color)
@@ -18,8 +19,8 @@ case class Rook(c: Color.Value) extends Figure {
               if (grid.cell(move._1, move._2).iSet) {
                 grid.cell(move._1, move._2).value match {
                   case Some(res) => res.Color match {
-                    case 'color' => return false
-                    case 'revColor' => return true
+                    case `color` => return false
+                    case `revColor` => return true
                   }
                   case None => return true
                 }
@@ -32,15 +33,15 @@ case class Rook(c: Color.Value) extends Figure {
     }
   }
 
-    def wayIsBlocked(oldPlace: (Int, Int), newPlace: (Int, Int), direction: (Int, Int), grid: Grid): Unit = {
-      val len: Int = oldPlace._1 - newPlace._1
-      for(i <- 1 to len) {
-        val move: (Int, Int) = (oldPlace._1 + direction._1 * i, oldPlace._2 + direction._2 * i)
-        if (move == newPlace) return false
-        if (grid.cell(move._1, move._2).iSet) return true
-      }
-      false
+  def wayIsBlocked(oldPlace: (Int, Int), newPlace: (Int, Int), direction: (Int, Int), grid: Grid): Unit = {
+    val len: Int = oldPlace._1 - newPlace._1
+    for(i <- 1 to len) {
+      val move: (Int, Int) = (oldPlace._1 + direction._1 * i, oldPlace._2 + direction._2 * i)
+      if (move == newPlace) return false
+      if (grid.cell(move._1, move._2).iSet) return true
     }
+    false
+  }
 
     def colorReverse(color: Color.Value): Color.Value = color match {
       case Color.WHITE => Color.BLACK
@@ -50,7 +51,6 @@ case class Rook(c: Color.Value) extends Figure {
     override def getType(){
       FigureType.Value = typ
     }
-
 
     override def toString: String = {
       color match {
