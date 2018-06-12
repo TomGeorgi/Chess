@@ -60,3 +60,4 @@ class KnightSpec  extends WordSpec with Matchers{
     }
   }
 }
+

@@ -60,3 +60,4 @@ class QueenSpec extends WordSpec with Matchers {
     }
   }
 }
+

@@ -53,3 +53,4 @@ class BishopSpec extends WordSpec with Matchers {
     }
   }
 }
+

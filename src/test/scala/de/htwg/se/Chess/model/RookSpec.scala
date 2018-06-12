@@ -8,7 +8,6 @@ import de.htwg.se.Chess.model.Rook
 
 @RunWith(classOf[JUnitRunner])
 class RookSpec extends WordSpec with Matchers {
-  val player: (String, String) = ("Player 1", "Player 2")
 
   "A Rook" when {
     "set to correct move" should {
