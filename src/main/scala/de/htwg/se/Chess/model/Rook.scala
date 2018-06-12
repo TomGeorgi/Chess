@@ -32,6 +32,7 @@ case class Rook(c: Color.Value) extends Figure {
       false
     }
   }
+  
 
   def wayIsBlocked(oldPlace: (Int, Int), newPlace: (Int, Int), direction: (Int, Int), grid: Grid): Unit = {
     val len: Int = oldPlace._1 - newPlace._1

@@ -56,5 +56,6 @@ case class Bishop(c: Color.Value) extends Figure {
       case Color.WHITE => "♗"
     }
   }
+
 }
 
