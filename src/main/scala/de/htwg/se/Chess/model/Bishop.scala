@@ -1,7 +1,5 @@
 package de.htwg.se.Chess.model
 
-package de.htwg.se.Chess.model
-
 case class Bishop(c: Color.Value) extends Figure {
 
   override val color: Color.Value = c
