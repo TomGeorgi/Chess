@@ -11,7 +11,6 @@ class RookSpec extends WordSpec with Matchers {
   "A Rook" when {
     "set to correct move" should {
       grid = grid.set(0, 0, Some(Rook(Color.BLACK)))
-      print(grid)
       "have return true" in {
         Rook(Color.BLACK).move(0, 0, 1, 0, grid) should be(true)
       }
@@ -36,7 +35,6 @@ class RookSpec extends WordSpec with Matchers {
         }
       }
       "Set to stay" should {
-        print(grid)
         "have return false" in {
           Rook(Color.BLACK).move(0, 0, 2, 2, grid) should be(false)
         }
