@@ -17,7 +17,7 @@ object Chess {
 
     do {
       input = readLine()
-      tui.processInputLine(input)
+      tui.processInputLine(input.trim())
     } while (input != "q")
   }
 }
