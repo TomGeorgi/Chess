@@ -25,21 +25,22 @@ case class Rook(c: Color.Value) extends Figure {
                   case None => return true
                 }
               } else return true
-            }
+            } else return false
           }
         }
       }
-      false
     }
+    false
   }
   
 
   def wayIsBlocked(oldPlace: (Int, Int), newPlace: (Int, Int), direction: (Int, Int), grid: Grid): Boolean = {
-    val len: Int = oldPlace._1 - newPlace._1
-    for(i <- 1 to len) {
+    for(i <- 1 to 8) {
       val move: (Int, Int) = (oldPlace._1 + direction._1 * i, oldPlace._2 + direction._2 * i)
-      if (move == newPlace) return false
-      if (grid.cell(move._1, move._2).isSet) return true
+      if (move._1 < 8 && move._2 < 8 && move._1 >= 0 && move._2 >= 0) {
+        if (move == newPlace) return false
+        if (grid.cell(move._1, move._2).isSet) return true
+      }
     }
     false
   }
