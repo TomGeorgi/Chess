@@ -55,9 +55,11 @@ class PawnSpec extends WordSpec with Matchers {
       "have return false" in {
         Pawn(Color.WHITE).move(3, 4, 2, 5, wgrid) should be(false)
       }
-      wgrid = wgrid.set(2, 5, None)
-      "have return false for an empty cell" in {
-        Pawn(Color.WHITE).move(3, 4, 2, 5, wgrid) should be(false)
+      "white cant beat on an empty cell" should {
+        wgrid = wgrid.set(2, 0, Some(Pawn(Color.WHITE)))
+        "have return false" in {
+          Pawn(Color.WHITE).move(2, 0, 1, 1, wgrid) should be(false)
+        }
       }
     }
     //
@@ -106,9 +108,11 @@ class PawnSpec extends WordSpec with Matchers {
       "have return false" in {
         Pawn(Color.BLACK).move(3, 4, 4, 5, bgrid) should be(false)
       }
-      bgrid = bgrid.set(4, 5, None)
-      "have return false for an empty cell" in {
-        Pawn(Color.BLACK).move(3, 4, 4, 5, bgrid) should be(false)
+      "white cant beat on an empty cell" should {
+        wgrid = wgrid.set(2, 0, Some(Pawn(Color.WHITE)))
+        "have return false" in {
+          Pawn(Color.WHITE).move(2, 0, 1, 1, wgrid) should be(false)
+        }
       }
     }
   }
