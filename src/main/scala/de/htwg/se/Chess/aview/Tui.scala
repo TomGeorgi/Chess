@@ -20,7 +20,7 @@ class Tui(controller: Controller) extends Observer {
 
 
   def processInputLine(input: String): Unit = {
-    val in = input.split(" ")
+    val in = input.split("[ ]+")
     in(0) match {
       case "q" =>
       case "up" => update
