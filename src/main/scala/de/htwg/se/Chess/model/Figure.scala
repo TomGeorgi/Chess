@@ -11,7 +11,7 @@ trait Figure {
 }
 
 object FigureType extends Enumeration {
-  val EMPTY, PAWN, ROOK, KING, QUEEN, KNIGHT, BISHOP = Value
+  val PAWN, ROOK, KING, QUEEN, KNIGHT, BISHOP = Value
 }
 
 object Color extends Enumeration {

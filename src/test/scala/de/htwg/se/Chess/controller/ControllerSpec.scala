@@ -113,8 +113,8 @@ class ControllerSpec extends WordSpec with Matchers {
     }
     "when a player does an invalid move" should {
       val grid = new Grid(8)
-      val controller = new Controller(grid, "Player 1", "Player 2")
-      controller.turn(6, 0, 4, 0)
+      val controller = new Controller(grid.fill(), "Player 1", "Player 2")
+      controller.turn(4, 0, 7, 2)
       "the gamestatus is set to MOVE_NOT_VALID" in {
         controller.gameStatus should be(GameStatus.MOVE_NOT_VALID)
       }
