@@ -23,6 +23,15 @@ class ControllerSpec extends WordSpec with Matchers {
         controller.setNextPlayer
         controller.playerAtTurn should be(player2)
       }
+      "handle undo/redo if a new game was started" in {
+        controller.grid.fill()
+        controller.grid.cell(0, 0).isSet should be(true)
+        controller.undo
+        controller.grid.cell(0, 0).isSet should be(true)
+        controller.redo
+        controller.grid.cell(0, 0).isSet should be(true)
+
+      }
       "handle undo/redo of a turn" in {
         controller.grid.fill()
         controller.grid.cell(2, 0).isSet should be(false)
