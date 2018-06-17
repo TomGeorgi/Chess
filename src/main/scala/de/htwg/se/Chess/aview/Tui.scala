@@ -23,13 +23,16 @@ class Tui(controller: Controller) extends Observer {
     val in = input.split("[ ]+")
     in(0) match {
       case "q" =>
+      case "emp" => {
+        if (in.length >= 3) controller.createEmptyGrid((in(1), in(2))) else controller.createEmptyGrid(player)
+      }
       case "up" => update
       case "z" => controller.undo
       case "y" => controller.redo
       case "help" => println("up -> prints the Grid again\n q -> Leaves the game\n n -> Start a new Game with Player 1 and Player 2\n n - name - name -> Start a new Game with the entered names for player1 and player2\n")
       case "set" => processInputMove(in)
       case "n" => {
-        if (input.length >= 3) controller.createEmptyGrid((in(1), in(2))) else controller.createEmptyGrid(player)
+        if (in.length >= 3) controller.createNewGrid((in(1), in(2))) else controller.createNewGrid(player)
         println("Input format: column - row - new column - new row\n column: from A to H\n Row: from 1 to 8\n For More Information type help")
         update
       }

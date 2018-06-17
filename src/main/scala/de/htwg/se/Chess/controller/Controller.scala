@@ -15,8 +15,15 @@ class Controller(var grid: Grid, var player: (Player, Player)) extends Observabl
   def playerAtTurn: Player = player._1
   def setNextPlayer: Unit = player = player.swap
 
-  def createEmptyGrid(player: (String, String)): Unit = {
+  def createNewGrid(player: (String, String)): Unit = {
     val grid = new Grid(size).fill()
+    this.grid = grid
+    this.player = (Player(player._1, Color.WHITE), Player(player._2, Color.BLACK))
+    notifyObservers
+  }
+
+  def createEmptyGrid(player: (String, String)): Unit = {
+    val grid = new Grid(size)
     this.grid = grid
     this.player = (Player(player._1, Color.WHITE), Player(player._2, Color.BLACK))
     notifyObservers
