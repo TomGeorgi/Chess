@@ -43,6 +43,7 @@ class Tui(controller: Controller) extends Observer {
       case placeCol :: placeRow :: newPlaceCol:: newPlaceRow :: Nil =>
         controller.turn(8 - placeRow.toInt, charToValue(placeCol),8 - newPlaceRow.toInt, charToValue(newPlaceCol))
       case _ :: pC :: pR :: value :: color :: Nil => controller.set(8 - pR.toInt, charToValue(pC),  value, color)
+      case _ :: pC :: pR :: Nil => controller.set(8 - pR.toInt, charToValue(pC), "_", "_")
       case _ =>
     }
   }
@@ -63,9 +64,9 @@ class Tui(controller: Controller) extends Observer {
   override def update: Unit = {
     println(controller.gridToString)
     if (controller.gameStatus == NEXT_PLAYER) {
-      println(controller.playerAtTurn.toString + GameStatus.message(controller.gameStatus))
+      println("\n" + controller.playerAtTurn.toString + GameStatus.message(controller.gameStatus))
     } else {
-      println(controller.playerAtTurn.toString + GameStatus.message(controller.gameStatus))
+      println("\n" + controller.playerAtTurn.toString + GameStatus.message(controller.gameStatus))
     }
 
   }

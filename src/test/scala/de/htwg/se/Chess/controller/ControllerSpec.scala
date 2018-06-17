@@ -62,6 +62,16 @@ class ControllerSpec extends WordSpec with Matchers {
         controller.undo
         controller.grid.cell(3, 6).isSet should be(false)
       }
+      "handle undo/redo of a set for an empty cell" in {
+        controller.grid.fill()
+        controller.grid.cell(6, 0).isSet should be(true)
+        controller.set(6, 0, "_", "_")
+        controller.grid.cell(6, 0).isSet should be(false)
+        controller.undo
+        controller.grid.cell(6, 0).isSet should be(true)
+        controller.redo
+        controller.grid.cell(6, 0).isSet should be(false)
+      }
     }
     "when a player does a turn at the begin of a game" should {
       val grid = new Grid(8).fill()

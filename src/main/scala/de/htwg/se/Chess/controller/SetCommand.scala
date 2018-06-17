@@ -29,6 +29,7 @@ class SetCommand(row: Int, col: Int, value: String, color: String, controller: C
     val c = color match {
       case "w" => Color.WHITE
       case "b" => Color.BLACK
+      case "_" => Color.EMPTY
     }
 
     value match {
@@ -38,6 +39,7 @@ class SetCommand(row: Int, col: Int, value: String, color: String, controller: C
       case "Läufer" | "Bishop" => Some(Bishop(c))
       case "König" | "King" => Some(King(c))
       case "Königin" | "Queen" => Some(Queen(c))
+      case "_" => None
     }
   }
 }
