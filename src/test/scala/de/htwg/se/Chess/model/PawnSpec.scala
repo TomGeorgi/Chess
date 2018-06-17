@@ -109,9 +109,9 @@ class PawnSpec extends WordSpec with Matchers {
         Pawn(Color.BLACK).move(3, 4, 4, 5, bgrid) should be(false)
       }
       "white cant beat on an empty cell" should {
-        wgrid = wgrid.set(2, 0, Some(Pawn(Color.BLACK)))
+        wgrid = wgrid.set(6, 0, Some(Pawn(Color.BLACK)))
         "have return false" in {
-          Pawn(Color.BLACK).move(2, 0, 1, 1, wgrid) should be(false)
+          Pawn(Color.BLACK).move(6, 0, 7, 1, wgrid) should be(false)
         }
       }
     }

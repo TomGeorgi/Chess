@@ -26,10 +26,9 @@ class Tui(controller: Controller) extends Observer {
       case "emp" => {
         if (in.length >= 3) controller.createEmptyGrid((in(1), in(2))) else controller.createEmptyGrid(player)
       }
-      case "up" => update
       case "z" => controller.undo
       case "y" => controller.redo
-      case "help" => println("up -> prints the Grid again\n q -> Leaves the game\n n -> Start a new Game with Player 1 and Player 2\n n - name - name -> Start a new Game with the entered names for player1 and player2\n")
+      case "help" => println("\n q -> Leaves the game\n n -> Start a new Game with Player 1 and Player 2\n n - name - name -> Start a new Game with the entered names for player1 and player2\n emp -> Start a new Game with an empty Grid\n emp - name - name -> Start a new Game with an empty Grid and the entered names for player1 and player2 \n")
       case "set" => processInputMove(in)
       case "n" => {
         if (in.length >= 3) controller.createNewGrid((in(1), in(2))) else controller.createNewGrid(player)
