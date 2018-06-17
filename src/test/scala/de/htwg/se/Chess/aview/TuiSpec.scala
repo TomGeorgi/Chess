@@ -15,7 +15,11 @@ class TuiSpec extends WordSpec with Matchers {
   "A Chess Tui" should {
     val controller = new Controller(new Grid(8), "Player 1", "Player 2")
     val tui = new Tui(controller)
-    "create and empty Chess on input 'n'" in {
+    "create a new empty Chess on input 'emp'" in {
+      tui.processInputLine("emp")
+      controller.grid should be(new Grid(8))
+    }
+    "create a new Chess filled with new Figures on input 'n'" in {
       tui.processInputLine("n")
       controller.grid should be(new Grid(8).fill())
     }
@@ -73,7 +77,6 @@ class TuiSpec extends WordSpec with Matchers {
       tui.processInputLine("z")
       tui.processInputLine("h 2 h 4")
       controller.grid.cell(4, 7).value should be(Some(Pawn(Color.WHITE)))
-
     }
   }
 }

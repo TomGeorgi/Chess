@@ -43,7 +43,8 @@ class TurnCommand(oldRow: Int, oldCol: Int, newRow: Int, newCol: Int, controller
       controller.setNextPlayer
       controller.gameStatus = NEXT_PLAYER
     } else {
-      controller.gameStatus = MOVE_NOT_VALID
+      if(controller.gameStatus != NO_FIGURE)
+        controller.gameStatus = MOVE_NOT_VALID
     }
   }
 

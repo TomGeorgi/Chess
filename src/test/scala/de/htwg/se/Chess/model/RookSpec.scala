@@ -16,6 +16,22 @@ class RookSpec extends WordSpec with Matchers {
       }
     }
 
+    "set to correct move on cell which is filled with an enemy figure" should {
+      grid = grid.set(2, 2, Some(Rook(Color.BLACK)))
+      grid = grid.set(2, 5, Some(Rook(Color.WHITE)))
+      "have return true" in {
+        Rook(Color.BLACK).move(2, 2, 2, 5, grid) should be(true)
+      }
+    }
+
+    "set to invalid move on cell which is filled with the own figure" should {
+      grid = grid.set(2, 2, Some(Rook(Color.WHITE)))
+      grid = grid.set(2, 5, Some(Rook(Color.WHITE)))
+      "have return false" in {
+        Rook(Color.WHITE).move(2, 2, 2, 5, grid) should be(false)
+      }
+    }
+
     "set to invalid move" should {
       grid = grid.set(0, 1, Some(Rook(Color.BLACK)))
       "have return false" in {

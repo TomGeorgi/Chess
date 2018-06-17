@@ -2,6 +2,7 @@ package de.htwg.se.Chess.controller
 
 import de.htwg.se.Chess.model._
 import de.htwg.se.Chess.util.Observer
+import de.htwg.se.Chess.model.GameStatus._
 import org.junit.runner.RunWith
 import org.scalatest.{Matchers, WordSpec}
 import org.scalatest.junit.JUnitRunner
@@ -143,6 +144,48 @@ class ControllerSpec extends WordSpec with Matchers {
       controller.grid.cell(0, 4).isSet should be(false)
       controller.redo
       controller.grid.cell(0, 4).isSet should be(true)
+    }
+  }
+  "empty grid" should {
+    val grid = new Grid(8)
+    val controller = new Controller(grid, "Player 1", "Player 2")
+    "handle set of a turn" in {
+      controller.set(0, 0, "Rook", "w")
+      controller.grid.cell(0, 0).isSet should be(true)
+      controller.grid.cell(1, 0).isSet should be(false)
+      controller.turn(0, 0, 1, 0)
+      controller.grid.cell(1, 0).isSet should be(true)
+      controller.set(0, 7, "Knight", "b")
+      controller.grid.cell(0, 7).isSet should be(true)
+      controller.grid.cell(1, 5).isSet should be(false)
+      controller.turn(0, 7, 1, 5)
+      controller.grid.cell(0, 7).isSet should be(false)
+      controller.grid.cell(1, 5).isSet should be(true)
+      controller.set(1, 1, "Bishop", "w")
+      controller.grid.cell(1, 1).isSet should be(true)
+      controller.grid.cell(2, 2).isSet should be(false)
+      controller.turn(1, 1, 2, 2)
+      controller.grid.cell(1, 1).isSet should be(false)
+      controller.grid.cell(2, 2).isSet should be(true)
+      controller.set(7, 4, "King", "b")
+      controller.grid.cell(7, 4).isSet should be(true)
+      controller.grid.cell(6, 3).isSet should be(false)
+      controller.turn(7, 4, 6, 3)
+      controller.grid.cell(7, 4).isSet should be(false)
+      controller.grid.cell(6, 3).isSet should be(true)
+      controller.set(3, 0, "Queen", "w")
+      controller.grid.cell(3, 0).isSet should be(true)
+      controller.grid.cell(3, 3).isSet should be(false)
+      controller.turn(3, 0, 3, 3)
+      controller.grid.cell(3, 0).isSet should be(false)
+      controller.grid.cell(3, 3).isSet should be(true)
+    }
+    "handle a set of turn by an empty cell" in {
+      controller.grid.cell(6, 6).isSet should be(false)
+      controller.grid.cell(0, 0).isSet should be(false)
+      controller.turn(6, 6, 0, 0)
+      controller.grid.cell(6, 6).isSet should be(false)
+      controller.grid.cell(0, 0).isSet should be(false)
     }
   }
 }
