@@ -23,6 +23,10 @@ class TuiSpec extends WordSpec with Matchers {
       tui.processInputLine("set a 2 Rook w")
       controller.grid.cell(6, 0).value should be(Some(Rook(Color.WHITE)))
     }
+    "set an empty cell on input 'set a 2'" in {
+      tui.processInputLine("set a 2")
+      controller.grid.cell(6, 0).value should be(None)
+    }
     "create and empty Chess with Player names 'n name1 name2'" in {
       tui.processInputLine("n name1 name2")
       controller.grid should be (new Grid(8).fill())
