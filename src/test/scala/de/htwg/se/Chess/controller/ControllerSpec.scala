@@ -14,7 +14,7 @@ class ControllerSpec extends WordSpec with Matchers {
     "with a empty Grid" should {
       val grid = new Grid(8)
       val controller = new Controller(grid, "Player 1", "Player 2")
-      controller.createEmptyGrid("Player 3", "Player 4")
+      controller.createNewGrid("Player 3", "Player 4")
       val player1 = Player("Player 3", Color.WHITE)
       val player2 = Player("Player 4", Color.BLACK)
       "has two players and one at turn" in {
