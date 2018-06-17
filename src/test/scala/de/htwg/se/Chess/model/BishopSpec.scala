@@ -21,7 +21,7 @@ class BishopSpec extends WordSpec with Matchers {
       grid = grid.set(2, 0, Some(Bishop(Color.BLACK)))
       grid = grid.set(3, 1, Some(Bishop(Color.BLACK)))
       "have return false" in {
-        Bishop(Color.WHITE).move(3, 3, 4, 4, grid) should be(false)
+        Bishop(Color.BLACK).move(2, 0, 3, 1, grid) should be(false)
       }
     }
 
