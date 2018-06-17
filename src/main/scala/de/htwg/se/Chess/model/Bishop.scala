@@ -12,7 +12,7 @@ case class Bishop(c: Color.Value) extends Figure {
     for (i <- moves) {
       for (j <- 1 to 8) {
         val move: (Int, Int) = (oldRow + i._1 * j, oldCol + i._2 * j)
-        if (move._1 <= 8 && move._2 <= 8 && move._1 >= 0 && move._2 >= 0) {
+        if (move._1 < 8 && move._2 < 8 && move._1 >= 0 && move._2 >= 0) {
           if (move == (newRow, newCol)) {
             if (!wayIsBlocked((oldRow, oldCol), (newRow, newCol), i, grid)) {
               if (grid.cell(move._1, move._2).isSet) {
