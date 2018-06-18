@@ -158,11 +158,14 @@ class ControllerSpec extends WordSpec with Matchers {
   "empty grid" should {
     val grid = new Grid(8)
     val controller = new Controller(grid, "Player 1", "Player 2")
+    val player1 = Player("Player 1", Color.WHITE)
+    val player2 = Player("Player 2", Color.BLACK)
     "handle set of a turn" in {
       controller.set(0, 0, "Rook", "w")
       controller.grid.cell(0, 0).isSet should be(true)
       controller.grid.cell(1, 0).isSet should be(false)
       controller.turn(0, 0, 1, 0)
+      controller.playerAtTurn should be(player2)
       controller.grid.cell(1, 0).isSet should be(true)
       controller.set(0, 7, "Knight", "b")
       controller.grid.cell(0, 7).isSet should be(true)
