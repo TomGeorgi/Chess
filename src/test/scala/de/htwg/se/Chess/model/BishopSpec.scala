@@ -17,6 +17,29 @@ class BishopSpec extends WordSpec with Matchers {
       }
     }
 
+    "set a invalid move to an cell with the same Figure color" should {
+      grid = grid.set(2, 0, Some(Bishop(Color.BLACK)))
+      grid = grid.set(3, 1, Some(Bishop(Color.BLACK)))
+      "have return false" in {
+        Bishop(Color.BLACK).move(2, 0, 3, 1, grid) should be(false)
+      }
+    }
+
+    "set a correct move to an empty cell" should {
+      grid = grid.set(7, 0, Some(Bishop(Color.BLACK)))
+      "have return true" in {
+        Bishop(Color.BLACK).move(7, 0, 3, 4, grid) should be(true)
+      }
+    }
+
+    "set a invalid move" should {
+      grid = grid.set(6, 6, Some(Bishop(Color.BLACK)))
+      grid = grid.set(4, 4, Some(Bishop(Color.BLACK)))
+      "have return false" in {
+        Bishop(Color.BLACK).move(6, 6, 4, 4, grid) should be(false)
+      }
+    }
+
     "set to invalid move" should {
       grid = grid.set(0, 0, Some(Bishop(Color.BLACK)))
       grid = grid.set(2, 2, Some(Bishop(Color.BLACK)))

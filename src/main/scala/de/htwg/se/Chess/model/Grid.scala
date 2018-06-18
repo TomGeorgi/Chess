@@ -39,14 +39,18 @@ case class Grid(private val cells:Matrix[Cell]) {
   }
 
   override def toString: String = {
-    val lineseparator = "|" + "---+" * (size-1) + "---|\n"
+    val numbers = "y "
+    val lineseparator = "  |" + "---+" * (size-1) + "---|\n"
     val line = "| x " * size + "|\n"
-    print("  A   B   C   D   E   F   G   H")
-    var box = "\n" + (lineseparator + line) * size + lineseparator
+    print("\n\n    A   B   C   D   E   F   G   H")
+    var box = "\n" + (lineseparator + numbers + line) * size + lineseparator
     for {
       row <- 0 until size
       col <- 0 until size
     } box = box.replaceFirst("x", cell(row, col).toString)
+    for {
+      row <- 0 until size
+    } box = box.replaceFirst("y", (size - row).toString)
     box
   }
 }

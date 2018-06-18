@@ -16,6 +16,21 @@ class QueenSpec extends WordSpec with Matchers {
       }
     }
 
+    "set a correct move to an empty cell" should {
+      grid = grid.set(7, 7, Some(Queen(Color.BLACK)))
+      "have return true" in {
+        Queen(Color.BLACK).move(7, 0, 3, 4, grid) should be(true)
+      }
+    }
+
+    "set a invalid move" should {
+      grid = grid.set(6, 6, Some(Queen(Color.BLACK)))
+      grid = grid.set(4, 4, Some(Queen(Color.BLACK)))
+      "have return false" in {
+        Queen(Color.BLACK).move(6, 6, 4, 4, grid) should be(false)
+      }
+    }
+
     "set to correct move variant 2" should {
       grid = grid.set(0 , 0, Some(Queen(Color.WHITE)))
       "have return true" in {

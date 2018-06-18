@@ -27,10 +27,6 @@ class TurnCommand(oldRow: Int, oldCol: Int, newRow: Int, newCol: Int, controller
             case FigureType.BISHOP => Bishop(color).move(oldRow, oldCol, newRow, newCol, controller.grid)
             case FigureType.QUEEN => Queen(color).move(oldRow, oldCol, newRow, newCol, controller.grid)
             case FigureType.KING => King(color).move(oldRow, oldCol, newRow, newCol, controller.grid)
-            case FigureType.EMPTY => {
-              controller.gameStatus = NO_FIGURE
-              false
-            }
           }
         }
       }
@@ -43,7 +39,7 @@ class TurnCommand(oldRow: Int, oldCol: Int, newRow: Int, newCol: Int, controller
       controller.setNextPlayer
       controller.gameStatus = NEXT_PLAYER
     } else {
-      controller.gameStatus = MOVE_NOT_VALID
+        controller.gameStatus = MOVE_NOT_VALID
     }
   }
 

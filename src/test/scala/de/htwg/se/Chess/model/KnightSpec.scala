@@ -9,11 +9,18 @@ import org.scalatest.{Matchers, WordSpec}
 class KnightSpec  extends WordSpec with Matchers{
   var grid: Grid = new Grid(8)
 
-  "A Queen" when {
+  "A Knight" when {
     "set to correct move" should {
       grid = grid.set(0, 0, Some(Knight(Color.BLACK)))
       "have return true" in {
         Knight(Color.BLACK).move(0, 0, 1, 2, grid) should be(true)
+      }
+    }
+
+    "set a correct move to an empty cell" should {
+      grid = grid.set(0, 1, Some(Knight(Color.WHITE)))
+      "have return true" in {
+        Knight(Color.WHITE).move(0, 1, 1, 3, grid) should be(true)
       }
     }
 

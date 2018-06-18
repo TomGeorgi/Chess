@@ -23,13 +23,15 @@ class Tui(controller: Controller) extends Observer {
     val in = input.split("[ ]+")
     in(0) match {
       case "q" =>
-      case "up" => update
+      case "emp" => {
+        if (in.length >= 3) controller.createEmptyGrid((in(1), in(2))) else controller.createEmptyGrid(player)
+      }
       case "z" => controller.undo
       case "y" => controller.redo
-      case "help" => println("up -> prints the Grid again\n q -> Leaves the game\n n -> Start a new Game with Player 1 and Player 2\n n - name - name -> Start a new Game with the entered names for player1 and player2\n")
+      case "help" => println("\n q -> Leaves the game\n n -> Start a new Game with Player 1 and Player 2\n n - name - name -> Start a new Game with the entered names for player1 and player2\n emp -> Start a new Game with an empty Grid\n emp - name - name -> Start a new Game with an empty Grid and the entered names for player1 and player2 \n")
       case "set" => processInputMove(in)
       case "n" => {
-        if (input.length >= 3) controller.createEmptyGrid((in(1), in(2))) else controller.createEmptyGrid(player)
+        if (in.length >= 3) controller.createNewGrid((in(1), in(2))) else controller.createNewGrid(player)
         println("Input format: column - row - new column - new row\n column: from A to H\n Row: from 1 to 8\n For More Information type help")
         update
       }
@@ -43,6 +45,7 @@ class Tui(controller: Controller) extends Observer {
       case placeCol :: placeRow :: newPlaceCol:: newPlaceRow :: Nil =>
         controller.turn(8 - placeRow.toInt, charToValue(placeCol),8 - newPlaceRow.toInt, charToValue(newPlaceCol))
       case _ :: pC :: pR :: value :: color :: Nil => controller.set(8 - pR.toInt, charToValue(pC),  value, color)
+      case _ :: pC :: pR :: Nil => controller.set(8 - pR.toInt, charToValue(pC), "_", "_")
       case _ =>
     }
   }
@@ -63,9 +66,9 @@ class Tui(controller: Controller) extends Observer {
   override def update: Unit = {
     println(controller.gridToString)
     if (controller.gameStatus == NEXT_PLAYER) {
-      println(controller.playerAtTurn.toString + GameStatus.message(controller.gameStatus))
+      println("\n" + controller.playerAtTurn.toString + GameStatus.message(controller.gameStatus))
     } else {
-      println(controller.playerAtTurn.toString + GameStatus.message(controller.gameStatus))
+      println("\n" + controller.playerAtTurn.toString + GameStatus.message(controller.gameStatus))
     }
 
   }
