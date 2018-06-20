@@ -1,8 +1,9 @@
 package de.htwg.se.Chess.aview
 
-import de.htwg.se.Chess.controller.{Controller, GridSizeChanged, Played}
-import de.htwg.se.Chess.model.GameStatus
-import de.htwg.se.Chess.model.GameStatus._
+import de.htwg.se.Chess.controller.controllerComponent.GameStatus
+import de.htwg.se.Chess.controller.controllerComponent.controllerBaseImpl.Controller
+import de.htwg.se.Chess.controller.controllerComponent.{GridSizeChanged, Played}
+import de.htwg.se.Chess.controller.controllerComponent.GameStatus._
 
 import scala.swing.Reactor
 

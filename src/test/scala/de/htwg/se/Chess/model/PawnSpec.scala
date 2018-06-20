@@ -1,13 +1,17 @@
 package de.htwg.se.Chess.model
 
+import de.htwg.se.Chess.model.figureComponent.Color
+import de.htwg.se.Chess.model.figureComponent.figureBaseImpl.Pawn
+import de.htwg.se.Chess.model.gridComponent.GridInterface
+import de.htwg.se.Chess.model.gridComponent.gridBaseImpl.Grid
 import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
 import org.scalatest.{Matchers, WordSpec}
 
 @RunWith(classOf[JUnitRunner])
 class PawnSpec extends WordSpec with Matchers {
-  var wgrid = new Grid(8)
-  var bgrid = new Grid(8)
+  var wgrid: GridInterface = new Grid(8)
+  var bgrid: GridInterface = new Grid(8)
 
   "A Pawn" when {
     "set a correct white move" should {

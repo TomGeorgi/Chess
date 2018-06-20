@@ -1,20 +1,25 @@
-package de.htwg.se.Chess.controller
+package de.htwg.se.Chess.controller.controllerComponent.controllerBaseImpl
 
-import de.htwg.se.Chess.model.GameStatus._
-import de.htwg.se.Chess.model._
-import de.htwg.se.Chess.util.{Observable, UndoManager}
+import de.htwg.se.Chess.controller.controllerComponent.GameStatus.{GameStatus, _}
+import de.htwg.se.Chess.controller.controllerComponent.{ControllerInterface, Played}
+import de.htwg.se.Chess.model.figureComponent.Color
+import de.htwg.se.Chess.model.gridComponent.GridInterface
+import de.htwg.se.Chess.model.gridComponent.gridBaseImpl.Grid
+import de.htwg.se.Chess.model.playerComponent.PlayerInterface
+import de.htwg.se.Chess.model.playerComponent.playerBaseImpl.Player
+import de.htwg.se.Chess.util.UndoManager
 
 import scala.swing.Publisher
 
-class Controller(var grid: Grid, var player: (Player, Player)) extends Publisher {
+class Controller(var grid: GridInterface, var player: (PlayerInterface, PlayerInterface)) extends ControllerInterface with Publisher {
 
   var gameStatus: GameStatus = IDLE
   val size: Int = 8
   private val undoManager = new UndoManager
 
-  def this(grid: Grid, player1: String, player2: String) = this(grid, (Player(player1, Color.WHITE), Player(player2, Color.BLACK)))
+  def this(grid: GridInterface, player1: String, player2: String) = this(grid, (Player(player1, Color.WHITE), Player(player2, Color.BLACK)))
 
-  def playerAtTurn: Player = player._1
+  def playerAtTurn: PlayerInterface = player._1
   def setNextPlayer: Unit = player = player.swap
 
   def createNewGrid(player: (String, String)): Unit = {
@@ -32,6 +37,8 @@ class Controller(var grid: Grid, var player: (Player, Player)) extends Publisher
   }
 
   def gridToString: String = grid.toString
+
+  def playerAtTurnToString: String = playerAtTurn.name
 
   def turn(placeRow: Int, placeCol: Int, newPlaceRow: Int, newPlaceCol: Int): Unit = {
     undoManager.doStep(new TurnCommand(placeRow, placeCol, newPlaceRow, newPlaceCol, this))

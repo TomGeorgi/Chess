@@ -6,6 +6,8 @@ import scala.swing._
 import scala.swing.Swing.LineBorder
 import scala.swing.event._
 import de.htwg.se.Chess.controller._
+import de.htwg.se.Chess.controller.controllerComponent.{ControllerInterface, GridSizeChanged, Played}
+import de.htwg.se.Chess.controller.controllerComponent.controllerBaseImpl.Controller
 import de.htwg.se.Chess.util.Observer
 
 import scala.swing.event.MouseClicked
@@ -15,7 +17,7 @@ import scala.io.Source._
 
 class CellClicked(val row: Int, val col: Int) extends Event
 
-class SwingGui(controller: Controller) extends Frame {
+class SwingGui(controller: ControllerInterface) extends Frame {
 
   var screenSize = Toolkit.getDefaultToolkit.getScreenSize
   var windowSize = ((screenSize.width min screenSize.height) * 0.8).toInt

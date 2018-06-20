@@ -4,7 +4,8 @@ package de.htwg.se.Chess
 import de.htwg.se.Chess.model._
 import de.htwg.se.Chess.aview._
 import de.htwg.se.Chess.aview.gui.SwingGui
-import de.htwg.se.Chess.controller.Controller
+import de.htwg.se.Chess.controller.controllerComponent.controllerBaseImpl.Controller
+import de.htwg.se.Chess.model.gridComponent.gridBaseImpl.Grid
 
 import scala.io.StdIn.readLine
 

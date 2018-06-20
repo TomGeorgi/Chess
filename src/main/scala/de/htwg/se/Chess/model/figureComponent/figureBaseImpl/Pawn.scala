@@ -1,11 +1,14 @@
-package de.htwg.se.Chess.model
+package de.htwg.se.Chess.model.figureComponent.figureBaseImpl
+
+import de.htwg.se.Chess.model.figureComponent.{Color, Figure, FigureType}
+import de.htwg.se.Chess.model.gridComponent.GridInterface
 
 case class Pawn(c: Color.Value) extends Figure {
 
   override val color: Color.Value = c
   override val typ: FigureType.Value = FigureType.PAWN
 
-  override def move(oldRow: Int, oldCol: Int, newRow: Int, newCol: Int, grid: Grid): Boolean = {
+  override def move(oldRow: Int, oldCol: Int, newRow: Int, newCol: Int, grid: GridInterface): Boolean = {
 
     val revColor: Color.Value = colorReverse(color)
     val blackBeat = (1, 1) :: (1, -1) :: Nil

@@ -1,5 +1,9 @@
 package de.htwg.se.Chess.model
 
+import de.htwg.se.Chess.model.figureComponent.Color
+import de.htwg.se.Chess.model.figureComponent.figureBaseImpl._
+import de.htwg.se.Chess.model.gridComponent.CellInterface
+import de.htwg.se.Chess.model.gridComponent.gridBaseImpl.{Cell, Grid, Matrix}
 import org.junit.runner.RunWith
 import org.scalatest.{Matchers, WordSpec}
 import org.scalatest.junit.JUnitRunner
@@ -14,7 +18,7 @@ class GridSpec extends WordSpec with Matchers {
       }
       "for test purposes only created with a Matrix of Cells" in {
         val grid = Grid(new Matrix(8, Cell(None)))
-        val testgrid = Grid(Matrix[Cell](Vector(Vector(Cell(None), Cell(None), Cell(None), Cell(None), Cell(None), Cell(None), Cell(None), Cell(None)),
+        val testgrid = Grid(Matrix[CellInterface](Vector(Vector(Cell(None), Cell(None), Cell(None), Cell(None), Cell(None), Cell(None), Cell(None), Cell(None)),
           Vector(Cell(None), Cell(None), Cell(None), Cell(None), Cell(None), Cell(None), Cell(None), Cell(None)),
           Vector(Cell(None), Cell(None), Cell(None), Cell(None), Cell(None), Cell(None), Cell(None), Cell(None)),
           Vector(Cell(None), Cell(None), Cell(None), Cell(None), Cell(None), Cell(None), Cell(None), Cell(None)),

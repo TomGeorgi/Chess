@@ -1,11 +1,13 @@
-package de.htwg.se.Chess.model
+package de.htwg.se.Chess.model.figureComponent
+
+import de.htwg.se.Chess.model.gridComponent.GridInterface
 
 trait Figure {
 
   val color: Color.Value
   val typ: FigureType.Value
 
-  def move(oldRow: Int, oldCol: Int, newRow: Int, newCol: Int, grid: Grid): Boolean
+  def move(oldRow: Int, oldCol: Int, newRow: Int, newCol: Int, grid: GridInterface): Boolean
 
   def colorReverse(color: Color.Value): Color.Value
 }

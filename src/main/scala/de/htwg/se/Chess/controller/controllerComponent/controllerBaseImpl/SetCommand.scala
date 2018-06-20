@@ -1,11 +1,14 @@
-package de.htwg.se.Chess.controller
+package de.htwg.se.Chess.controller.controllerComponent.controllerBaseImpl
 
-import de.htwg.se.Chess.model._
+import de.htwg.se.Chess.controller.controllerComponent.GameStatus._
+import de.htwg.se.Chess.model.gridComponent.GridInterface
+import de.htwg.se.Chess.model.figureComponent.{Color, Figure}
+import de.htwg.se.Chess.model.figureComponent.figureBaseImpl._
 import de.htwg.se.Chess.util.Command
 
 class SetCommand(row: Int, col: Int, value: String, color: String, controller: Controller) extends Command {
 
-  var memento: Grid = controller.grid
+  var memento: GridInterface = controller.grid
 
   override def doStep: Unit = {
     memento = controller.grid

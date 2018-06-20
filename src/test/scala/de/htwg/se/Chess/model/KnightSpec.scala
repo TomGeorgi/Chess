@@ -1,13 +1,17 @@
 
 package de.htwg.se.Chess.model
 
+import de.htwg.se.Chess.model.figureComponent.Color
+import de.htwg.se.Chess.model.figureComponent.figureBaseImpl.Knight
+import de.htwg.se.Chess.model.gridComponent.GridInterface
+import de.htwg.se.Chess.model.gridComponent.gridBaseImpl.Grid
 import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
 import org.scalatest.{Matchers, WordSpec}
 
 @RunWith(classOf[JUnitRunner])
 class KnightSpec  extends WordSpec with Matchers{
-  var grid: Grid = new Grid(8)
+  var grid: GridInterface = new Grid(8)
 
   "A Knight" when {
     "set to correct move" should {

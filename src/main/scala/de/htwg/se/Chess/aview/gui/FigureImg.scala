@@ -3,6 +3,8 @@ package de.htwg.se.Chess.aview.gui
 import de.htwg.se.Chess.model._
 import java.awt.Image
 
+import de.htwg.se.Chess.model.figureComponent.figureBaseImpl._
+import de.htwg.se.Chess.model.figureComponent.{Color, Figure, FigureType}
 import javax.imageio.ImageIO
 
 object FigureImg {

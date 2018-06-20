@@ -1,16 +1,20 @@
-package de.htwg.se.Chess.model
+package de.htwg.se.Chess.model.gridComponent.gridBaseImpl
 
-case class Grid(private val cells:Matrix[Cell]) {
+import de.htwg.se.Chess.model.figureComponent.figureBaseImpl._
+import de.htwg.se.Chess.model.figureComponent.{Color, Figure}
+import de.htwg.se.Chess.model.gridComponent.{CellInterface, GridInterface}
 
-  def this(size:Int) = this(new Matrix[Cell](size, Cell(None)))
+case class Grid(private val cells:Matrix[CellInterface]) extends GridInterface {
+
+  def this(size:Int) = this(new Matrix[CellInterface](size, Cell(None)))
 
   val size:Int = cells.size
 
-  def cell(row:Int, col:Int):Cell = cells.cell(row, col)
-  def set(row:Int, col:Int, value: Option[Figure]):Grid = copy(cells.replaceCell(row, col, Cell(value)))
+  def cell(row:Int, col:Int):CellInterface = cells.cell(row, col)
+  def set(row:Int, col:Int, value: Option[Figure]):GridInterface = copy(cells.replaceCell(row, col, Cell(value)))
 
-  def fill(): Grid = {
-    var fillGrid: Grid = set(0, 0, Some(Rook(Color.BLACK)))
+  def fill(): GridInterface = {
+    var fillGrid: GridInterface = set(0, 0, Some(Rook(Color.BLACK)))
     fillGrid = fillGrid.set(0, 1, Some(Knight(Color.BLACK)))
     fillGrid = fillGrid.set(0, 2, Some(Bishop(Color.BLACK)))
     fillGrid = fillGrid.set(0, 3, Some(Queen(Color.BLACK)))
@@ -58,7 +62,7 @@ case class Grid(private val cells:Matrix[Cell]) {
     }
   }
 
-  def getAllOtherColorAndCheck(kingPos: (Int, Int), revColor: Color.Value, gridC: Grid): Boolean = {
+  def getAllOtherColorAndCheck(kingPos: (Int, Int), revColor: Color.Value, gridC: GridInterface): Boolean = {
     var figureList: List[(Figure, (Int, Int))] = Nil
     for (row <- 0 to 7) {
       for (col <- 0 to 7) {

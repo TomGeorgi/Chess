@@ -1,4 +1,4 @@
-package de.htwg.se.Chess.model
+package de.htwg.se.Chess.controller.controllerComponent
 
 object GameStatus extends Enumeration {
   type GameStatus = Value
