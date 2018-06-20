@@ -119,7 +119,7 @@ class ControllerSpec extends WordSpec with Matchers {
         controller.gameStatus should be(GameStatus.MOVE_NOT_VALID)
       }
     }
-    "observed by an Observer" should {
+    /*"observed by an Observer" should {
       val newGrid = new Grid(8)
       val controller = new Controller(newGrid, "Player 1", "Player 2")
       val observer = new Observer {
@@ -129,7 +129,7 @@ class ControllerSpec extends WordSpec with Matchers {
 
         override def update: Unit = updated = true
       }
-      controller.add(observer)
+      //controller.add(observer)
       "notify its Observer after creation" in {
         controller.createEmptyGrid("Player 1", "Player 2")
         observer.updated should be(true)
@@ -140,7 +140,7 @@ class ControllerSpec extends WordSpec with Matchers {
         observer.updated should be(true)
         controller.grid.cell(0, 6).value should be(Some(Rook(Color.WHITE)))
       }
-    }
+    }*/
   }
   "empty" should {
     val grid = new Grid(8)

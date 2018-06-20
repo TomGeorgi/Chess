@@ -1,13 +1,14 @@
 package de.htwg.se.Chess.aview
 
-import de.htwg.se.Chess.controller.Controller
+import de.htwg.se.Chess.controller.{Controller, GridSizeChanged, Played}
 import de.htwg.se.Chess.model.GameStatus
 import de.htwg.se.Chess.model.GameStatus._
-import de.htwg.se.Chess.util.Observer
 
-class Tui(controller: Controller) extends Observer {
+import scala.swing.Reactor
 
-  controller.add(this)
+class Tui(controller: Controller) extends Reactor {
+
+  listenTo(controller)
 
   val player: (String, String) = ("Player 1", "Player 2")
 
@@ -16,7 +17,8 @@ class Tui(controller: Controller) extends Observer {
   println("column: from A to H")
   println("Row: from 1 to 8")
   println("For More Information type help")
-  update
+  printGameTui
+
 
 
   def processInputLine(input: String): Unit = {
@@ -33,7 +35,7 @@ class Tui(controller: Controller) extends Observer {
       case "n" => {
         if (in.length >= 3) controller.createNewGrid((in(1), in(2))) else controller.createNewGrid(player)
         println("Input format: column - row - new column - new row\n column: from A to H\n Row: from 1 to 8\n For More Information type help")
-        update
+        printGameTui
       }
       case _ => processInputMove(in)
     }
@@ -63,7 +65,12 @@ class Tui(controller: Controller) extends Observer {
     }
   }
 
-  override def update: Unit = {
+  reactions += {
+    case event: GridSizeChanged => printGameTui
+    case event: Played => printGameTui
+  }
+
+  def printGameTui: Unit = {
     println(controller.gridToString)
     if (controller.gameStatus == NEXT_PLAYER) {
       println("\n" + controller.playerAtTurn.toString + GameStatus.message(controller.gameStatus))

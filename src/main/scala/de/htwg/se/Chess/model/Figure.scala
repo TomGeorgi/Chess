@@ -16,4 +16,11 @@ object FigureType extends Enumeration {
 
 object Color extends Enumeration {
   val EMPTY, BLACK, WHITE = Value
+
+  def colorReverse(color: Color.Value): Color.Value = color match {
+      case Color.WHITE => Color.BLACK
+      case Color.BLACK => Color.WHITE
+      case Color.EMPTY => Color.EMPTY
+    }
+
 }

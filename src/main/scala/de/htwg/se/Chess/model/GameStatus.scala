@@ -12,7 +12,7 @@ object GameStatus extends Enumeration {
     CHECK_MATE -> " is CHECKMATE!",
     CASTLING -> " did a Castling!",
     EN_PASSANT -> " did en passant!",
-    CHECK -> " King is in check...",
+    CHECK -> " is in check...",
     PROMOTION -> " got a Promotion!",
     NO_FIGURE -> " there is no figure on this spot"
   )
