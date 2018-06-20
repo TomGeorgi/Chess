@@ -6,7 +6,7 @@ case class King(c: Color.Value) extends Figure {
 
   override def move(oldRow: Int, oldCol: Int, newRow: Int, newCol: Int, grid: Grid): Boolean = {
     val getMove = (oldRow + 1, oldCol + 1) :: (oldRow + 1, oldCol - 1) :: (oldRow - 1, oldCol - 1) :: (oldRow - 1, oldCol + 1) :: (oldRow + 1, oldCol) :: (oldRow - 1, oldCol) :: (oldRow, oldCol + 1) :: (oldRow, oldCol - 1) :: Nil
-    val revColor: Color.Value = colorReverse(color)
+    val revColor: Color.Value = Color.colorReverse(color)
 
     for (valPos <- getMove) {
       if (valPos == (newRow, newCol)) {

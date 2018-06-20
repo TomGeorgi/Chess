@@ -4,7 +4,9 @@ import de.htwg.se.Chess.model.GameStatus._
 import de.htwg.se.Chess.model._
 import de.htwg.se.Chess.util.{Observable, UndoManager}
 
-class Controller(var grid: Grid, var player: (Player, Player)) extends Observable {
+import scala.swing.Publisher
+
+class Controller(var grid: Grid, var player: (Player, Player)) extends Publisher {
 
   var gameStatus: GameStatus = IDLE
   val size: Int = 8
@@ -19,35 +21,35 @@ class Controller(var grid: Grid, var player: (Player, Player)) extends Observabl
     val grid = new Grid(size).fill()
     this.grid = grid
     this.player = (Player(player._1, Color.WHITE), Player(player._2, Color.BLACK))
-    notifyObservers
+    publish(new Played)
   }
 
   def createEmptyGrid(player: (String, String)): Unit = {
     val grid = new Grid(size)
     this.grid = grid
     this.player = (Player(player._1, Color.WHITE), Player(player._2, Color.BLACK))
-    notifyObservers
+    publish(new Played)
   }
 
   def gridToString: String = grid.toString
 
   def turn(placeRow: Int, placeCol: Int, newPlaceRow: Int, newPlaceCol: Int): Unit = {
     undoManager.doStep(new TurnCommand(placeRow, placeCol, newPlaceRow, newPlaceCol, this))
-    notifyObservers
+    publish(new Played)
   }
 
   def set(row: Int, col: Int, value: String, color: String): Unit = {
     undoManager.doStep(new SetCommand(row, col, value, color, this))
-    notifyObservers
+    publish(new Played)
   }
 
   def undo: Unit = {
     undoManager.undoStep
-    notifyObservers
+    publish(new Played)
   }
 
   def redo: Unit = {
     undoManager.redoStep
-    notifyObservers
+    publish(new Played)
   }
 }

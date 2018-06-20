@@ -38,6 +38,46 @@ case class Grid(private val cells:Matrix[Cell]) {
     fillGrid
   }
 
+  var isInCheckColor: Color.Value = Color.EMPTY
+
+  def isInCheck(colorToCheck: Color.Value): Boolean = {
+    var kingPos: (Int, Int) = (-1, -1)
+    for (row <- 0 to 7) {
+      for (col <- 0 to 7) {
+        if(cell(row, col).value == Some(King(colorToCheck))) {
+          kingPos = (row, col)
+        }
+      }
+    }
+    val revColor: Color.Value = Color.colorReverse(colorToCheck)
+    if(getAllOtherColorAndCheck(kingPos, revColor, this)){
+      isInCheckColor = colorToCheck
+      true
+    } else {
+      false
+    }
+  }
+
+  def getAllOtherColorAndCheck(kingPos: (Int, Int), revColor: Color.Value, gridC: Grid): Boolean = {
+    var figureList: List[(Figure, (Int, Int))] = Nil
+    for (row <- 0 to 7) {
+      for (col <- 0 to 7) {
+        cell(row, col).value match {
+          case Some(s) => {
+            if (s.color == revColor) {
+              figureList = (s, (row, col)) :: figureList
+            }
+          }
+          case None =>
+        }
+      }
+    }
+    for {
+      fig <- figureList
+    } if (fig._1.move(fig._2._1, fig._2._2, kingPos._1, kingPos._2, gridC)) return true
+    false
+  }
+
   override def toString: String = {
     val numbers = "y "
     val lineseparator = "  |" + "---+" * (size-1) + "---|\n"

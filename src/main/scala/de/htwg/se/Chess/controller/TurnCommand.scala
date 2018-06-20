@@ -14,30 +14,39 @@ class TurnCommand(oldRow: Int, oldCol: Int, newRow: Int, newCol: Int, controller
     val whichPlayer = controller.playerAtTurn
     val oldValue = controller.grid.cell(oldRow, oldCol).value
     var canSet: Boolean = false
-    var color: Color.Value = Color.EMPTY
+
+    println(controller.grid.isInCheckColor)
+    if(controller.grid.isInCheckColor == whichPlayer.color) {
+      println("Verscuhe bitte nich check zu bleiben")
+    }
 
     oldValue match {
       case Some(res) => {
-        color = res.color
-        if (color == whichPlayer.color) {
-          canSet = res.typ match {
-            case FigureType.PAWN => Pawn(color).move(oldRow, oldCol, newRow, newCol, controller.grid)
-            case FigureType.ROOK => Rook(color).move(oldRow, oldCol, newRow, newCol, controller.grid)
-            case FigureType.KNIGHT => Knight(color).move(oldRow, oldCol, newRow, newCol, controller.grid)
-            case FigureType.BISHOP => Bishop(color).move(oldRow, oldCol, newRow, newCol, controller.grid)
-            case FigureType.QUEEN => Queen(color).move(oldRow, oldCol, newRow, newCol, controller.grid)
-            case FigureType.KING => King(color).move(oldRow, oldCol, newRow, newCol, controller.grid)
-          }
-        }
+        val color = res.color
+        if (color == whichPlayer.color) canSet = res.move(oldRow, oldCol, newRow, newCol, controller.grid)
       }
       case None =>
     }
 
     if (canSet) {
-      controller.grid = controller.grid.set(oldRow, oldCol, None)
-      controller.grid = controller.grid.set(newRow, newCol, oldValue)
-      controller.setNextPlayer
-      controller.gameStatus = NEXT_PLAYER
+      var gridtoCheck = controller.grid.set(oldRow, oldCol, None)
+      gridtoCheck = gridtoCheck.set(newRow, newCol, oldValue)
+      if(gridtoCheck.isInCheck(whichPlayer.color)){
+        controller.gameStatus = MOVE_NOT_VALID
+      }
+      else
+      {
+        if(gridtoCheck.isInCheck(Color.colorReverse(whichPlayer.color))) {
+          println("HIER könnte ihre checkmate methode stehen")
+          gridtoCheck.isInCheckColor = Color.colorReverse(whichPlayer.color)
+          println(gridtoCheck.isInCheckColor)
+          controller.gameStatus = CHECK
+        }
+        controller.grid = gridtoCheck
+        controller.setNextPlayer
+        controller.gameStatus = NEXT_PLAYER
+      }
+
     } else {
         controller.gameStatus = MOVE_NOT_VALID
     }
