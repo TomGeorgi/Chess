@@ -1,9 +1,10 @@
 package de.htwg.se.Chess.controller.controllerComponent.controllerBaseImpl
 
 import de.htwg.se.Chess.controller.controllerComponent.GameStatus._
+import net.codingwell.scalaguice.InjectorExtensions._
 import de.htwg.se.Chess.model._
 import de.htwg.se.Chess.model.figureComponent.Color
-import de.htwg.se.Chess.model.gridComponent.GridInterface
+import de.htwg.se.Chess.model.gridComponent.{CellFactory, GridInterface}
 import de.htwg.se.Chess.model.gridComponent.gridBaseImpl.Grid
 import de.htwg.se.Chess.model.playerComponent.PlayerInterface
 import de.htwg.se.Chess.model.playerComponent.playerBaseImpl.Player

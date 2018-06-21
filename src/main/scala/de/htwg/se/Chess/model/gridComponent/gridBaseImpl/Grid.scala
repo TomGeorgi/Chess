@@ -1,12 +1,13 @@
 package de.htwg.se.Chess.model.gridComponent.gridBaseImpl
 
+import com.google.inject.assistedinject.{Assisted, AssistedInject}
 import de.htwg.se.Chess.model.figureComponent.figureBaseImpl._
 import de.htwg.se.Chess.model.figureComponent.{Color, Figure}
 import de.htwg.se.Chess.model.gridComponent.{CellInterface, GridInterface}
 
-case class Grid(private val cells:Matrix[CellInterface]) extends GridInterface {
+case class Grid @AssistedInject() (@Assisted cells:Matrix[CellInterface]) extends GridInterface {
 
-  def this(size:Int) = this(new Matrix[CellInterface](size, Cell(None)))
+  @AssistedInject() def this(@Assisted size:Int) = this(new Matrix[CellInterface](size, Cell(None).asInstanceOf[CellInterface]))
 
   val size:Int = cells.size
 
@@ -97,4 +98,5 @@ case class Grid(private val cells:Matrix[CellInterface]) extends GridInterface {
     } box = box.replaceFirst("y", (size - row).toString)
     box
   }
+
 }

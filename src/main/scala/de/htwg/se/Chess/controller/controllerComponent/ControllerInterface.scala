@@ -23,6 +23,12 @@ trait ControllerInterface extends Publisher {
 
 }
 
+trait ControllerFactory {
+
+  def create(grid: GridInterface, player: (PlayerInterface, PlayerInterface)): ControllerInterface
+
+}
+
 import scala.swing.event.Event
 
 class Played extends Event

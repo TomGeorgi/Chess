@@ -1,13 +1,11 @@
 package de.htwg.se.Chess.aview
 
-import de.htwg.se.Chess.controller.controllerComponent.GameStatus
-import de.htwg.se.Chess.controller.controllerComponent.controllerBaseImpl.Controller
-import de.htwg.se.Chess.controller.controllerComponent.{GridSizeChanged, Played}
+import de.htwg.se.Chess.controller.controllerComponent.{ControllerInterface, GameStatus, GridSizeChanged, Played}
 import de.htwg.se.Chess.controller.controllerComponent.GameStatus._
 
 import scala.swing.Reactor
 
-class Tui(controller: Controller) extends Reactor {
+class Tui(controller: ControllerInterface) extends Reactor {
 
   listenTo(controller)
 
@@ -18,7 +16,7 @@ class Tui(controller: Controller) extends Reactor {
   println("column: from A to H")
   println("Row: from 1 to 8")
   println("For More Information type help")
-  printGameTui
+  //printGameTui
 
 
 
