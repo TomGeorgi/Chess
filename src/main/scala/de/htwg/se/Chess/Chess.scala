@@ -19,7 +19,6 @@ object Chess {
 
   def main(args: Array[String]): Unit = {
     var input: String = ""
-
     do {
       input = readLine()
       tui.processInputLine(input.trim())

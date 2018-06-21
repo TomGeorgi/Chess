@@ -30,7 +30,7 @@ object FigureImg {
         case Color.BLACK => 1
       }
 
-      fig -> image.getSubimage(column * (image.getWidth() / 6), line * (image.getHeight() / 2), image.getWidth / 6, image.getHeight / 2)//
+      fig -> image.getSubimage(column * (image.getWidth() / 6), line * (image.getHeight() / 2), (image.getWidth / 6), (image.getHeight / 2))//
       // .getScaledInstance(Toolkit.getDefaultToolkit.getScreenSize.width, Toolkit.getDefaultToolkit.getScreenSize.height, Image.SCALE_DEFAULT)
     }).toMap
   }

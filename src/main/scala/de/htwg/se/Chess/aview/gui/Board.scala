@@ -10,7 +10,7 @@ import java.awt.image.ImageObserver
 
 class Board(val controller: Controller, var componentSize: Dimension) extends Component with ImageObserver{
 
-  componentSize.setSize((componentSize.height * 0.8) toInt, (componentSize.height * 0.8) toInt)
+  componentSize.setSize((componentSize.height * 0.5) toInt, (componentSize.height * 0.5) toInt)
   preferredSize = new Dimension(componentSize.width, componentSize.height)
   def squareSize = new Dimension(componentSize.width / 8, componentSize.height / 8)
 
@@ -35,12 +35,11 @@ class Board(val controller: Controller, var componentSize: Dimension) extends Co
       g.fillRect(currentPos.y, currentPos.x, squareSize.width, squareSize.height)
 
 
-/*      controller.grid.cell(row, col).value match {
+      /*      controller.grid.cell(row, col).value match {
         case Some(fig) => g.drawImage(FigureImg.forFigures(fig), currentPos.y, currentPos.x, this)
         case None =>
       }
 */
-
       paintField(g, currentPos, (row, col))
     }
   }
