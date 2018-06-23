@@ -12,33 +12,33 @@ case class Grid @AssistedInject() (@Assisted cells:Matrix[CellInterface]) extend
   val size:Int = cells.size
 
   def cell(row:Int, col:Int):CellInterface = cells.cell(row, col)
-  def set(row:Int, col:Int, value: Option[Figure]):GridInterface = copy(cells.replaceCell(row, col, Cell(value)))
+  def set(row:Int, col:Int, value: Option[Figure]):GridInterface = copy(cells.replaceCell(row, col, Cell(value).asInstanceOf[CellInterface]))
 
   def fill(): GridInterface = {
-    var fillGrid: GridInterface = set(0, 0, Some(Rook(Color.BLACK)))
-    fillGrid = fillGrid.set(0, 1, Some(Knight(Color.BLACK)))
-    fillGrid = fillGrid.set(0, 2, Some(Bishop(Color.BLACK)))
-    fillGrid = fillGrid.set(0, 3, Some(Queen(Color.BLACK)))
-    fillGrid = fillGrid.set(0, 4, Some(King(Color.BLACK)))
-    fillGrid = fillGrid.set(0, 5, Some(Bishop(Color.BLACK)))
-    fillGrid = fillGrid.set(0, 6, Some(Knight(Color.BLACK)))
-    fillGrid = fillGrid.set(0, 7, Some(Rook(Color.BLACK)))
-    fillGrid = fillGrid.set(7, 0, Some(Rook(Color.WHITE)))
-    fillGrid = fillGrid.set(7, 1, Some(Knight(Color.WHITE)))
-    fillGrid = fillGrid.set(7, 2, Some(Bishop(Color.WHITE)))
-    fillGrid = fillGrid.set(7, 3, Some(Queen(Color.WHITE)))
-    fillGrid = fillGrid.set(7, 4, Some(King(Color.WHITE)))
-    fillGrid = fillGrid.set(7, 5, Some(Bishop(Color.WHITE)))
-    fillGrid = fillGrid.set(7, 6, Some(Knight(Color.WHITE)))
-    fillGrid = fillGrid.set(7, 7, Some(Rook(Color.WHITE)))
+    var fillGrid: GridInterface = set(0, 0, Some(Rook(Color.BLACK).asInstanceOf[Figure]))
+    fillGrid = fillGrid.set(0, 1, Some(Knight(Color.BLACK).asInstanceOf[Figure]))
+    fillGrid = fillGrid.set(0, 2, Some(Bishop(Color.BLACK).asInstanceOf[Figure]))
+    fillGrid = fillGrid.set(0, 3, Some(Queen(Color.BLACK).asInstanceOf[Figure]))
+    fillGrid = fillGrid.set(0, 4, Some(King(Color.BLACK).asInstanceOf[Figure]))
+    fillGrid = fillGrid.set(0, 5, Some(Bishop(Color.BLACK).asInstanceOf[Figure]))
+    fillGrid = fillGrid.set(0, 6, Some(Knight(Color.BLACK).asInstanceOf[Figure]))
+    fillGrid = fillGrid.set(0, 7, Some(Rook(Color.BLACK).asInstanceOf[Figure]))
+    fillGrid = fillGrid.set(7, 0, Some(Rook(Color.WHITE).asInstanceOf[Figure]))
+    fillGrid = fillGrid.set(7, 1, Some(Knight(Color.WHITE).asInstanceOf[Figure]))
+    fillGrid = fillGrid.set(7, 2, Some(Bishop(Color.WHITE).asInstanceOf[Figure]))
+    fillGrid = fillGrid.set(7, 3, Some(Queen(Color.WHITE).asInstanceOf[Figure]))
+    fillGrid = fillGrid.set(7, 4, Some(King(Color.WHITE).asInstanceOf[Figure]))
+    fillGrid = fillGrid.set(7, 5, Some(Bishop(Color.WHITE).asInstanceOf[Figure]))
+    fillGrid = fillGrid.set(7, 6, Some(Knight(Color.WHITE).asInstanceOf[Figure]))
+    fillGrid = fillGrid.set(7, 7, Some(Rook(Color.WHITE).asInstanceOf[Figure]))
 
     for {
       col <- 0 until size
-    } fillGrid = fillGrid.set(1, col, Some(Pawn(Color.BLACK)))
+    } fillGrid = fillGrid.set(1, col, Some(Pawn(Color.BLACK).asInstanceOf[Figure]))
 
     for {
       col <- 0 until size
-    } fillGrid = fillGrid.set(6, col, Some(Pawn(Color.WHITE)))
+    } fillGrid = fillGrid.set(6, col, Some(Pawn(Color.WHITE).asInstanceOf[Figure]))
 
     fillGrid
   }
@@ -87,8 +87,8 @@ case class Grid @AssistedInject() (@Assisted cells:Matrix[CellInterface]) extend
     val numbers = "y "
     val lineseparator = "  |" + "---+" * (size-1) + "---|\n"
     val line = "| x " * size + "|\n"
-    print("\n\n    A   B   C   D   E   F   G   H")
-    var box = "\n" + (lineseparator + numbers + line) * size + lineseparator
+    val letters = ("\n\n    A   B   C   D   E   F   G   H")
+    var box = letters + "\n" + (lineseparator + numbers + line) * size + lineseparator
     for {
       row <- 0 until size
       col <- 0 until size

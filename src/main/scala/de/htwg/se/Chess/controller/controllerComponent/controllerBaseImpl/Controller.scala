@@ -1,6 +1,6 @@
 package de.htwg.se.Chess.controller.controllerComponent.controllerBaseImpl
 
-import com.google.inject.Guice
+import com.google.inject.{Guice, Inject}
 import com.google.inject.assistedinject.{Assisted, AssistedInject}
 import net.codingwell.scalaguice.InjectorExtensions._
 import de.htwg.se.Chess.ChessModule
@@ -8,7 +8,7 @@ import de.htwg.se.Chess.controller.controllerComponent.GameStatus.{GameStatus, _
 import de.htwg.se.Chess.controller.controllerComponent.{ControllerInterface, Played}
 import de.htwg.se.Chess.model.figureComponent.Color
 import de.htwg.se.Chess.model.gridComponent.{GridFactory, GridInterface}
-import de.htwg.se.Chess.model.gridComponent.gridBaseImpl.Grid
+import de.htwg.se.Chess.model.fileIoComponent.FileIOInterface
 import de.htwg.se.Chess.model.playerComponent.{PlayerFactory, PlayerInterface}
 import de.htwg.se.Chess.model.playerComponent.playerBaseImpl.Player
 import de.htwg.se.Chess.util.UndoManager
@@ -21,6 +21,7 @@ class Controller @AssistedInject() (@Assisted var grid: GridInterface, @Assisted
   val size: Int = 8
   private val undoManager = new UndoManager
   val injector = Guice.createInjector(new ChessModule)
+  val fileIo = injector.instance[FileIOInterface]
 
   def this(grid: GridInterface, player1: String, player2: String) = this(grid, (Player(player1, Color.WHITE), Player(player2, Color.BLACK)))
 
@@ -31,6 +32,7 @@ class Controller @AssistedInject() (@Assisted var grid: GridInterface, @Assisted
     val grid = injector.instance[GridFactory].create(size).fill()
     this.grid = grid
     this.player = (injector.instance[PlayerFactory].create(player._1, Color.WHITE), injector.instance[PlayerFactory].create(player._2, Color.BLACK))
+    gameStatus = NEW_GAME
     publish(new Played)
   }
 
@@ -38,6 +40,7 @@ class Controller @AssistedInject() (@Assisted var grid: GridInterface, @Assisted
     val grid =  injector.instance[GridFactory].create(size)
     this.grid = grid
     this.player = (injector.instance[PlayerFactory].create(player._1, Color.WHITE), injector.instance[PlayerFactory].create(player._2, Color.BLACK))
+    gameStatus = NEW_GAME_EMPTY
     publish(new Played)
   }
 
@@ -62,6 +65,25 @@ class Controller @AssistedInject() (@Assisted var grid: GridInterface, @Assisted
 
   def redo: Unit = {
     undoManager.redoStep
+    publish(new Played)
+  }
+
+  override def save: Unit = {
+    fileIo.save(grid, player)
+    gameStatus = SAVED
+    publish(new Played)
+  }
+
+  override def load: Unit = {
+    val gridOption = fileIo.load
+    gridOption match {
+      case None =>
+      case Some(game) => {
+        grid = game._1
+        player = game._2
+      }
+    }
+    gameStatus = LOADED
     publish(new Played)
   }
 }

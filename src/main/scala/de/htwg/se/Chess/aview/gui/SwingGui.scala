@@ -29,6 +29,7 @@ class SwingGui(controller: ControllerInterface) extends Frame {
       mnemonic = Key.E
       contents += new MenuItem(Action("Undo") { controller.undo })
       contents += new MenuItem(Action("Redo") { controller.redo })
+      contents += new MenuItem(Action("Exit") { System.exit(0)})
     }
   }
 

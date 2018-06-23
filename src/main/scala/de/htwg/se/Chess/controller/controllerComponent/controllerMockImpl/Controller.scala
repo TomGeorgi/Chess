@@ -36,4 +36,8 @@ class Controller(var grid: GridInterface, var player: (PlayerInterface, PlayerIn
   override def undo: Unit = {}
 
   override def redo: Unit = {}
+
+  override def save: Unit = {}
+
+  override def load: Unit = {}
 }

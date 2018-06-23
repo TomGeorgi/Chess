@@ -21,7 +21,7 @@ class TurnCommand(oldRow: Int, oldCol: Int, newRow: Int, newCol: Int, controller
     val oldValue = controller.grid.cell(oldRow, oldCol).value
     var canSet: Boolean = false
 
-    println(controller.grid.isInCheckColor)
+
     if(controller.grid.isInCheckColor == whichPlayer.color) {
       println("Verscuhe bitte nich check zu bleiben")
     }
@@ -37,7 +37,7 @@ class TurnCommand(oldRow: Int, oldCol: Int, newRow: Int, newCol: Int, controller
     if (canSet) {
       var gridtoCheck = controller.grid.set(oldRow, oldCol, None)
       gridtoCheck = gridtoCheck.set(newRow, newCol, oldValue)
-      if(gridtoCheck.isInCheck(whichPlayer.color)){
+      if(gridtoCheck.isInCheck(whichPlayer.color)) {
         controller.gameStatus = MOVE_NOT_VALID
       }
       else

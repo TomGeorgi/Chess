@@ -20,6 +20,8 @@ trait ControllerInterface extends Publisher {
   def set(row: Int, col: Int, value: String, color: String): Unit
   def undo: Unit
   def redo: Unit
+  def save: Unit
+  def load: Unit
 
 }
 

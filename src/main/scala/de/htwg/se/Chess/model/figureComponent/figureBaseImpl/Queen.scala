@@ -1,9 +1,10 @@
 package de.htwg.se.Chess.model.figureComponent.figureBaseImpl
 
+import com.google.inject.assistedinject.{Assisted, AssistedInject}
 import de.htwg.se.Chess.model.figureComponent.{Color, Figure, FigureType}
 import de.htwg.se.Chess.model.gridComponent.GridInterface
 
-case class Queen(c: Color.Value) extends Figure {
+case class Queen @AssistedInject() (@Assisted c: Color.Value) extends Figure {
 
   override val color: Color.Value = c
   override val typ: FigureType.Value = FigureType.QUEEN

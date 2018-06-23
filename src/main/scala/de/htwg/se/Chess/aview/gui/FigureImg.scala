@@ -9,7 +9,7 @@ import javax.imageio.ImageIO
 
 object FigureImg {
 
-  val image = ImageIO.read(getClass.getResource("pieces.png"))
+  val image = ImageIO.read(getClass.getResource("pieces2.png"))
 
   val forFigures: Map[Figure, Image] = {
 

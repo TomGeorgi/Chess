@@ -17,11 +17,11 @@ object Chess {
 
   var controller = Guice.createInjector(new ChessModule).instance[ControllerFactory].create(
     new Grid(defaultSize).fill(),
-    (Guice.createInjector(new ChessModule).instance[PlayerFactory].create("Player 1", Color.BLACK),
-      Guice.createInjector(new ChessModule).instance[PlayerFactory].create("Player 2", Color.WHITE))
+    (Guice.createInjector(new ChessModule).instance[PlayerFactory].create("Player 1", Color.WHITE),
+      Guice.createInjector(new ChessModule).instance[PlayerFactory].create("Player 2", Color.BLACK))
   )
   val tui = new Tui(controller)
-  val gui = new SwingGui(controller)
+  //val gui = new SwingGui(controller)
   controller.publish(new Played)
 
   def main(args: Array[String]): Unit = {
