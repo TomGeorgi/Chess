@@ -31,6 +31,6 @@ class ChessModule extends AbstractModule with ScalaModule {
       .implement(Key.get(classOf[Figure], Names.named("King")), classOf[King]).build(classOf[FigureFactory]))
     bind[CellInterface].to[Cell]
 
-    bind[FileIOInterface].to[fileIoXmlImpl.FileIO]
+    bind[FileIOInterface].to[fileIoJsonImpl.FileIO]
   }
 }
