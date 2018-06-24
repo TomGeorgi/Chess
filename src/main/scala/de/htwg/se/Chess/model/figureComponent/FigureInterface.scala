@@ -29,16 +29,6 @@ trait FigureFactory {
 
 object FigureType extends Enumeration {
   val PAWN, ROOK, KING, QUEEN, KNIGHT, BISHOP = Value
-
-  def fromString(s: String): Option[FigureType.Value] = s.trim match {
-    case "PAWN" => Some(PAWN)
-    case "ROOK" => Some(ROOK)
-    case "KING" => Some(KING)
-    case "QUEEN" => Some(QUEEN)
-    case "KNIGHT" => Some(KNIGHT)
-    case "BISHOP" => Some(BISHOP)
-    case _ => None
-  }
 }
 
 object Color extends Enumeration {
