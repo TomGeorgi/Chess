@@ -33,16 +33,9 @@ class Board(val controller: ControllerInterface, var componentSize: Dimension) e
       if (isWhite) g.setColor(whiteColor)
       else g.setColor(blackColor)
 
-      val currentPos = new Point(row * squareSize.height, componentSize.width - (col + 1) * squareSize.width)
+      val currentPos = new Point(row * squareSize.height, col * squareSize.width)
 
       g.fillRect(currentPos.y, currentPos.x, squareSize.width, squareSize.height)
-
-
-/*      controller.grid.cell(row, col).value match {
-        case Some(fig) => g.drawImage(FigureImg.forFigures(fig), currentPos.y, currentPos.x, this)
-        case None =>
-      }
-*/
 
       paintField(g, currentPos, (row, col))
     }
@@ -52,11 +45,9 @@ class Board(val controller: ControllerInterface, var componentSize: Dimension) e
     controller.grid.cell(pos._1, pos._2).value match {
       case None =>
       case Some(res) => {
-        //println(pos + " " + res.typ)
         g.drawImage(FigureImg.forFigures(res), currPos.y, currPos.x, this)
       }
     }
-
   }
 
   override def imageUpdate(image: Image, i: Int, i1: Int, i2: Int, i3: Int, i4: Int): Boolean = false

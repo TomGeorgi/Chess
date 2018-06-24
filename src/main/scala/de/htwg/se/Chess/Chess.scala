@@ -21,12 +21,11 @@ object Chess {
       Guice.createInjector(new ChessModule).instance[PlayerFactory].create("Player 2", Color.BLACK))
   )
   val tui = new Tui(controller)
-  //val gui = new SwingGui(controller)
+  val gui = new SwingGui(controller)
   controller.publish(new Played)
 
   def main(args: Array[String]): Unit = {
     var input: String = ""
-
     do {
       input = readLine()
       tui.processInputLine(input.trim())
