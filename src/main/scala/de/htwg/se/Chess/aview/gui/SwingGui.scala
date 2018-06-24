@@ -116,16 +116,15 @@ class SwingGui(controller: ControllerInterface) extends Frame {
     }
   }
 
-  val labelpanel = new FlowPanel() {
+  val labelpanel = new GridPanel(2, 1) {
     val label = new Label("Willkommen")
-    label.horizontalAlignment = Alignment.Center
     contents += label
+    val label2 = new Label("")
+    contents += label2
   }
 
   val labelpanel2 = new FlowPanel() {
-    val label = new Label("")
-    label.horizontalAlignment = Alignment.Center
-    contents += label
+
   }
 
 
@@ -134,9 +133,9 @@ class SwingGui(controller: ControllerInterface) extends Frame {
     case event: Played => repaint()
       labelpanel.label.text = controller.playerAtTurn.name + " is at turn"
       if (controller.gameStatus == NEXT_PLAYER) {
-        labelpanel2.label.text = ""
+        labelpanel.label2.text = ""
       } else {
-        labelpanel2.label.text = "\n" + controller.playerAtTurn.toString + GameStatus.message(controller.gameStatus)
+        labelpanel.label2.text = "\n" + controller.playerAtTurn.toString + GameStatus.message(controller.gameStatus)
       }
   }
 
@@ -150,21 +149,22 @@ class SwingGui(controller: ControllerInterface) extends Frame {
       val coord = getCoord(x, y, row, col, steprow, stepcol)
       val oldcoord = getOldCoord()
       setClicks(2)
+      board.Coord(-1, -1)
       controller.turn(gridSize - oldcoord._1, oldcoord._2, gridSize - coord._1, coord._2)
     } else {
       val coord = getCoord(x, y, row, col, steprow, stepcol)
       controller.grid.cell(gridSize - coord._1, coord._2).value match {
         case Some(res) => if(res.color == controller.playerAtTurn.color) {
-            setClicks(1)
-            save(coord._1, coord._2)
-          } else {
-            setClicks(2)
-          }
+          board.Coord(coord._1, coord._2)
+          setClicks(1)
+          save(coord._1, coord._2)
+        } else {
+          setClicks(2)
+        }
         case None => setClicks(2)
       }
     }
   }
-
 
   def getCoord(xCoord: Int, yCoord: Int, row: Int, col: Int, steprow: Int, stepcol: Int): (Int, Int) = {
     val lines = /*controller.grid.size - 1*/ 7
@@ -220,7 +220,7 @@ class SwingGui(controller: ControllerInterface) extends Frame {
     if(in.length == 2) {
       controller.set(8 - in(1).toInt, charToValue(in(0)), figuretype, color)
     } else {
-      labelpanel2.label.text = "Wrong input for Set"
+      labelpanel.label2.text = "Wrong input for Set"
     }
   }
   def charToValue(col: String): Int = {
@@ -238,8 +238,8 @@ class SwingGui(controller: ControllerInterface) extends Frame {
 
   contents = new BorderPanel {
     add(labelpanel, BorderPanel.Position.North)
-    add(labelpanel2, BorderPanel.Position.Center)
-    add(panel, BorderPanel.Position.South)
+    //add(labelpanel2, BorderPanel.Position.Center)
+    add(panel, BorderPanel.Position.Center)
   }
 
   title = "HTWG Chess"
