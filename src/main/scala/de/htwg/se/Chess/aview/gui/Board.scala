@@ -7,9 +7,11 @@ import scala.swing.{Component, Dimension}
 import java.awt.{BasicStroke, Color, Graphics2D, Toolkit}
 import java.awt.image.ImageObserver
 
+import de.htwg.se.Chess.aview.gui.FigureImg.getClass
 import de.htwg.se.Chess.controller.controllerComponent.ControllerInterface
 import de.htwg.se.Chess.controller.controllerComponent.controllerBaseImpl.Controller
 import de.htwg.se.Chess.model.gridComponent.gridBaseImpl.Grid
+import javax.imageio.ImageIO
 
 class Board(val controller: ControllerInterface, var componentSize: Dimension) extends Component with ImageObserver{
 
@@ -21,16 +23,21 @@ class Board(val controller: ControllerInterface, var componentSize: Dimension) e
   val field = board.size - 1
   val whiteColor = new Color(211, 139, 68)
   val blackColor = new Color(254, 206, 157)
+  //val highlighted = new Color(232, 172, 112)
+  val highlighted = new Color(65, 205, 0)
+  var graphic: Graphics2D = ImageIO.read(getClass.getResource("pieces2.png")).createGraphics()
 
   override def paintComponent(g: Graphics2D) = {
     listenTo(controller)
-
+    graphic = g
     for {
       row <- 0 to field
       col <- 0 to field
     } {
       val isWhite = (row + col) % 2 == 0
-      if (isWhite) g.setColor(whiteColor)
+      val coord = getCoord()
+      if(7 - coord._1 == row && coord._2 == col) g.setColor(highlighted)
+      else if (isWhite) g.setColor(whiteColor)
       else g.setColor(blackColor)
 
       val currentPos = new Point(row * squareSize.height, col * squareSize.width)
@@ -48,6 +55,18 @@ class Board(val controller: ControllerInterface, var componentSize: Dimension) e
         g.drawImage(FigureImg.forFigures(res), currPos.y, currPos.x, this)
       }
     }
+  }
+
+  var xCoord = -1
+  var yCoord = -1
+  def Coord(x: Int, y: Int): Unit = {
+    xCoord = x
+    yCoord = y
+    repaint()
+  }
+
+  def getCoord(): (Int, Int) = {
+    return (xCoord, yCoord)
   }
 
   override def imageUpdate(image: Image, i: Int, i1: Int, i2: Int, i3: Int, i4: Int): Boolean = false
