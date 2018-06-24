@@ -24,49 +24,75 @@ class SwingGui(controller: Controller) extends Frame {
 
   menuBar = new MenuBar {
     val menu = new Menu("File") {
-        mnemonic = Key.F
-        visible_=(true)
+      mnemonic = Key.F
+      visible_=(true)
 
-        contents += new MenuItem(Action("Empty") { controller.createEmptyGrid(player._1, player._2) })
-        contents += new Menu("Set") {
-          contents += new Menu("King") {
-            contents += new MenuItem(Action("Black") { val c: Option[String] = Dialog.showInput(null, "a-h 1-8", initial = "")
-              setcommand(c, "King", "b")})
-            contents += new MenuItem(Action("White") { val c: Option[String] = Dialog.showInput(null, "a-h 1-8", initial = "")
-              setcommand(c, "King", "w")})
-          }
-          contents += new Menu("Queen") {
-            contents += new MenuItem(Action("Black") { val c: Option[String] = Dialog.showInput(null, "a-h 1-8", initial = "")
-              setcommand(c, "Queen", "b")})
-            contents += new MenuItem(Action("White") { val c: Option[String] = Dialog.showInput(null, "a-h 1-8", initial = "")
-              setcommand(c, "Queen", "w")})
-          }
-          contents += new Menu("Bishop") {
-            contents += new MenuItem(Action("Black") { val c: Option[String] = Dialog.showInput(null, "a-h 1-8", initial = "")
-              setcommand(c, "Bishop", "b")})
-            contents += new MenuItem(Action("White") { val c: Option[String] = Dialog.showInput(null, "a-h 1-8", initial = "")
-              setcommand(c, "Bishop", "w")})
-          }
-          contents += new Menu("Knight") {
-            contents += new MenuItem(Action("Black") { val c: Option[String] = Dialog.showInput(null, "a-h 1-8", initial = "")
-              setcommand(c, "Knight", "b")})
-            contents += new MenuItem(Action("White") { val c: Option[String] = Dialog.showInput(null, "a-h 1-8", initial = "")
-              setcommand(c, "Knight", "w")})
-          }
-          contents += new Menu("Rook") {
-            contents += new MenuItem(Action("Black") { val c: Option[String] = Dialog.showInput(null, "a-h 1-8", initial = "")
-              setcommand(c, "Rook", "b")})
-            contents += new MenuItem(Action("White") { val c: Option[String] = Dialog.showInput(null, "a-h 1-8", initial = "")
-              setcommand(c, "Rook", "w")})
-          }
-          contents += new Menu("Pawn") {
-            contents += new MenuItem(Action("Black") { val c: Option[String] = Dialog.showInput(null, "a-h 1-8", initial = "")
-              setcommand(c, "Pawn", "b")})
-            contents += new MenuItem(Action("White") { val c: Option[String] = Dialog.showInput(null, "a-h 1-8", initial = "")
-              setcommand(c, "Pawn", "w")})
-          }
+      contents += new MenuItem(Action("Empty") { controller.createEmptyGrid(player._1, player._2) })
+      contents += new MenuItem(Action("Save") { controller.save })
+      contents += new MenuItem(Action("Load") { controler.load })
+      contents += new Menu("Set") {
+        contents += new Menu("King") {
+          contents += new MenuItem(Action("Black") {
+            val c: Option[String] = Dialog.showInput(null, "a-h 1-8", initial = "")
+            setcommand(c, "King", "b")
+          })
+          contents += new MenuItem(Action("White") {
+            val c: Option[String] = Dialog.showInput(null, "a-h 1-8", initial = "")
+            setcommand(c, "King", "w")
+          })
+        }
+        contents += new Menu("Queen") {
+          contents += new MenuItem(Action("Black") {
+            val c: Option[String] = Dialog.showInput(null, "a-h 1-8", initial = "")
+            setcommand(c, "Queen", "b")
+          })
+          contents += new MenuItem(Action("White") {
+            val c: Option[String] = Dialog.showInput(null, "a-h 1-8", initial = "")
+            setcommand(c, "Queen", "w")
+          })
+        }
+        contents += new Menu("Bishop") {
+          contents += new MenuItem(Action("Black") {
+            val c: Option[String] = Dialog.showInput(null, "a-h 1-8", initial = "")
+            setcommand(c, "Bishop", "b")
+          })
+          contents += new MenuItem(Action("White") {
+            val c: Option[String] = Dialog.showInput(null, "a-h 1-8", initial = "")
+            setcommand(c, "Bishop", "w")
+          })
+        }
+        contents += new Menu("Knight") {
+          contents += new MenuItem(Action("Black") {
+            val c: Option[String] = Dialog.showInput(null, "a-h 1-8", initial = "")
+            setcommand(c, "Knight", "b")
+          })
+          contents += new MenuItem(Action("White") {
+            val c: Option[String] = Dialog.showInput(null, "a-h 1-8", initial = "")
+            setcommand(c, "Knight", "w")
+          })
+        }
+        contents += new Menu("Rook") {
+          contents += new MenuItem(Action("Black") {
+            val c: Option[String] = Dialog.showInput(null, "a-h 1-8", initial = "")
+            setcommand(c, "Rook", "b")
+          })
+          contents += new MenuItem(Action("White") {
+            val c: Option[String] = Dialog.showInput(null, "a-h 1-8", initial = "")
+            setcommand(c, "Rook", "w")
+          })
+        }
+        contents += new Menu("Pawn") {
+          contents += new MenuItem(Action("Black") {
+            val c: Option[String] = Dialog.showInput(null, "a-h 1-8", initial = "")
+            setcommand(c, "Pawn", "b")
+          })
+          contents += new MenuItem(Action("White") {
+            val c: Option[String] = Dialog.showInput(null, "a-h 1-8", initial = "")
+            setcommand(c, "Pawn", "w")
+          })
         }
       }
+    }
 
   contents += menu
     contents += new Menu("Edit") {
@@ -142,7 +168,7 @@ class SwingGui(controller: Controller) extends Frame {
 
 
   def getCoord(xCoord: Int, yCoord: Int, row: Int, col: Int, steprow: Int, stepcol: Int): (Int, Int) = {
-    val lines = controller.grid.size - 1
+    val lines = /*controller.grid.size - 1*/ 7
     var fieldrow = -1
     var fieldcol = -1
     var rowc = row
