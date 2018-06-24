@@ -1,40 +1,51 @@
 package de.htwg.se.Chess.aview
 
-import de.htwg.se.Chess.controller.{Controller, GridSizeChanged, Played}
-import de.htwg.se.Chess.model.GameStatus
-import de.htwg.se.Chess.model.GameStatus._
+import de.htwg.se.Chess.controller.controllerComponent.{ControllerInterface, GameStatus, GridSizeChanged, Played}
+import de.htwg.se.Chess.controller.controllerComponent.GameStatus._
+import com.typesafe.scalalogging.LazyLogging
 
 import scala.swing.Reactor
 
-class Tui(controller: Controller) extends Reactor {
+class Tui(controller: ControllerInterface) extends Reactor with LazyLogging {
 
   listenTo(controller)
 
   val player: (String, String) = ("Player 1", "Player 2")
 
-  println("Chess from Tom Georgi and Lukas Rohloff")
-  println("Input format: column - row - new column - new row")
-  println("column: from A to H")
-  println("Row: from 1 to 8")
-  println("For More Information type help")
-  printGameTui
+  logger.info("Chess from Tom Georgi and Lukas Rohloff")
+  logger.info("Input format: column - row - new column - new row")
+  logger.info("column: from A to H")
+  logger.info("Row: from 1 to 8")
+  logger.info("For More Information type help")
 
 
 
   def processInputLine(input: String): Unit = {
     val in = input.split("[ ]+")
     in(0) match {
-      case "q" =>
-      case "emp" => {
-        if (in.length >= 3) controller.createEmptyGrid((in(1), in(2))) else controller.createEmptyGrid(player)
-      }
-      case "z" => controller.undo
+      case "q" => System.exit(0)
       case "y" => controller.redo
-      case "help" => println("\n q -> Leaves the game\n n -> Start a new Game with Player 1 and Player 2\n n - name - name -> Start a new Game with the entered names for player1 and player2\n emp -> Start a new Game with an empty Grid\n emp - name - name -> Start a new Game with an empty Grid and the entered names for player1 and player2 \n")
+      case "z" => controller.undo
+      case "s" => controller.save
+      case "l" => controller.load
       case "set" => processInputMove(in)
+      case "emp" => {
+        if (in.length >= 3)
+          controller.createEmptyGrid((in(1), in(2)))
+        else
+          controller.createEmptyGrid(player)
+      }
+      case "help" => logger.info("\n q -> Leaves the game" +
+        "\n n -> Start a new Game with Player 1 and Player 2" +
+        "\n n - name - name -> Start a new Game with the entered names for player1 and player2" +
+        "\n emp -> Start a new Game with an empty Grid" +
+        "\n emp - name - name -> Start a new Game with an empty Grid and the entered names for player1 and player2 \n")
       case "n" => {
-        if (in.length >= 3) controller.createNewGrid((in(1), in(2))) else controller.createNewGrid(player)
-        println("Input format: column - row - new column - new row\n column: from A to H\n Row: from 1 to 8\n For More Information type help")
+        if (in.length >= 3)
+          controller.createNewGrid((in(1), in(2)))
+        else
+          controller.createNewGrid(player)
+        logger.info("Input format: column - row - new column - new row\n column: from A to H\n Row: from 1 to 8\n For More Information type help")
         printGameTui
       }
       case _ => processInputMove(in)
@@ -42,7 +53,6 @@ class Tui(controller: Controller) extends Reactor {
   }
 
   def processInputMove(in: Array[String]): Unit = {
-    //noinspection ScalaStyle
     in.toList.filter(c => c != " ").map(c => c.toString) match {
       case placeCol :: placeRow :: newPlaceCol:: newPlaceRow :: Nil =>
         controller.turn(8 - placeRow.toInt, charToValue(placeCol),8 - newPlaceRow.toInt, charToValue(newPlaceCol))
@@ -71,11 +81,12 @@ class Tui(controller: Controller) extends Reactor {
   }
 
   def printGameTui: Unit = {
-    println(controller.gridToString)
+    logger.info(controller.gridToString)
+    //println(controller.gridToString)
     if (controller.gameStatus == NEXT_PLAYER) {
-      println("\n" + controller.playerAtTurn.toString + GameStatus.message(controller.gameStatus))
+      logger.info("\n" + controller.playerAtTurn.toString + GameStatus.message(controller.gameStatus))
     } else {
-      println("\n" + controller.playerAtTurn.toString + GameStatus.message(controller.gameStatus))
+      logger.info("\n" + controller.playerAtTurn.toString + GameStatus.message(controller.gameStatus))
     }
 
   }

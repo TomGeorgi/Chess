@@ -1,11 +1,14 @@
-package de.htwg.se.Chess.controller
+package de.htwg.se.Chess.controller.controllerComponent.controllerBaseImpl
 
-import de.htwg.se.Chess.model._
+import de.htwg.se.Chess.controller.controllerComponent.GameStatus._
+import de.htwg.se.Chess.model.gridComponent.GridInterface
+import de.htwg.se.Chess.model.figureComponent.{Color, Figure}
+import de.htwg.se.Chess.model.figureComponent.figureBaseImpl._
 import de.htwg.se.Chess.util.Command
 
 class SetCommand(row: Int, col: Int, value: String, color: String, controller: Controller) extends Command {
 
-  var memento: Grid = controller.grid
+  var memento: GridInterface = controller.grid
 
   override def doStep: Unit = {
     memento = controller.grid
@@ -33,12 +36,12 @@ class SetCommand(row: Int, col: Int, value: String, color: String, controller: C
     }
 
     value match {
-      case "Bauer" | "Pawn" => Some(Pawn(c))
-      case "Turm" | "Rook" => Some(Rook(c))
-      case "Springer" | "Knight" => Some(Knight(c))
-      case "Läufer" | "Bishop" => Some(Bishop(c))
-      case "König" | "King" => Some(King(c))
-      case "Königin" | "Queen" => Some(Queen(c))
+      case "Bauer" | "Pawn" => Some(Pawn(c).asInstanceOf[Figure])
+      case "Turm" | "Rook" => Some(Rook(c).asInstanceOf[Figure])
+      case "Springer" | "Knight" => Some(Knight(c).asInstanceOf[Figure])
+      case "Läufer" | "Bishop" => Some(Bishop(c).asInstanceOf[Figure])
+      case "König" | "King" => Some(King(c).asInstanceOf[Figure])
+      case "Königin" | "Queen" => Some(Queen(c).asInstanceOf[Figure])
       case "_" => None
     }
   }

@@ -1,8 +1,11 @@
 package de.htwg.se.Chess.controller
 
-import de.htwg.se.Chess.model._
-import de.htwg.se.Chess.util.Observer
-import de.htwg.se.Chess.model.GameStatus._
+import de.htwg.se.Chess.controller.controllerComponent.GameStatus
+import de.htwg.se.Chess.controller.controllerComponent.controllerBaseImpl.Controller
+import de.htwg.se.Chess.model.figureComponent.Color
+import de.htwg.se.Chess.model.figureComponent.figureBaseImpl.{Bishop, Knight, Pawn, Queen}
+import de.htwg.se.Chess.model.gridComponent.gridBaseImpl.Grid
+import de.htwg.se.Chess.model.playerComponent.playerBaseImpl.Player
 import org.junit.runner.RunWith
 import org.scalatest.{Matchers, WordSpec}
 import org.scalatest.junit.JUnitRunner
@@ -119,28 +122,6 @@ class ControllerSpec extends WordSpec with Matchers {
         controller.gameStatus should be(GameStatus.MOVE_NOT_VALID)
       }
     }
-    /*"observed by an Observer" should {
-      val newGrid = new Grid(8)
-      val controller = new Controller(newGrid, "Player 1", "Player 2")
-      val observer = new Observer {
-        var updated: Boolean = false
-
-        def isUpdated: Boolean = updated
-
-        override def update: Unit = updated = true
-      }
-      //controller.add(observer)
-      "notify its Observer after creation" in {
-        controller.createEmptyGrid("Player 1", "Player 2")
-        observer.updated should be(true)
-        controller.grid.size should be(8)
-      }
-      "notify its Observer after setting a cell" in {
-        controller.set(0, 6, "Rook", "w")
-        observer.updated should be(true)
-        controller.grid.cell(0, 6).value should be(Some(Rook(Color.WHITE)))
-      }
-    }*/
   }
   "empty" should {
     val grid = new Grid(8)

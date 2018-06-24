@@ -1,5 +1,7 @@
 package de.htwg.se.Chess.model
 
+import de.htwg.se.Chess.model.figureComponent.Color
+import de.htwg.se.Chess.model.playerComponent.playerBaseImpl.Player
 import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
 import org.scalatest.{Matchers, WordSpec}

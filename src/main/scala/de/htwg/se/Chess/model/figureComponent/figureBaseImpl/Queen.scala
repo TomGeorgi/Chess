@@ -1,11 +1,15 @@
-package de.htwg.se.Chess.model
+package de.htwg.se.Chess.model.figureComponent.figureBaseImpl
 
-case class Queen(c: Color.Value) extends Figure {
+import com.google.inject.assistedinject.{Assisted, AssistedInject}
+import de.htwg.se.Chess.model.figureComponent.{Color, Figure, FigureType}
+import de.htwg.se.Chess.model.gridComponent.GridInterface
+
+case class Queen @AssistedInject() (@Assisted c: Color.Value) extends Figure {
 
   override val color: Color.Value = c
   override val typ: FigureType.Value = FigureType.QUEEN
 
-  override def move(oldRow: Int, oldCol: Int, newRow: Int, newCol: Int, grid: Grid): Boolean = {
+  override def move(oldRow: Int, oldCol: Int, newRow: Int, newCol: Int, grid: GridInterface): Boolean = {
     val revColor: Color.Value = colorReverse(color)
     val moves = (-1, -1) :: (-1, 1) :: (1, -1) :: (1, 1) :: (1, 0) :: (-1, 0) :: (0, 1) :: (0, -1) :: Nil
 
@@ -32,7 +36,7 @@ case class Queen(c: Color.Value) extends Figure {
     false
   }
 
-  def wayIsBlocked(oldPlace: (Int, Int), newPlace: (Int, Int), direction: (Int, Int), grid: Grid): Boolean = {
+  def wayIsBlocked(oldPlace: (Int, Int), newPlace: (Int, Int), direction: (Int, Int), grid: GridInterface): Boolean = {
     for (i <- 1 to 8) {
       val move: (Int, Int) = (oldPlace._1 + direction._1 * i, oldPlace._2 + direction._2 * i)
       if (move._1 < 8 && move._2 < 8 && move._1 >= 0 && move._2 >= 0) {

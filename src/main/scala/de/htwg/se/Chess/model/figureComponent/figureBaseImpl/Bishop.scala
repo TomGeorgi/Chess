@@ -1,14 +1,17 @@
-package de.htwg.se.Chess.model
+package de.htwg.se.Chess.model.figureComponent.figureBaseImpl
 
-case class Rook(c: Color.Value) extends Figure {
+import com.google.inject.assistedinject.{Assisted, AssistedInject}
+import de.htwg.se.Chess.model.figureComponent.{Color, Figure, FigureType}
+import de.htwg.se.Chess.model.gridComponent.GridInterface
+
+case class Bishop @AssistedInject() (@Assisted c: Color.Value) extends Figure {
 
   override val color: Color.Value = c
+  override val typ: FigureType.Value = FigureType.BISHOP
 
-  override val typ: FigureType.Value = FigureType.ROOK
-
-  override def move(oldRow: Int, oldCol: Int, newRow: Int, newCol: Int, grid: Grid): Boolean = {
+  override def move(oldRow: Int, oldCol: Int, newRow: Int, newCol: Int, grid: GridInterface): Boolean = {
     val revColor = colorReverse(color)
-    val moves = (-1, 0) :: (1, 0) :: (0, -1) :: (0, 1) :: Nil
+    val moves = (-1, -1) :: (-1, 1) :: (1, -1) :: (1, 1) :: Nil
 
     for (i <- moves) {
       for (j <- 1 to 8) {
@@ -32,10 +35,9 @@ case class Rook(c: Color.Value) extends Figure {
     }
     false
   }
-  
 
-  def wayIsBlocked(oldPlace: (Int, Int), newPlace: (Int, Int), direction: (Int, Int), grid: Grid): Boolean = {
-    for(i <- 1 to 8) {
+  def wayIsBlocked(oldPlace: (Int, Int), newPlace: (Int, Int), direction: (Int, Int), grid: GridInterface): Boolean = {
+    for (i <- 1 to 8) {
       val move: (Int, Int) = (oldPlace._1 + direction._1 * i, oldPlace._2 + direction._2 * i)
       if (move._1 < 8 && move._2 < 8 && move._1 >= 0 && move._2 >= 0) {
         if (move == newPlace) return false
@@ -45,15 +47,17 @@ case class Rook(c: Color.Value) extends Figure {
     false
   }
 
-    def colorReverse(color: Color.Value): Color.Value = color match {
-      case Color.WHITE => Color.BLACK
-      case Color.BLACK => Color.WHITE
-    }
+  override def colorReverse(color: Color.Value): Color.Value = color match {
+    case Color.WHITE => Color.BLACK
+    case Color.BLACK => Color.WHITE
+  }
 
-    override def toString: String = {
-      color match {
-        case Color.BLACK => "♜"
-        case Color.WHITE => "♖"
-      }
+  override def toString: String = {
+    color match {
+      case Color.BLACK => "♝"
+      case Color.WHITE => "♗"
     }
   }
+
+}
+
