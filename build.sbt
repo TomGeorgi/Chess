@@ -3,6 +3,15 @@ organization  := "de.htwg.se"
 version       := "0.2.0"
 scalaVersion  := "2.12.4"
 
+libraryDependencies ++= {
+  val scalaTestV       = "3.0.1"
+  val scalaMockV       = "3.2.2"
+  Seq(
+    "org.scalatest" %% "scalatest"                   % scalaTestV       % "test",
+    "org.scalamock" %% "scalamock-scalatest-support" % scalaMockV       % "test"
+  )
+}
+
 scalacOptions := Seq("-unchecked", "-feature", "-deprecation", "-encoding", "utf8")
 
 libraryDependencies += "org.scalatest" %% "scalatest" % "3.0.4" % "test"
@@ -23,5 +32,4 @@ libraryDependencies += "com.typesafe.scala-logging" %% "scala-logging" % "3.5.0"
 
 libraryDependencies += "ch.qos.logback" % "logback-classic" % "1.1.7"
 
-// https://mvnrepository.com/artifact/org.scala-lang.modules/scala-xml
 libraryDependencies += "org.scala-lang.modules" %% "scala-xml" % "1.1.0"
