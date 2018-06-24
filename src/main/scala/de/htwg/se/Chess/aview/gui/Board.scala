@@ -18,7 +18,6 @@ class Board(val controller: Controller, var componentSize: Dimension) extends Co
   val field = board.size - 1
   val whiteColor = new Color(211, 139, 68)
   val blackColor = new Color(254, 206, 157)
-  val highlight = new Color(232, 172, 112)
 
   override def paintComponent(g: Graphics2D) = {
     listenTo(controller)
