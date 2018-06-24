@@ -1,5 +1,7 @@
 
 import de.htwg.se.Chess.model._
+import de.htwg.se.Chess.model.figureComponent.{Color, FigureType}
+import de.htwg.se.Chess.model.gridComponent.gridBaseImpl.Grid
 
 val grid1 = new Grid(4)
 

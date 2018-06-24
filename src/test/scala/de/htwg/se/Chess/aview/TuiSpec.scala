@@ -1,7 +1,10 @@
 package de.htwg.se.Chess.aview
 
-import de.htwg.se.Chess.controller.Controller
+import de.htwg.se.Chess.controller.controllerComponent.controllerBaseImpl.Controller
 import de.htwg.se.Chess.model._
+import de.htwg.se.Chess.model.figureComponent.Color
+import de.htwg.se.Chess.model.figureComponent.figureBaseImpl.{Pawn, Rook}
+import de.htwg.se.Chess.model.gridComponent.gridBaseImpl.Grid
 import de.htwg.se.Chess.util.UndoManager
 import org.junit.runner.RunWith
 import org.scalatest.{Matchers, WordSpec}

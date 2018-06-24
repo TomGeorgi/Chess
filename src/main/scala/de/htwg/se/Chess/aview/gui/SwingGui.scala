@@ -4,15 +4,14 @@ import java.awt.Toolkit
 
 import scala.swing._
 import scala.swing.event._
-import de.htwg.se.Chess.controller._
-import de.htwg.se.Chess.model.GameStatus._
-import de.htwg.se.Chess.model.GameStatus
+import de.htwg.se.Chess.controller.controllerComponent.GameStatus._
+import de.htwg.se.Chess.controller.controllerComponent.{ControllerInterface, GridSizeChanged, Played, GameStatus}
 
 import scala.swing.event.MousePressed
 
 class CellClicked(val row: Int, val col: Int) extends Event
 
-class SwingGui(controller: Controller) extends Frame {
+class SwingGui(controller: ControllerInterface) extends Frame {
 
   val player: (String, String) = ("Player 1", "Player 2")
 
@@ -29,7 +28,7 @@ class SwingGui(controller: Controller) extends Frame {
 
       contents += new MenuItem(Action("Empty") { controller.createEmptyGrid(player._1, player._2) })
       contents += new MenuItem(Action("Save") { controller.save })
-      contents += new MenuItem(Action("Load") { controler.load })
+      contents += new MenuItem(Action("Load") { controller.load })
       contents += new Menu("Set") {
         contents += new Menu("King") {
           contents += new MenuItem(Action("Black") {

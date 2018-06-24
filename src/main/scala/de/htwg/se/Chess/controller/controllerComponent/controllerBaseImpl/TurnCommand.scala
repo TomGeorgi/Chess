@@ -1,12 +1,18 @@
-package de.htwg.se.Chess.controller
+package de.htwg.se.Chess.controller.controllerComponent.controllerBaseImpl
 
+import de.htwg.se.Chess.controller.controllerComponent.GameStatus._
+import net.codingwell.scalaguice.InjectorExtensions._
 import de.htwg.se.Chess.model._
-import de.htwg.se.Chess.model.GameStatus._
+import de.htwg.se.Chess.model.figureComponent.Color
+import de.htwg.se.Chess.model.gridComponent.{CellFactory, GridInterface}
+import de.htwg.se.Chess.model.gridComponent.gridBaseImpl.Grid
+import de.htwg.se.Chess.model.playerComponent.PlayerInterface
+import de.htwg.se.Chess.model.playerComponent.playerBaseImpl.Player
 import de.htwg.se.Chess.util.Command
 
 class TurnCommand(oldRow: Int, oldCol: Int, newRow: Int, newCol: Int, controller: Controller) extends Command {
 
-  var memento: (Grid, (Player, Player)) = (controller.grid, controller.player)
+  var memento: (GridInterface, (PlayerInterface, PlayerInterface)) = (controller.grid, controller.player)
 
   override def doStep: Unit = {
     memento = (controller.grid, controller.player)
@@ -15,7 +21,7 @@ class TurnCommand(oldRow: Int, oldCol: Int, newRow: Int, newCol: Int, controller
     val oldValue = controller.grid.cell(oldRow, oldCol).value
     var canSet: Boolean = false
 
-    println(controller.grid.isInCheckColor)
+
     if(controller.grid.isInCheckColor == whichPlayer.color) {
       println("Verscuhe bitte nich check zu bleiben")
     }
@@ -31,7 +37,7 @@ class TurnCommand(oldRow: Int, oldCol: Int, newRow: Int, newCol: Int, controller
     if (canSet) {
       var gridtoCheck = controller.grid.set(oldRow, oldCol, None)
       gridtoCheck = gridtoCheck.set(newRow, newCol, oldValue)
-      if(gridtoCheck.isInCheck(whichPlayer.color)){
+      if(gridtoCheck.isInCheck(whichPlayer.color)) {
         controller.gameStatus = MOVE_NOT_VALID
       }
       else

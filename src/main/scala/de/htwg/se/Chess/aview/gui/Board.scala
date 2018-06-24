@@ -1,6 +1,5 @@
 package de.htwg.se.Chess.aview.gui
 
-import de.htwg.se.Chess.model.{FigureType, Grid}
 import de.htwg.se.Chess.controller._
 
 import scala.swing._
@@ -8,7 +7,11 @@ import scala.swing.{Component, Dimension}
 import java.awt.{BasicStroke, Color, Graphics2D, Toolkit}
 import java.awt.image.ImageObserver
 
-class Board(val controller: Controller, var componentSize: Dimension) extends Component with ImageObserver{
+import de.htwg.se.Chess.controller.controllerComponent.ControllerInterface
+import de.htwg.se.Chess.controller.controllerComponent.controllerBaseImpl.Controller
+import de.htwg.se.Chess.model.gridComponent.gridBaseImpl.Grid
+
+class Board(val controller: ControllerInterface, var componentSize: Dimension) extends Component with ImageObserver{
 
   componentSize.setSize((componentSize.height * 0.8) toInt, (componentSize.height * 0.8) toInt)
   preferredSize = new Dimension(componentSize.width, componentSize.height)

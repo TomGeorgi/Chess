@@ -1,11 +1,15 @@
-package de.htwg.se.Chess.model
+package de.htwg.se.Chess.model.figureComponent.figureBaseImpl
 
-case class Knight(c: Color.Value) extends Figure {
+import com.google.inject.assistedinject.{Assisted, AssistedInject}
+import de.htwg.se.Chess.model.figureComponent.{Color, Figure, FigureType}
+import de.htwg.se.Chess.model.gridComponent.GridInterface
+
+case class Knight @AssistedInject() (@Assisted c: Color.Value) extends Figure {
 
   override val color: Color.Value = c
   override val typ: FigureType.Value = FigureType.KNIGHT
 
-  override def move(oldRow: Int, oldCol: Int, newRow: Int, newCol: Int, grid: Grid): Boolean = {
+  override def move(oldRow: Int, oldCol: Int, newRow: Int, newCol: Int, grid: GridInterface): Boolean = {
     val getMove = (oldRow + 1, oldCol - 2) :: (oldRow + 2, oldCol - 1) :: (oldRow + 2, oldCol + 1) :: (oldRow + 1, oldCol + 2) :: (oldRow - 1, oldCol + 2) :: (oldRow - 2, oldCol + 1) :: (oldRow - 2, oldCol - 1) :: (oldRow - 1, oldCol - 2) :: Nil
     val revColor: Color.Value = colorReverse(color)
 
