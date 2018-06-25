@@ -19,5 +19,18 @@ object GameStatus extends Enumeration {
     PROMOTION -> " got a Promotion!",
   )
 
+  def fromString(s: String): Option[GameStatus] = s.trim match {
+    case "NEXT_PLAYER" =>
+      Some(NEXT_PLAYER)
+    case "MOVE_NOT_VALID" =>
+      Some(MOVE_NOT_VALID)
+    case "CHECK_MATE" =>
+      Some(CHECK_MATE)
+    case "CHECK" =>
+      Some(CHECK)
+    case _ =>
+      None
+  }
+
   def message(msg: GameStatus) = map(msg)
 }

@@ -2,6 +2,8 @@ package de.htwg.se.Chess.model.fileIoComponent.fileIoXmlImpl
 
 import com.google.inject.Guice
 import de.htwg.se.Chess.ChessModule
+import de.htwg.se.Chess.controller.controllerComponent.GameStatus
+import de.htwg.se.Chess.controller.controllerComponent.GameStatus.GameStatus
 import de.htwg.se.Chess.model.figureComponent.{Color, FigureFactory}
 import de.htwg.se.Chess.model.fileIoComponent.FileIOInterface
 import de.htwg.se.Chess.model.gridComponent.{GridFactory, GridInterface}
@@ -12,7 +14,7 @@ class FileIO extends FileIOInterface {
 
   final val FILE_NAME: String = "chess.xml"
 
-  override def load: Option[(GridInterface, (PlayerInterface, PlayerInterface))] = {
+  override def load: Option[(GridInterface, GameStatus, (PlayerInterface, PlayerInterface))] = {
     val file = scala.xml.XML.loadFile(FILE_NAME)
     val size = (file \\ "grid" \ "@size").text.toInt
     val playerOneName = (file \\ "activePlayer").text.trim
@@ -25,6 +27,11 @@ class FileIO extends FileIOInterface {
     val playerTwoColor = Color.fromString((file \\ "otherPlayerColor").text.trim) match {
       case Some(otherPlayerColorFromString) => otherPlayerColorFromString
       case None => return None
+    }
+
+    val gameStatus = GameStatus.fromString((file \\ "state").text.trim) match{
+      case Some(gameStatusFromString) => (gameStatusFromString)
+      case None    =>  return None
     }
 
     val injector = Guice.createInjector(new ChessModule)
@@ -53,14 +60,14 @@ class FileIO extends FileIOInterface {
         case "None" => grid = grid.set(row, col, None)
       }
     }
-    Some(grid, (player1, player2))
+    Some(grid, gameStatus, (player1, player2))
   }
 
-  override def save(grid: GridInterface, player: (PlayerInterface, PlayerInterface)): Unit = {
-    scala.xml.XML.save(FILE_NAME, controllerToXml(grid, player))
+  override def save(grid: GridInterface, state: GameStatus, player: (PlayerInterface, PlayerInterface)): Unit = {
+    scala.xml.XML.save(FILE_NAME, controllerToXml(grid, state, player))
   }
 
-  def controllerToXml(grid: GridInterface, player: (PlayerInterface, PlayerInterface)) = {
+  def controllerToXml(grid: GridInterface, state: GameStatus, player: (PlayerInterface, PlayerInterface)) = {
     <chess>
       <information>
         <activePlayer>
@@ -75,6 +82,9 @@ class FileIO extends FileIOInterface {
         <otherPlayerColor>
           { player._2.color }
         </otherPlayerColor>
+        <state>
+          { state }
+        </state>
       </information>{ gridToXml(grid) }
     </chess>
   }

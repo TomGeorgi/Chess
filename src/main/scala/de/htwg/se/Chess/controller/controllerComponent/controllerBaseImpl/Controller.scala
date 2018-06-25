@@ -72,7 +72,7 @@ class Controller @AssistedInject() (@Assisted var grid: GridInterface, @Assisted
   }
 
   override def save: Unit = {
-    fileIo.save(grid, player)
+    fileIo.save(grid, gameStatus, player)
     gameStatus = SAVED
     publish(new Played)
   }
@@ -83,7 +83,8 @@ class Controller @AssistedInject() (@Assisted var grid: GridInterface, @Assisted
       case None =>
       case Some(game) => {
         grid = game._1
-        player = game._2
+        gameStatus = game._2
+        player = game._3
       }
     }
     gameStatus = LOADED
