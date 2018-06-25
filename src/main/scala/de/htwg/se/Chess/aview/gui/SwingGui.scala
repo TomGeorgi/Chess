@@ -42,106 +42,117 @@ class SwingGui(controller: ControllerInterface) extends Frame {
         visible_=(true)
         listenTo(this.mouse.clicks)
         reactions += {
-          case MousePressed(_, _, _, _, _) => innermenu.visible_=(true)
+          case MousePressed(_, _, _, _, _) => adminmenu.visible_=(true)
         }
       })
       contents += admin
     }
 
-    val innermenu = new Menu("Set") {
+    val adminmenu = new Menu("Admin") {
       visible_=(false)
-      contents += new Menu("King") {
-        contents += new MenuItem(Action("Black") {
-          val coord = getOldCoord()
-          controller.set(7 - coord._1, coord._2, "King", "b")
-          board.Coord(-1, -1)
-          set = 0
-        })
-        contents += new MenuItem(Action("White") {
-          val coord = getOldCoord()
-          controller.set(7 - coord._1, coord._2, "King", "w")
-          board.Coord(-1, -1)
-          set = 0
-        })
+      contents += new Menu("Set") {
+        contents += new Menu("King") {
+          contents += new MenuItem(Action("Black") {
+            val coord = getOldCoord()
+            controller.set(7 - coord._1, coord._2, "King", "b")
+            board.Coord(-1, -1)
+            set = 0
+          })
+          contents += new MenuItem(Action("White") {
+            val coord = getOldCoord()
+            controller.set(7 - coord._1, coord._2, "King", "w")
+            board.Coord(-1, -1)
+            set = 0
+          })
+        }
+        contents += new Menu("Queen") {
+          contents += new MenuItem(Action("Black") {
+            val coord = getOldCoord()
+            controller.set(7 - coord._1, coord._2, "Queen", "b")
+            board.Coord(-1, -1)
+            set = 0
+          })
+          contents += new MenuItem(Action("White") {
+            val coord = getOldCoord()
+            controller.set(7 - coord._1, coord._2, "Queen", "w")
+            board.Coord(-1, -1)
+            set = 0
+          })
+        }
+        contents += new Menu("Bishop") {
+          contents += new MenuItem(Action("Black") {
+            val coord = getOldCoord()
+            controller.set(7 - coord._1, coord._2, "Bishop", "b")
+            board.Coord(-1, -1)
+            set = 0
+          })
+          contents += new MenuItem(Action("White") {
+            val coord = getOldCoord()
+            controller.set(7 - coord._1, coord._2, "Bishop", "w")
+            board.Coord(-1, -1)
+            set = 0
+          })
+        }
+        contents += new Menu("Knight") {
+          contents += new MenuItem(Action("Black") {
+            val coord = getOldCoord()
+            controller.set(7 - coord._1, coord._2, "Knight", "b")
+            board.Coord(-1, -1)
+            set = 0
+          })
+          contents += new MenuItem(Action("White") {
+            val coord = getOldCoord()
+            controller.set(7 - coord._1, coord._2, "Knight", "w")
+            board.Coord(-1, -1)
+            set = 0
+          })
+        }
+        contents += new Menu("Rook") {
+          contents += new MenuItem(Action("Black") {
+            val coord = getOldCoord()
+            controller.set(7 - coord._1, coord._2, "Rook", "b")
+            board.Coord(-1, -1)
+            set = 0
+          })
+          contents += new MenuItem(Action("White") {
+            val coord = getOldCoord()
+            controller.set(7 - coord._1, coord._2, "Rook", "w")
+            board.Coord(-1, -1)
+            set = 0
+          })
+        }
+        contents += new Menu("Pawn") {
+          contents += new MenuItem(Action("Black") {
+            val coord = getOldCoord()
+            controller.set(7 - coord._1, coord._2, "Pawn", "b")
+            board.Coord(-1, -1)
+            set = 0
+          })
+          contents += new MenuItem(Action("White") {
+            val coord = getOldCoord()
+            controller.set(7 - coord._1, coord._2, "Pawn", "w")
+            board.Coord(-1, -1)
+            set = 0
+          })
+        }
+        listenTo(this.mouse.clicks)
+        reactions += {
+          case MousePressed(_, _, _, _, _) => set = 1
+        }
       }
-      contents += new Menu("Queen") {
-        contents += new MenuItem(Action("Black") {
-          val coord = getOldCoord()
-          controller.set(7 - coord._1, coord._2, "Queen", "b")
-          board.Coord(-1, -1)
+      contents += new MenuItem(Action("None") {
+        if(set != 2) {
+          set = 2
+          labelpanel.label2.text = "Sie befinden sich im None bzw delete mode \n um dies zu deaktivieren klicken sie unter Admin erneut auf None"
+        } else {
           set = 0
-        })
-        contents += new MenuItem(Action("White") {
-          val coord = getOldCoord()
-          controller.set(7 - coord._1, coord._2, "Queen", "w")
-          board.Coord(-1, -1)
-          set = 0
-        })
-      }
-      contents += new Menu("Bishop") {
-        contents += new MenuItem(Action("Black") {
-          val coord = getOldCoord()
-          controller.set(7 - coord._1, coord._2, "Bishop", "b")
-          board.Coord(-1, -1)
-          set = 0
-        })
-        contents += new MenuItem(Action("White") {
-          val coord = getOldCoord()
-          controller.set(7 - coord._1, coord._2, "Bishop", "w")
-          board.Coord(-1, -1)
-          set = 0
-        })
-      }
-      contents += new Menu("Knight") {
-        contents += new MenuItem(Action("Black") {
-          val coord = getOldCoord()
-          controller.set(7 - coord._1, coord._2, "Knight", "b")
-          board.Coord(-1, -1)
-          set = 0
-        })
-        contents += new MenuItem(Action("White") {
-          val coord = getOldCoord()
-          controller.set(7 - coord._1, coord._2, "Knight", "w")
-          board.Coord(-1, -1)
-          set = 0
-        })
-      }
-      contents += new Menu("Rook") {
-        contents += new MenuItem(Action("Black") {
-          val coord = getOldCoord()
-          controller.set(7 - coord._1, coord._2, "Rook", "b")
-          board.Coord(-1, -1)
-          set = 0
-        })
-        contents += new MenuItem(Action("White") {
-          val coord = getOldCoord()
-          controller.set(7 - coord._1, coord._2, "Rook", "w")
-          board.Coord(-1, -1)
-          set = 0
-        })
-      }
-      contents += new Menu("Pawn") {
-        contents += new MenuItem(Action("Black") {
-          val coord = getOldCoord()
-          controller.set(7 - coord._1, coord._2, "Pawn", "b")
-          board.Coord(-1, -1)
-          set = 0
-        })
-        contents += new MenuItem(Action("White") {
-          val coord = getOldCoord()
-          controller.set(7 - coord._1, coord._2, "Pawn", "w")
-          board.Coord(-1, -1)
-          set = 0
-        })
-      }
-      listenTo(this.mouse.clicks)
-      reactions += {
-        case MousePressed(_, _, _, _, _) => set = 1
-      }
+          labelpanel.label2.text = ""
+        }
+      })
     }
 
     contents += menu
-    contents += innermenu
+    contents += adminmenu
     contents += new Menu("Edit") {
       mnemonic = Key.E
       contents += new MenuItem(Action("Undo") { controller.undo })
@@ -170,12 +181,7 @@ class SwingGui(controller: ControllerInterface) extends Frame {
     val label2 = new Label("")
     contents += label2
   }
-
-  val labelpanel2 = new FlowPanel() {
-
-  }
-
-
+  
   reactions += {
     case event: GridSizeChanged =>
     case event: Played => repaint()
@@ -198,8 +204,10 @@ class SwingGui(controller: ControllerInterface) extends Frame {
       val coord = getCoord(x, y, row, col, steprow, stepcol)
       save(coord._1, coord._2)
       board.Coord(coord._1, coord._2)
-    } else {
-      if(getClicks() == 1) {
+    } else if(set == 2) {
+      val coord = getCoord(x, y, row, col, steprow, stepcol)
+      //controller.grid = controller.grid.set(coord._1, coord._2, None)
+    } else if(getClicks() == 1) {
         val coord = getCoord(x, y, row, col, steprow, stepcol)
         val oldcoord = getOldCoord()
         setClicks(2)
@@ -220,7 +228,6 @@ class SwingGui(controller: ControllerInterface) extends Frame {
       }
     }
 
-  }
 
   def getCoord(xCoord: Int, yCoord: Int, row: Int, col: Int, steprow: Int, stepcol: Int): (Int, Int) = {
     val lines = /*controller.grid.size - 1*/ 7
@@ -264,32 +271,6 @@ class SwingGui(controller: ControllerInterface) extends Frame {
 
   def getOldCoord(): (Int, Int) = {
     return (xold, yold)
-  }
-
-  var x = ""
-  def setcommand(c: Option[String], figuretype: String, color: String): Unit = {
-    c match {
-      case  Some(s) => x = s.trim()
-      case None =>
-    }
-    val in = x.split("[ ]+")
-    if(in.length == 2) {
-      controller.set(8 - in(1).toInt, charToValue(in(0)), figuretype, color)
-    } else {
-      labelpanel.label2.text = "Wrong input for Set"
-    }
-  }
-  def charToValue(col: String): Int = {
-    col match {
-      case "A" | "a" => 0
-      case "B" | "b" => 1
-      case "C" | "c" => 2
-      case "D" | "d" => 3
-      case "E" | "e" => 4
-      case "F" | "f" => 5
-      case "G" | "g" => 6
-      case "H" | "h" => 7
-    }
   }
 
   contents = new BorderPanel {
