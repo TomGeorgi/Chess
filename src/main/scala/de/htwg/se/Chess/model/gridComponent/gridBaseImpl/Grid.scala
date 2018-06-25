@@ -83,6 +83,36 @@ case class Grid @AssistedInject() (@Assisted cells:Matrix[CellInterface]) extend
     false
   }
 
+  def isCheckMate(colorToMate: Color.Value): Boolean = {
+    var figureList: List[(Figure, (Int, Int))] = Nil
+    for (row <- 0 to 7) {
+      for (col <- 0 to 7) {
+        cell(row, col).value match {
+          case Some(s) => {
+            if (s.color == colorToMate) {
+              figureList = (s, (row, col)) :: figureList
+            }
+          }
+          case None =>
+        }
+      }
+    }
+
+    for (i <- figureList) {
+      val moves = i._1.moveAll(i._2._1, i._2._2, this)
+      for(a <- moves){
+        var testGrid = set(a._1,a._2, Some(i._1))
+        testGrid = testGrid.set(i._2._1, i._2._1, None)
+        if (!testGrid.isInCheck(colorToMate)){
+          return false
+        }
+        testGrid = testGrid.set(a._1,a._2, None)
+        testGrid = testGrid.set(i._2._1, i._2._1, Some(i._1))
+      }
+    }
+    true
+  }
+
   override def toString: String = {
     val numbers = "y "
     val lineseparator = "  |" + "---+" * (size-1) + "---|\n"

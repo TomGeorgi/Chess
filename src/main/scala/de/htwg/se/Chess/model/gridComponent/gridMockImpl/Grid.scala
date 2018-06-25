@@ -19,6 +19,8 @@ class Grid(var size: Int) extends GridInterface {
 
   override def getAllOtherColorAndCheck(kingPos: (Int, Int), revColor: Color.Value, gridC: GridInterface): Boolean = false
 
+  override def isCheckMate(colorToMate: Color.Value): Boolean = false
+
 }
 
 object EmptyCell extends CellInterface {
