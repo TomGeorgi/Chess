@@ -1,8 +1,7 @@
-package de.htwg.se.Chess.model
+package de.htwg.se.Chess.model.gridComponent.gridBaseImpl
 
 import de.htwg.se.Chess.model.figureComponent.Color
 import de.htwg.se.Chess.model.figureComponent.figureBaseImpl.Pawn
-import de.htwg.se.Chess.model.gridComponent.gridBaseImpl.Cell
 import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
 import org.scalatest.{Matchers, WordSpec}
@@ -12,7 +11,7 @@ class CellSpec extends WordSpec with Matchers {
 
   "A Cell" when {
     "not set to any value" should {
-      val emptyCell = Cell(None)
+      val emptyCell = new Cell
       "have value None" in {
         emptyCell.value should be(None)
       }

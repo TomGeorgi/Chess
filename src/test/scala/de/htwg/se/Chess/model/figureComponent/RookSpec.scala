@@ -1,6 +1,5 @@
-package de.htwg.se.Chess.model
+package de.htwg.se.Chess.model.figureComponent
 
-import de.htwg.se.Chess.model.figureComponent.Color
 import de.htwg.se.Chess.model.figureComponent.figureBaseImpl.Rook
 import de.htwg.se.Chess.model.gridComponent.GridInterface
 import de.htwg.se.Chess.model.gridComponent.gridBaseImpl.Grid

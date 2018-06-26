@@ -1,12 +1,11 @@
-package de.htwg.se.Chess.model
+package de.htwg.se.Chess.model.gridComponent.gridBaseImpl
 
 import de.htwg.se.Chess.model.figureComponent.Color
 import de.htwg.se.Chess.model.figureComponent.figureBaseImpl._
-import de.htwg.se.Chess.model.gridComponent.CellInterface
-import de.htwg.se.Chess.model.gridComponent.gridBaseImpl.{Cell, Grid, Matrix}
+import de.htwg.se.Chess.model.gridComponent.{CellInterface, GridInterface}
 import org.junit.runner.RunWith
-import org.scalatest.{Matchers, WordSpec}
 import org.scalatest.junit.JUnitRunner
+import org.scalatest.{Matchers, WordSpec}
 
 @RunWith(classOf[JUnitRunner])
 class GridSpec extends WordSpec with Matchers {
@@ -66,6 +65,26 @@ class GridSpec extends WordSpec with Matchers {
           for {
             col <- 0 until 8
           } grid.cell(6, col) should be (Cell(Some(Pawn(Color.WHITE))))
+        }
+      }
+      "is check" should {
+        var grid: GridInterface = new Grid(8)
+        "when the king is under attack of an enemy figure" in {
+          grid = grid.set(0, 0, Some(Bishop(Color.BLACK)))
+          grid = grid.set(2, 1, Some(Queen(Color.WHITE)))
+          grid = grid.set(2, 2, Some(King(Color.WHITE)))
+          grid = grid.set(2, 3, Some(Pawn(Color.BLACK)))
+          grid.isInCheck(Color.WHITE) should be(true)
+        }
+      }
+      "is checkmate" should {
+        var grid: GridInterface = new Grid(8)
+        "when the is under attack and he cant be saved with the next move" in {
+          grid = grid.set(0 ,0, Some(King(Color.BLACK)))
+          grid = grid.set(2, 0, Some(Rook(Color.WHITE)))
+          grid = grid.set(0, 2, Some(Rook(Color.WHITE)))
+          grid = grid.set(2, 2, Some(Queen(Color.WHITE)))
+          grid.isCheckMate(Color.BLACK)
         }
       }
     }

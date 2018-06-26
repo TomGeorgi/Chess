@@ -3,7 +3,8 @@ package de.htwg.se.Chess.controller
 import de.htwg.se.Chess.controller.controllerComponent.GameStatus
 import de.htwg.se.Chess.controller.controllerComponent.controllerBaseImpl.Controller
 import de.htwg.se.Chess.model.figureComponent.Color
-import de.htwg.se.Chess.model.figureComponent.figureBaseImpl.{Bishop, Knight, Pawn, Queen}
+import de.htwg.se.Chess.model.figureComponent.figureBaseImpl._
+import de.htwg.se.Chess.model.gridComponent.GridInterface
 import de.htwg.se.Chess.model.gridComponent.gridBaseImpl.Grid
 import de.htwg.se.Chess.model.playerComponent.playerBaseImpl.Player
 import org.junit.runner.RunWith
@@ -25,6 +26,8 @@ class ControllerSpec extends WordSpec with Matchers {
         controller.playerAtTurn should be(player1)
         controller.setNextPlayer
         controller.playerAtTurn should be(player2)
+        controller.playerNotAtTurn should be(player1)
+        controller.playerAtTurnToString should be("Player 4")
       }
       "handle undo/redo if a new game was started" in {
         controller.grid.fill()
@@ -179,6 +182,58 @@ class ControllerSpec extends WordSpec with Matchers {
       controller.turn(6, 6, 0, 0)
       controller.grid.cell(6, 6).isSet should be(false)
       controller.grid.cell(0, 0).isSet should be(false)
+    }
+  }
+  "handle is check" should {
+    var grid: GridInterface = new Grid(8)
+    val controller = new Controller(grid, "Player 1", "Player 2")
+    controller.grid = controller.grid.set(0, 2, Some(Bishop(Color.BLACK)))
+    controller.grid = controller.grid.set(3, 1, Some(Queen(Color.WHITE)))
+    controller.grid = controller.grid.set(3, 3, Some(King(Color.WHITE)))
+    controller.turn(3, 1, 3, 2)
+    controller.turn(0, 2, 1, 1)
+    "when the king is under attack of an enemy figure" in {
+      controller.grid.isInCheck(Color.WHITE) should be(true)
+      controller.gameStatus should be(GameStatus.CHECK)
+    }
+  }
+  "is checkmate" should {
+    var grid: GridInterface = new Grid(8)
+    val controller = new Controller(grid, "Player 1", "Player 2")
+    controller.grid = controller.grid.set(0 ,0, Some(King(Color.BLACK)))
+    controller.grid = controller.grid.set(2, 0, Some(Rook(Color.WHITE)))
+    controller.grid = controller.grid.set(0, 2, Some(Rook(Color.WHITE)))
+    controller.grid = controller.grid.set(3, 2, Some(Queen(Color.WHITE)))
+    controller.grid = controller.grid.set(7, 7, Some(King(Color.WHITE)))
+    controller.turn(3, 2, 2, 2)
+    "when the is under attack and he cant be saved with the next move" in {
+      controller.grid.isCheckMate(Color.BLACK)
+      controller.gameStatus should be(GameStatus.CHECK_MATE)
+    }
+  }
+  "handle playing after checkmate" should {
+    var grid: GridInterface = new Grid(2)
+    val controller = new Controller(grid, "Player 1", "Player 2")
+    controller.grid = controller.grid.set(0, 0, Some(Pawn(Color.BLACK)))
+    controller.gameStatus = GameStatus.CHECK_MATE
+    "figure stands on the same position as before" in {
+      controller.grid.cell(0, 0).isSet should be(true)
+      controller.grid.cell(1, 0).isSet should be(false)
+      controller.gameStatus should be(GameStatus.CHECK_MATE)
+      controller.turn(0, 0, 1, 0)
+      controller.grid.cell(0, 0).isSet should be(true)
+      controller.grid.cell(1, 0).isSet should be(false)
+      controller.gameStatus should be(GameStatus.CHECK_MATE)
+    }
+  }
+  "when a game is saved and loaded" should {
+    val smallGrid = new Grid(8)
+    val controller = new Controller(smallGrid, "Player 1", "Player 2")
+    controller.save
+    val controllerTest = new Controller(new Grid(8), "p1", "p2")
+    controllerTest.load
+    "be the same" in {
+      controller.grid should be(controllerTest.grid)
     }
   }
 }
