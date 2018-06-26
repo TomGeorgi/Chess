@@ -137,5 +137,19 @@ class PawnSpec extends WordSpec with Matchers {
         Pawn(Color.WHITE).moveAll(3, 3, wgrid) should be(List((2,2), (2,3)))
       }
     }
+    "all black moves and included double jump" should {
+      var grid: GridInterface = new Grid(8)
+      grid = grid.set(1, 3, Some(Pawn(Color.BLACK)))
+      "have return" in {
+        Pawn(Color.BLACK).moveAll(1, 3, grid) should be(List((2,3), (3,3)))
+      }
+    }
+    "all white moves and included double jump" should {
+      var grid: GridInterface = new Grid(8)
+      grid = grid.set(6, 3, Some(Pawn(Color.WHITE)))
+      "have return" in {
+        Pawn(Color.WHITE).moveAll(6, 3, grid) should be(List((5,3), (4,3)))
+      }
+    }
   }
 }
