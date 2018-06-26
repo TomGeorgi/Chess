@@ -71,6 +71,17 @@ class BishopSpec extends WordSpec with Matchers {
         Bishop(Color.BLACK).move(5, 5, 5, 5, grid) should be(false)
       }
     }
+    "Get All Moves" should {
+      var grid: GridInterface = new Grid(8)
+      grid = grid.set(3, 3, Some(Bishop(Color.WHITE)))
+      grid = grid.set(4, 2, Some(Bishop(Color.WHITE)))
+      grid = grid.set(2, 4, Some(Bishop(Color.WHITE)))
+      grid = grid.set(5, 5, Some(Bishop(Color.WHITE)))
+      grid = grid.set(2, 2, Some(Bishop(Color.BLACK)))
+      "have return" in {
+        Bishop(Color.WHITE).moveAll(3, 3, grid) should be(List((4,4), (2,2)))
+      }
+    }
   }
 }
 

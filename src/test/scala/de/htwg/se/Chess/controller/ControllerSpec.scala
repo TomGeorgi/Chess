@@ -196,6 +196,11 @@ class ControllerSpec extends WordSpec with Matchers {
       controller.grid.isInCheck(Color.WHITE) should be(true)
       controller.gameStatus should be(GameStatus.CHECK)
     }
+    "Move not Valid when player is in check" in {
+      controller.grid.isInCheck(Color.WHITE) should be(true)
+      controller.turn(3, 3, 2, 2)
+      controller.gameStatus should be(GameStatus.MOVE_NOT_VALID)
+    }
   }
   "is checkmate" should {
     var grid: GridInterface = new Grid(8)

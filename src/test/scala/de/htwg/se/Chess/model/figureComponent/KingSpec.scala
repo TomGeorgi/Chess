@@ -1,6 +1,6 @@
 package de.htwg.se.Chess.model.figureComponent
 
-import de.htwg.se.Chess.model.figureComponent.figureBaseImpl.King
+import de.htwg.se.Chess.model.figureComponent.figureBaseImpl.{King, Pawn}
 import de.htwg.se.Chess.model.gridComponent.GridInterface
 import de.htwg.se.Chess.model.gridComponent.gridBaseImpl.Grid
 import org.junit.runner.RunWith
@@ -68,6 +68,19 @@ class KingSpec extends WordSpec with Matchers {
       grid = grid.set(5, 5, Some(King(Color.BLACK)))
       "have return false" in {
         King(Color.BLACK).move(5, 5, 5, 5, grid) should be(false)
+      }
+    }
+    "Get all Moves" should {
+      var grid: GridInterface = new Grid(8)
+      grid = grid.set(3, 4, Some(King(Color.WHITE)))
+      grid = grid.set(2, 3, Some(Pawn(Color.BLACK)))
+      grid = grid.set(2, 4, Some(Pawn(Color.WHITE)))
+      "from white King" in {
+        King(Color.WHITE).moveAll(3, 4, grid) should be(List((3,3), (3,5), (4,4), (2,5), (2,3), (4,3), (4,5)))
+      }
+      "Color.Reverse and Color.fromString" in {
+        Color.colorReverse(Color.EMPTY) should be(Color.EMPTY)
+        Color.fromString("") should be(None)
       }
     }
   }

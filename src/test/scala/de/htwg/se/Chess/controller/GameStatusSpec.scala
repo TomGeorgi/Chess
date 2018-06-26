@@ -13,6 +13,7 @@ class GameStatusSpec extends WordSpec with Matchers {
     "used" should {
       "transforming string" in {
         GameStatus.fromString("") should be(None)
+        GameStatus.fromString("NEXT_PLAYER") should be(Some(GameStatus.NEXT_PLAYER))
         GameStatus.fromString("MOVE_NOT_VALID") should be(Some(GameStatus.MOVE_NOT_VALID))
         GameStatus.fromString("CHECK") should be(Some(GameStatus.CHECK))
         GameStatus.fromString("CHECK_MATE") should be(Some(GameStatus.CHECK_MATE))

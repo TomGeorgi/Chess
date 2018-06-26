@@ -118,5 +118,24 @@ class PawnSpec extends WordSpec with Matchers {
         }
       }
     }
+
+    "all black moves" should {
+      var bgrid: GridInterface = new Grid(8)
+      bgrid = bgrid.set(3, 3, Some(Pawn(Color.BLACK)))
+      bgrid = bgrid.set(4, 4, Some(Pawn(Color.WHITE)))
+      bgrid = bgrid.set(4, 2, Some(Pawn(Color.BLACK)))
+      "have return" in {
+        Pawn(Color.BLACK).moveAll(3, 3, bgrid) should be(List((4,4), (4,3)))
+      }
+    }
+    "all white moves" should {
+      var wgrid: GridInterface = new Grid(8)
+      wgrid = wgrid.set(3, 3, Some(Pawn(Color.WHITE)))
+      wgrid = wgrid.set(2, 4, Some(Pawn(Color.WHITE)))
+      wgrid = wgrid.set(2, 2, Some(Pawn(Color.BLACK)))
+      "have return" in {
+        Pawn(Color.WHITE).moveAll(3, 3, wgrid) should be(List((2,2), (2,3)))
+      }
+    }
   }
 }

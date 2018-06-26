@@ -1,0 +1,331 @@
+{
+  "state" : "NEXT_PLAYER",
+  "playerOne" : "Player 2",
+  "playerTwo" : "Player 1",
+  "playerOneColor" : "BLACK",
+  "playerTwoColor" : "WHITE",
+  "grid" : {
+    "size" : 8,
+    "cells" : [ {
+      "cellColor" : "BLACK",
+      "cellTyp" : "ROOK",
+      "row" : 0,
+      "col" : 0
+    }, {
+      "cellColor" : "BLACK",
+      "cellTyp" : "KNIGHT",
+      "row" : 0,
+      "col" : 1
+    }, {
+      "cellColor" : "BLACK",
+      "cellTyp" : "BISHOP",
+      "row" : 0,
+      "col" : 2
+    }, {
+      "cellColor" : "BLACK",
+      "cellTyp" : "QUEEN",
+      "row" : 0,
+      "col" : 3
+    }, {
+      "cellColor" : "BLACK",
+      "cellTyp" : "KING",
+      "row" : 0,
+      "col" : 4
+    }, {
+      "cellColor" : "BLACK",
+      "cellTyp" : "BISHOP",
+      "row" : 0,
+      "col" : 5
+    }, {
+      "cellColor" : "None",
+      "cellTyp" : "None",
+      "row" : 0,
+      "col" : 6
+    }, {
+      "cellColor" : "BLACK",
+      "cellTyp" : "ROOK",
+      "row" : 0,
+      "col" : 7
+    }, {
+      "cellColor" : "BLACK",
+      "cellTyp" : "PAWN",
+      "row" : 1,
+      "col" : 0
+    }, {
+      "cellColor" : "BLACK",
+      "cellTyp" : "PAWN",
+      "row" : 1,
+      "col" : 1
+    }, {
+      "cellColor" : "BLACK",
+      "cellTyp" : "PAWN",
+      "row" : 1,
+      "col" : 2
+    }, {
+      "cellColor" : "BLACK",
+      "cellTyp" : "PAWN",
+      "row" : 1,
+      "col" : 3
+    }, {
+      "cellColor" : "WHITE",
+      "cellTyp" : "BISHOP",
+      "row" : 1,
+      "col" : 4
+    }, {
+      "cellColor" : "None",
+      "cellTyp" : "None",
+      "row" : 1,
+      "col" : 5
+    }, {
+      "cellColor" : "BLACK",
+      "cellTyp" : "PAWN",
+      "row" : 1,
+      "col" : 6
+    }, {
+      "cellColor" : "BLACK",
+      "cellTyp" : "PAWN",
+      "row" : 1,
+      "col" : 7
+    }, {
+      "cellColor" : "None",
+      "cellTyp" : "None",
+      "row" : 2,
+      "col" : 0
+    }, {
+      "cellColor" : "None",
+      "cellTyp" : "None",
+      "row" : 2,
+      "col" : 1
+    }, {
+      "cellColor" : "None",
+      "cellTyp" : "None",
+      "row" : 2,
+      "col" : 2
+    }, {
+      "cellColor" : "None",
+      "cellTyp" : "None",
+      "row" : 2,
+      "col" : 3
+    }, {
+      "cellColor" : "None",
+      "cellTyp" : "None",
+      "row" : 2,
+      "col" : 4
+    }, {
+      "cellColor" : "None",
+      "cellTyp" : "None",
+      "row" : 2,
+      "col" : 5
+    }, {
+      "cellColor" : "None",
+      "cellTyp" : "None",
+      "row" : 2,
+      "col" : 6
+    }, {
+      "cellColor" : "BLACK",
+      "cellTyp" : "KNIGHT",
+      "row" : 2,
+      "col" : 7
+    }, {
+      "cellColor" : "None",
+      "cellTyp" : "None",
+      "row" : 3,
+      "col" : 0
+    }, {
+      "cellColor" : "None",
+      "cellTyp" : "None",
+      "row" : 3,
+      "col" : 1
+    }, {
+      "cellColor" : "None",
+      "cellTyp" : "None",
+      "row" : 3,
+      "col" : 2
+    }, {
+      "cellColor" : "None",
+      "cellTyp" : "None",
+      "row" : 3,
+      "col" : 3
+    }, {
+      "cellColor" : "None",
+      "cellTyp" : "None",
+      "row" : 3,
+      "col" : 4
+    }, {
+      "cellColor" : "BLACK",
+      "cellTyp" : "PAWN",
+      "row" : 3,
+      "col" : 5
+    }, {
+      "cellColor" : "None",
+      "cellTyp" : "None",
+      "row" : 3,
+      "col" : 6
+    }, {
+      "cellColor" : "None",
+      "cellTyp" : "None",
+      "row" : 3,
+      "col" : 7
+    }, {
+      "cellColor" : "None",
+      "cellTyp" : "None",
+      "row" : 4,
+      "col" : 0
+    }, {
+      "cellColor" : "None",
+      "cellTyp" : "None",
+      "row" : 4,
+      "col" : 1
+    }, {
+      "cellColor" : "None",
+      "cellTyp" : "None",
+      "row" : 4,
+      "col" : 2
+    }, {
+      "cellColor" : "WHITE",
+      "cellTyp" : "PAWN",
+      "row" : 4,
+      "col" : 3
+    }, {
+      "cellColor" : "None",
+      "cellTyp" : "None",
+      "row" : 4,
+      "col" : 4
+    }, {
+      "cellColor" : "None",
+      "cellTyp" : "None",
+      "row" : 4,
+      "col" : 5
+    }, {
+      "cellColor" : "None",
+      "cellTyp" : "None",
+      "row" : 4,
+      "col" : 6
+    }, {
+      "cellColor" : "None",
+      "cellTyp" : "None",
+      "row" : 4,
+      "col" : 7
+    }, {
+      "cellColor" : "None",
+      "cellTyp" : "None",
+      "row" : 5,
+      "col" : 0
+    }, {
+      "cellColor" : "None",
+      "cellTyp" : "None",
+      "row" : 5,
+      "col" : 1
+    }, {
+      "cellColor" : "None",
+      "cellTyp" : "None",
+      "row" : 5,
+      "col" : 2
+    }, {
+      "cellColor" : "None",
+      "cellTyp" : "None",
+      "row" : 5,
+      "col" : 3
+    }, {
+      "cellColor" : "None",
+      "cellTyp" : "None",
+      "row" : 5,
+      "col" : 4
+    }, {
+      "cellColor" : "None",
+      "cellTyp" : "None",
+      "row" : 5,
+      "col" : 5
+    }, {
+      "cellColor" : "None",
+      "cellTyp" : "None",
+      "row" : 5,
+      "col" : 6
+    }, {
+      "cellColor" : "None",
+      "cellTyp" : "None",
+      "row" : 5,
+      "col" : 7
+    }, {
+      "cellColor" : "WHITE",
+      "cellTyp" : "PAWN",
+      "row" : 6,
+      "col" : 0
+    }, {
+      "cellColor" : "WHITE",
+      "cellTyp" : "PAWN",
+      "row" : 6,
+      "col" : 1
+    }, {
+      "cellColor" : "WHITE",
+      "cellTyp" : "PAWN",
+      "row" : 6,
+      "col" : 2
+    }, {
+      "cellColor" : "None",
+      "cellTyp" : "None",
+      "row" : 6,
+      "col" : 3
+    }, {
+      "cellColor" : "WHITE",
+      "cellTyp" : "PAWN",
+      "row" : 6,
+      "col" : 4
+    }, {
+      "cellColor" : "WHITE",
+      "cellTyp" : "PAWN",
+      "row" : 6,
+      "col" : 5
+    }, {
+      "cellColor" : "WHITE",
+      "cellTyp" : "PAWN",
+      "row" : 6,
+      "col" : 6
+    }, {
+      "cellColor" : "WHITE",
+      "cellTyp" : "PAWN",
+      "row" : 6,
+      "col" : 7
+    }, {
+      "cellColor" : "WHITE",
+      "cellTyp" : "ROOK",
+      "row" : 7,
+      "col" : 0
+    }, {
+      "cellColor" : "WHITE",
+      "cellTyp" : "KNIGHT",
+      "row" : 7,
+      "col" : 1
+    }, {
+      "cellColor" : "None",
+      "cellTyp" : "None",
+      "row" : 7,
+      "col" : 2
+    }, {
+      "cellColor" : "WHITE",
+      "cellTyp" : "QUEEN",
+      "row" : 7,
+      "col" : 3
+    }, {
+      "cellColor" : "WHITE",
+      "cellTyp" : "KING",
+      "row" : 7,
+      "col" : 4
+    }, {
+      "cellColor" : "WHITE",
+      "cellTyp" : "BISHOP",
+      "row" : 7,
+      "col" : 5
+    }, {
+      "cellColor" : "WHITE",
+      "cellTyp" : "KNIGHT",
+      "row" : 7,
+      "col" : 6
+    }, {
+      "cellColor" : "WHITE",
+      "cellTyp" : "ROOK",
+      "row" : 7,
+      "col" : 7
+    } ]
+  }
+}
