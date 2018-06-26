@@ -1,6 +1,5 @@
-package de.htwg.se.Chess.model
+package de.htwg.se.Chess.model.figureComponent
 
-import de.htwg.se.Chess.model.figureComponent.Color
 import de.htwg.se.Chess.model.figureComponent.figureBaseImpl.Rook
 import de.htwg.se.Chess.model.gridComponent.GridInterface
 import de.htwg.se.Chess.model.gridComponent.gridBaseImpl.Grid
@@ -57,6 +56,22 @@ class RookSpec extends WordSpec with Matchers {
       "Set to stay" should {
         "have return false" in {
           Rook(Color.BLACK).move(0, 0, 2, 2, grid) should be(false)
+        }
+      }
+      "set to Empty Cell" should {
+        "have return true" in {
+          Rook(Color.BLACK).move(0, 0, 1, 0, grid) should be(true)
+        }
+      }
+      "Get All Moves" should {
+        var grid: GridInterface = new Grid(8)
+        grid = grid.set(3, 3, Some(Rook(Color.WHITE)))
+        grid = grid.set(2, 3, Some(Rook(Color.WHITE)))
+        grid = grid.set(4, 3, Some(Rook(Color.WHITE)))
+        grid = grid.set(3, 1, Some(Rook(Color.WHITE)))
+        grid = grid.set(3, 4, Some(Rook(Color.BLACK)))
+        "have return" in {
+          Rook(Color.WHITE).moveAll(3, 3, grid) should be(List((3,4), (3,2)))
         }
       }
     }

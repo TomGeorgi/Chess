@@ -1,6 +1,5 @@
-package de.htwg.se.Chess.model
+package de.htwg.se.Chess.model.figureComponent
 
-import de.htwg.se.Chess.model.figureComponent.Color
 import de.htwg.se.Chess.model.figureComponent.figureBaseImpl.Queen
 import de.htwg.se.Chess.model.gridComponent.GridInterface
 import de.htwg.se.Chess.model.gridComponent.gridBaseImpl.Grid
@@ -64,6 +63,26 @@ class QueenSpec extends WordSpec with Matchers {
     "Set to stay" should {
       "have return false" in {
         Queen(Color.WHITE).move(0, 0, 0, 0, grid) should be(false)
+      }
+    }
+    "Set to Empty cell" should {
+      "have return true" in {
+        Queen(Color.WHITE).move(0, 0, 1, 1, grid) should be(true)
+      }
+    }
+    "Get All Moves" should {
+      var grid: GridInterface = new Grid(8)
+      grid = grid.set(3, 3, Some(Queen(Color.WHITE)))
+      grid = grid.set(2, 3, Some(Queen(Color.WHITE)))
+      grid = grid.set(4, 3, Some(Queen(Color.WHITE)))
+      grid = grid.set(3, 2, Some(Queen(Color.WHITE)))
+      grid = grid.set(3, 4, Some(Queen(Color.WHITE)))
+      grid = grid.set(5, 5, Some(Queen(Color.WHITE)))
+      grid = grid.set(2, 4, Some(Queen(Color.WHITE)))
+      grid = grid.set(4, 2, Some(Queen(Color.WHITE)))
+      grid = grid.set(2, 2, Some(Queen(Color.BLACK)))
+      "have return" in {
+        Queen(Color.WHITE).moveAll(3, 3, grid) should be(List((4, 4), (2, 2)))
       }
     }
   }

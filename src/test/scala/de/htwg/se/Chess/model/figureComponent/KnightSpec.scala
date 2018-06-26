@@ -1,7 +1,6 @@
 
-package de.htwg.se.Chess.model
+package de.htwg.se.Chess.model.figureComponent
 
-import de.htwg.se.Chess.model.figureComponent.Color
 import de.htwg.se.Chess.model.figureComponent.figureBaseImpl.Knight
 import de.htwg.se.Chess.model.gridComponent.GridInterface
 import de.htwg.se.Chess.model.gridComponent.gridBaseImpl.Grid
@@ -60,6 +59,26 @@ class KnightSpec  extends WordSpec with Matchers{
     "Set to stay" should {
       "have return false" in {
         Knight(Color.BLACK).move(3, 4, 3, 4, grid) should be(false)
+      }
+    }
+
+    "Set to Empty Cell" should {
+      "have return true" in {
+        Knight(Color.BLACK).move(3, 4, 1, 5, grid) should be(true)
+      }
+    }
+    "Get All Moves" should {
+      var grid: GridInterface = new Grid(8)
+      grid = grid.set(3, 3, Some(Knight(Color.WHITE)))
+      grid = grid.set(1, 2, Some(Knight(Color.WHITE)))
+      grid = grid.set(1, 4, Some(Knight(Color.WHITE)))
+      grid = grid.set(2, 5, Some(Knight(Color.WHITE)))
+      grid = grid.set(4, 5, Some(Knight(Color.BLACK)))
+      grid = grid.set(5, 2, Some(Knight(Color.WHITE)))
+      grid = grid.set(4, 1, Some(Knight(Color.WHITE)))
+      grid = grid.set(2, 1, Some(Knight(Color.WHITE)))
+      "have return" in {
+        Knight(Color.WHITE).moveAll(3, 3, grid) should be(List((4,5), (5,4)))
       }
     }
   }

@@ -1,4 +1,4 @@
-package de.htwg.se.Chess.model
+package de.htwg.se.Chess.model.playerComponent
 
 import de.htwg.se.Chess.model.figureComponent.Color
 import de.htwg.se.Chess.model.playerComponent.playerBaseImpl.Player
