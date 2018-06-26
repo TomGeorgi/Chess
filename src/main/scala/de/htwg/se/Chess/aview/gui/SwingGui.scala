@@ -38,11 +38,7 @@ class SwingGui(controller: ControllerInterface) extends Frame {
       })
 
       val admin = new MenuItem(Action("Admin") {
-        visible_=(true)
-        listenTo(this.mouse.clicks)
-        reactions += {
-          case MousePressed(_, _, _, _, _) => adminmenu.visible_=(true)
-        }
+        adminmenu.visible_=(true)
       })
       contents += new Menu("New") {
         contents += new MenuItem(Action("With name input") {
@@ -67,91 +63,63 @@ class SwingGui(controller: ControllerInterface) extends Frame {
       contents += new Menu("Set") {
         contents += new Menu("King") {
           contents += new MenuItem(Action("Black") {
-            val coord = getOldCoord()
-            controller.set(7 - coord._1, coord._2, "King", "b")
-            board.Coord(-1, -1)
-            set = 0
+            set = 1
+            setFigure("King", "b")
           })
           contents += new MenuItem(Action("White") {
-            val coord = getOldCoord()
-            controller.set(7 - coord._1, coord._2, "King", "w")
-            board.Coord(-1, -1)
-            set = 0
+            set = 1
+            setFigure("King", "w")
           })
         }
         contents += new Menu("Queen") {
           contents += new MenuItem(Action("Black") {
-            val coord = getOldCoord()
-            controller.set(7 - coord._1, coord._2, "Queen", "b")
-            board.Coord(-1, -1)
-            set = 0
+            set = 1
+            setFigure("Queen", "b")
           })
           contents += new MenuItem(Action("White") {
-            val coord = getOldCoord()
-            controller.set(7 - coord._1, coord._2, "Queen", "w")
-            board.Coord(-1, -1)
-            set = 0
+            set = 1
+            setFigure("Queen", "w")
           })
         }
         contents += new Menu("Bishop") {
           contents += new MenuItem(Action("Black") {
-            val coord = getOldCoord()
-            controller.set(7 - coord._1, coord._2, "Bishop", "b")
-            board.Coord(-1, -1)
-            set = 0
+            set = 1
+            setFigure("Bishop", "b")
           })
           contents += new MenuItem(Action("White") {
-            val coord = getOldCoord()
-            controller.set(7 - coord._1, coord._2, "Bishop", "w")
-            board.Coord(-1, -1)
-            set = 0
+            set = 1
+            setFigure("Bishop", "w")
           })
         }
         contents += new Menu("Knight") {
           contents += new MenuItem(Action("Black") {
-            val coord = getOldCoord()
-            controller.set(7 - coord._1, coord._2, "Knight", "b")
-            board.Coord(-1, -1)
-            set = 0
+            set = 1
+            setFigure("Knight", "b")
           })
           contents += new MenuItem(Action("White") {
-            val coord = getOldCoord()
-            controller.set(7 - coord._1, coord._2, "Knight", "w")
-            board.Coord(-1, -1)
-            set = 0
+            set = 1
+            setFigure("Knight", "w")
           })
         }
         contents += new Menu("Rook") {
           contents += new MenuItem(Action("Black") {
-            val coord = getOldCoord()
-            controller.set(7 - coord._1, coord._2, "Rook", "b")
-            board.Coord(-1, -1)
-            set = 0
+            set = 1
+            setFigure("Rook", "b")
           })
           contents += new MenuItem(Action("White") {
-            val coord = getOldCoord()
-            controller.set(7 - coord._1, coord._2, "Rook", "w")
-            board.Coord(-1, -1)
-            set = 0
+            set = 1
+            setFigure("Rook", "w")
           })
         }
         contents += new Menu("Pawn") {
           contents += new MenuItem(Action("Black") {
-            val coord = getOldCoord()
-            controller.set(7 - coord._1, coord._2, "Pawn", "b")
-            board.Coord(-1, -1)
-            set = 0
+            set = 1
+            setFigure("Pawn", "b")
           })
           contents += new MenuItem(Action("White") {
-            val coord = getOldCoord()
-            controller.set(7 - coord._1, coord._2, "Pawn", "w")
-            board.Coord(-1, -1)
-            set = 0
+            set = 1
+            setFigure("Pawn", "w")
           })
-        }
-        listenTo(this.mouse.clicks)
-        reactions += {
-          case MousePressed(_, _, _, _, _) => set = 1
         }
       }
       contents += new MenuItem(Action("None") {
@@ -208,7 +176,6 @@ class SwingGui(controller: ControllerInterface) extends Frame {
   }
 
   def mouseClick(x: Int, y: Int, dimension: Dimension): Unit = {
-    println(set)
     val gridSize = controller.grid.size - 1
     var stepcol = dimension.width / 8
     var steprow = dimension.height / 8
@@ -216,8 +183,9 @@ class SwingGui(controller: ControllerInterface) extends Frame {
     var row = dimension.height
     if(set == 1) {
       val coord = getCoord(x, y, row, col, steprow, stepcol)
-      save(coord._1, coord._2)
-      board.Coord(coord._1, coord._2)
+      val figure = getFigure()
+      controller.set(7 - coord._1, coord._2, figure._1, figure._2)
+      set = 0
     } else if(set == 2) {
       val coord = getCoord(x, y, row, col, steprow, stepcol)
       //controller.grid = controller.grid.set(coord._1, coord._2, None)
@@ -285,6 +253,17 @@ class SwingGui(controller: ControllerInterface) extends Frame {
 
   def getOldCoord(): (Int, Int) = {
     return (xold, yold)
+  }
+
+  var figure = ""
+  var color = ""
+  def setFigure(figuretyp: String, colors: String): Unit = {
+    figure = figuretyp
+    color = colors
+  }
+
+  def getFigure(): (String, String) = {
+    return (figure, color)
   }
 
   contents = new BorderPanel {
