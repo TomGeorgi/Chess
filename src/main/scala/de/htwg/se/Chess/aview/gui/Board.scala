@@ -37,8 +37,8 @@ class Board(val controller: ControllerInterface, var componentSize: Dimension) e
       val isWhite = (row + col) % 2 == 0
       val coord = getCoord()
       if(7 - coord._1 == row && coord._2 == col) g.setColor(highlighted)
-      else if (isWhite) g.setColor(whiteColor)
-      else g.setColor(blackColor)
+      else if (isWhite) g.setColor(blackColor)
+      else g.setColor(whiteColor)
 
       val currentPos = new Point(row * squareSize.height, col * squareSize.width)
 

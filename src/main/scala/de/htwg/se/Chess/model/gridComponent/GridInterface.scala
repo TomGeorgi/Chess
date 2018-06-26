@@ -14,6 +14,7 @@ trait GridInterface {
   var isInCheckColor: Color.Value
   def isInCheck(colorToCheck: Color.Value): Boolean
   def getAllOtherColorAndCheck(kingPos: (Int, Int), revColor: Color.Value, gridC: GridInterface): Boolean
+  def isCheckMate(colorToMate: Color.Value): Boolean
 
 }
 

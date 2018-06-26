@@ -27,7 +27,6 @@ class SwingGui(controller: ControllerInterface) extends Frame {
     val menu = new Menu("File") {
       mnemonic = Key.F
       visible_=(true)
-
       contents += new MenuItem(Action("Empty") {
         controller.createEmptyGrid(player._1, player._2)
       })
@@ -45,6 +44,21 @@ class SwingGui(controller: ControllerInterface) extends Frame {
           case MousePressed(_, _, _, _, _) => adminmenu.visible_=(true)
         }
       })
+      contents += new Menu("New") {
+        contents += new MenuItem(Action("With name input") {
+          val p1: String = Dialog.showInput(null, "Player 1 Name:", initial = "")  match {
+            case Some(res) => res.toString
+            case None => player._1
+          }
+          val p2: String = Dialog.showInput(null, "Player 2 Name:", initial = "") match {
+            case Some(res) => res.toString
+            case None => player._2
+          }
+          controller.createNewGrid(p1, p2)
+        })
+        contents += new MenuItem(Action("New Game") { controller.createNewGrid(player._1, player._1) }
+        )
+      }
       contents += admin
     }
 

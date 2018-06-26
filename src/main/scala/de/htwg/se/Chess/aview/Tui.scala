@@ -84,9 +84,11 @@ class Tui(controller: ControllerInterface) extends Reactor with LazyLogging {
     logger.info(controller.gridToString)
     //println(controller.gridToString)
     if (controller.gameStatus == NEXT_PLAYER) {
-      logger.info("\n" + controller.playerAtTurn.toString + GameStatus.message(controller.gameStatus))
+      logger.info("\n" + controller.playerAtTurnToString + GameStatus.message(controller.gameStatus))
+    } else if (controller.gameStatus == CHECK_MATE) {
+      logger.info("\n" + controller.playerNotAtTurnToString + GameStatus.message(controller.gameStatus))
     } else {
-      logger.info("\n" + controller.playerAtTurn.toString + GameStatus.message(controller.gameStatus))
+      logger.info("\n" + controller.playerAtTurnToString + GameStatus.message(controller.gameStatus))
     }
 
   }

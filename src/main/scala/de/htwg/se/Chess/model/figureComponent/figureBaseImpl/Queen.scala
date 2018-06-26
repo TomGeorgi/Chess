@@ -58,4 +58,30 @@ case class Queen @AssistedInject() (@Assisted c: Color.Value) extends Figure {
       case Color.WHITE => "♕"
     }
   }
+
+  override def moveAll(oldRow: Int, oldCol: Int, grid: GridInterface): List[(Int, Int)] = {
+    val moves = (-1, -1) :: (-1, 1) :: (1, -1) :: (1, 1) :: (1, 0) :: (-1, 0) :: (0, 1) :: (0, -1) :: Nil
+    val revColor = colorReverse(color)
+    var list: List[(Int, Int)] = Nil
+
+    for (i <- moves) {
+      for (j <- 1 to 8) {
+        val move: (Int, Int) = (oldRow + i._1 * j, oldCol + i._2 * j)
+        if (move._1 < 8 && move._2 < 8 && move._1 >= 0 && move._2 >= 0) {
+          if (!wayIsBlocked((oldRow, oldCol), (move._1, move._2), i, grid)) {
+            if (grid.cell(move._1, move._2).isSet) {
+              grid.cell(move._1, move._2).value match {
+                case Some(res) => res.color match {
+                  case `color` =>
+                  case `revColor` => list = move :: list
+                }
+                case None => list = move :: list
+              }
+            } else list = move :: list
+          }
+        }
+      }
+    }
+    list
+  }
 }

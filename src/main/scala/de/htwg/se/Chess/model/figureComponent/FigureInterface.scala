@@ -14,6 +14,8 @@ trait Figure {
 
   def colorReverse(color: Color.Value): Color.Value
 
+  def moveAll(oldRow: Int, oldCol: Int, grid: GridInterface): List[(Int, Int)]
+
 }
 
 trait FigureFactory {

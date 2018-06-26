@@ -26,6 +26,7 @@ class Controller @AssistedInject() (@Assisted var grid: GridInterface, @Assisted
   def this(grid: GridInterface, player1: String, player2: String) = this(grid, (Player(player1, Color.WHITE), Player(player2, Color.BLACK)))
 
   def playerAtTurn: PlayerInterface = player._1
+  def playerNotAtTurn: PlayerInterface = player._2
   def setNextPlayer: Unit = player = player.swap
 
   def createNewGrid(player: (String, String)): Unit = {
@@ -48,6 +49,8 @@ class Controller @AssistedInject() (@Assisted var grid: GridInterface, @Assisted
 
   def playerAtTurnToString: String = playerAtTurn.name
 
+  def playerNotAtTurnToString: String = playerNotAtTurn.name
+
   def turn(placeRow: Int, placeCol: Int, newPlaceRow: Int, newPlaceCol: Int): Unit = {
     undoManager.doStep(new TurnCommand(placeRow, placeCol, newPlaceRow, newPlaceCol, this))
     publish(new Played)
@@ -69,7 +72,7 @@ class Controller @AssistedInject() (@Assisted var grid: GridInterface, @Assisted
   }
 
   override def save: Unit = {
-    fileIo.save(grid, player)
+    fileIo.save(grid, gameStatus, player)
     gameStatus = SAVED
     publish(new Played)
   }
@@ -80,7 +83,8 @@ class Controller @AssistedInject() (@Assisted var grid: GridInterface, @Assisted
       case None =>
       case Some(game) => {
         grid = game._1
-        player = game._2
+        gameStatus = game._2
+        player = game._3
       }
     }
     gameStatus = LOADED
