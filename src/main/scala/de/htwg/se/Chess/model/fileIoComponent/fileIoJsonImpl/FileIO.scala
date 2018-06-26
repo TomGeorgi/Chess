@@ -3,6 +3,8 @@ package de.htwg.se.Chess.model.fileIoComponent.fileIoJsonImpl
 import com.google.inject.Guice
 import net.codingwell.scalaguice.InjectorExtensions._
 import de.htwg.se.Chess.ChessModule
+import de.htwg.se.Chess.controller.controllerComponent.GameStatus
+import de.htwg.se.Chess.controller.controllerComponent.GameStatus.GameStatus
 import de.htwg.se.Chess.model.figureComponent.{Color, FigureFactory}
 import de.htwg.se.Chess.model.fileIoComponent.FileIOInterface
 import de.htwg.se.Chess.model.gridComponent.{CellInterface, GridFactory, GridInterface}
@@ -15,7 +17,7 @@ class FileIO extends FileIOInterface {
 
   final val FILE_NAME: String = "Chess.json"
 
-  override def load: Option[(GridInterface, (PlayerInterface, PlayerInterface))] = {
+  override def load: Option[(GridInterface, GameStatus, (PlayerInterface, PlayerInterface))] = {
 
     val source: String = Source.fromFile(FILE_NAME).getLines().mkString
     val json: JsValue = Json.parse(source)
@@ -32,6 +34,11 @@ class FileIO extends FileIOInterface {
     val playerTwoColor = Color.fromString((json \ "playerTwoColor").get.toString().drop(1).dropRight(1).trim) match {
       case Some(playerTwoColorFromString) => playerTwoColorFromString
       case None => return None
+    }
+
+    val gameStatus = GameStatus.fromString((json \ "state").get.toString.drop(1).dropRight(1).trim) match{
+      case Some(gameStatusFromString) => (gameStatusFromString)
+      case None    =>  return None
     }
 
     val injector = Guice.createInjector(new ChessModule)
@@ -60,18 +67,19 @@ class FileIO extends FileIOInterface {
         case "None" => grid = grid.set(row, col, None)
       }
     }
-    Some((grid, (player1, player2)))
+    Some((grid, gameStatus, (player1, player2)))
   }
 
-  override def save(grid: GridInterface, player: (PlayerInterface, PlayerInterface)): Unit = {
+  override def save(grid: GridInterface, state: GameStatus, player: (PlayerInterface, PlayerInterface)): Unit = {
     import java.io._
     val pw = new PrintWriter(new File(FILE_NAME))
-    pw.write(Json.prettyPrint(controllerToJson(grid, player)))
+    pw.write(Json.prettyPrint(controllerToJson(grid, state, player)))
     pw.close
   }
 
-  def controllerToJson(grid: GridInterface, player: (PlayerInterface, PlayerInterface)): JsObject = {
+  def controllerToJson(grid: GridInterface, state: GameStatus, player: (PlayerInterface, PlayerInterface)): JsObject = {
     Json.obj(
+      "state" -> JsString(state.toString),
       "playerOne" -> JsString(player._1.name),
       "playerTwo" -> JsString(player._2.name),
       "playerOneColor" -> JsString(player._1.color.toString),

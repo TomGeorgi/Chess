@@ -11,11 +11,13 @@ trait ControllerInterface extends Publisher {
   def grid: GridInterface
   def gameStatus: GameStatus
   def playerAtTurn: PlayerInterface
+  def playerNotAtTurn: PlayerInterface
   def setNextPlayer: Unit
   def createEmptyGrid(player: (String, String)): Unit
   def createNewGrid(player: (String, String)): Unit
   def gridToString: String
   def playerAtTurnToString: String
+  def playerNotAtTurnToString: String
   def turn(row: Int, col: Int, newRow: Int, newCol: Int): Unit
   def set(row: Int, col: Int, value: String, color: String): Unit
   def undo: Unit

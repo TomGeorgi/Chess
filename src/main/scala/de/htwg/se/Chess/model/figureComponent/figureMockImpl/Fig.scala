@@ -12,4 +12,5 @@ case class Fig(var c: Color.Value) extends Figure {
 
   override def colorReverse(color: Color.Value): Color.Value = Color.EMPTY
 
+  override def moveAll(oldRow: Int, oldCol: Int, grid: GridInterface): List[(Int, Int)] = Nil
 }

@@ -19,6 +19,8 @@ class Controller(var grid: GridInterface, var player: (PlayerInterface, PlayerIn
 
   override def playerAtTurn: PlayerInterface = player._1
 
+  override def playerNotAtTurn: PlayerInterface = player._2
+
   override def setNextPlayer: Unit = {}
 
   override def createEmptyGrid(player: (String, String)): Unit = {}
@@ -28,6 +30,8 @@ class Controller(var grid: GridInterface, var player: (PlayerInterface, PlayerIn
   override def gridToString: String = grid.toString
 
   override def playerAtTurnToString: String = player._1.toString
+
+  override def playerNotAtTurnToString: String = player._2.toString
 
   override def turn(row: Int, col: Int, newRow: Int, newCol: Int): Unit = {}
 

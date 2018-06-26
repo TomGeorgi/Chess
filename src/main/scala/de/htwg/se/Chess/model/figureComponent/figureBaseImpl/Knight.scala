@@ -40,4 +40,23 @@ case class Knight @AssistedInject() (@Assisted c: Color.Value) extends Figure {
       case Color.WHITE => "♘"
     }
   }
+
+  override def moveAll(oldRow: Int, oldCol: Int, grid: GridInterface): List[(Int, Int)] = {
+    var getMove = (oldRow + 1, oldCol - 2) :: (oldRow + 2, oldCol - 1) :: (oldRow + 2, oldCol + 1) :: (oldRow + 1, oldCol + 2) :: (oldRow - 1, oldCol + 2) :: (oldRow - 2, oldCol + 1) :: (oldRow - 2, oldCol - 1) :: (oldRow - 1, oldCol - 2) :: Nil
+    getMove = getMove.filter(rowcol => rowcol._1 >= 0 && rowcol._1 <= 7 && rowcol._2 >= 0 && rowcol._2 <= 7)
+    val revColor: Color.Value = Color.colorReverse(color)
+    var list: List[(Int,Int)] = Nil
+    for (valPos <- getMove) {
+      if (grid.cell(valPos._1, valPos._2).isSet) {
+        grid.cell(valPos._1, valPos._2).value match {
+          case Some(res) => res.color match {
+            case `color` =>
+            case `revColor` => list = (valPos._1, valPos._2) :: list
+          }
+          case None => list = (valPos._1, valPos._2) :: list
+        }
+      } else list =  (valPos._1, valPos._2) :: list
+    }
+    list
+  }
 }

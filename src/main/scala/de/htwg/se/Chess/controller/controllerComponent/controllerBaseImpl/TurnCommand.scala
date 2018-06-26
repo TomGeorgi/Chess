@@ -17,14 +17,13 @@ class TurnCommand(oldRow: Int, oldCol: Int, newRow: Int, newCol: Int, controller
   override def doStep: Unit = {
     memento = (controller.grid, controller.player)
 
+    if (controller.gameStatus == CHECK_MATE) {
+      return
+    }
+
     val whichPlayer = controller.playerAtTurn
     val oldValue = controller.grid.cell(oldRow, oldCol).value
     var canSet: Boolean = false
-
-
-    if(controller.grid.isInCheckColor == whichPlayer.color) {
-      println("Verscuhe bitte nich check zu bleiben")
-    }
 
     oldValue match {
       case Some(res) => {
@@ -43,16 +42,21 @@ class TurnCommand(oldRow: Int, oldCol: Int, newRow: Int, newCol: Int, controller
       else
       {
         if(gridtoCheck.isInCheck(Color.colorReverse(whichPlayer.color))) {
-          println("HIER könnte ihre checkmate methode stehen")
+          if (gridtoCheck.isCheckMate(Color.colorReverse(whichPlayer.color))){
+            controller.grid = gridtoCheck
+            controller.gameStatus = CHECK_MATE
+            return
+          }
           gridtoCheck.isInCheckColor = Color.colorReverse(whichPlayer.color)
-          println(gridtoCheck.isInCheckColor)
+          controller.grid = gridtoCheck
+          controller.setNextPlayer
           controller.gameStatus = CHECK
+          return
         }
         controller.grid = gridtoCheck
         controller.setNextPlayer
         controller.gameStatus = NEXT_PLAYER
       }
-
     } else {
         controller.gameStatus = MOVE_NOT_VALID
     }
