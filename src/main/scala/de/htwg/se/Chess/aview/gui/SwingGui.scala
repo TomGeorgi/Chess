@@ -188,6 +188,7 @@ class SwingGui(controller: ControllerInterface) extends Frame {
       set = 0
     } else if(set == 2) {
       val coord = getCoord(x, y, row, col, steprow, stepcol)
+      controller.set(7 - coord._1, coord._2, "_", "_")
       //controller.grid = controller.grid.set(coord._1, coord._2, None)
     } else if(getClicks() == 1) {
         val coord = getCoord(x, y, row, col, steprow, stepcol)
