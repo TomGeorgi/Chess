@@ -28,10 +28,10 @@ This is a implementation of Chess in Scala for Software Engineering at the Unive
 * Logging
 
 ## Chess Rules
-https://en.wikipedia.org/wiki/Rules_of_chess (All Rules)
-https://en.wikipedia.org/wiki/Chess (Some Rules, Notation of Recording which we used for the TUI input)
-https://de.wikipedia.org/wiki/Schach (In German)
-http://wiki-schacharena.de/index.php/Schachregeln_f%C3%BCr_Einsteiger (Standard rules for the individual figures in German)
+https://en.wikipedia.org/wiki/Rules_of_chess (All Rules)  
+https://en.wikipedia.org/wiki/Chess (Some Rules, Notation of Recording which we used for the TUI input)  
+https://de.wikipedia.org/wiki/Schach (In German)  
+http://wiki-schacharena.de/index.php/Schachregeln_f%C3%BCr_Einsteiger (Standard rules for the individual figures in German)  
 
 ## Instructions
 For the move rules of the individual figures use one of the above linked pages
