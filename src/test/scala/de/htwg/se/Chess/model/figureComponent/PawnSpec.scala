@@ -151,5 +151,14 @@ class PawnSpec extends WordSpec with Matchers {
         Pawn(Color.WHITE).moveAll(6, 3, grid) should be(List((5,3), (4,3)))
       }
     }
+    "all white moves blocked at start position" should {
+      var grid: GridInterface = new Grid(8)
+      grid = grid.set(6, 3, Some(Pawn(Color.WHITE)))
+      grid = grid.set(5, 3, Some(Pawn(Color.BLACK)))
+      grid = grid.set(4, 3, Some(Pawn(Color.WHITE)))
+      "have return empty List" in {
+        Pawn(Color.WHITE).moveAll(6, 3, grid) should be(List())
+      }
+    }
   }
 }
