@@ -1,8 +1,7 @@
+
+[![Waffle.io - Columns and their card count](https://badge.waffle.io/TomGeorgi/Chess.svg?columns=all)](https://waffle.io/TomGeorgi/Chess) - Scrum
+
 [![Build Status](https://travis-ci.org/TomGeorgi/Chess.svg?branch=Dev)](https://travis-ci.org/TomGeorgi/Chess) [![Coverage Status](https://coveralls.io/repos/github/TomGeorgi/Chess/badge.svg?branch=Dev)](https://coveralls.io/github/TomGeorgi/Chess?branch=Dev) - Dev
-
-[![Build Status](https://travis-ci.org/TomGeorgi/Chess.svg?branch=Dev-TomGeorgi)](https://travis-ci.org/TomGeorgi/Chess) [![Coverage Status](https://coveralls.io/repos/github/TomGeorgi/Chess/badge.svg?branch=Dev-TomGeorgi)](https://coveralls.io/github/TomGeorgi/Chess?branch=Dev-TomGeorgi) - Tom
-
-[![Build Status](https://travis-ci.org/TomGeorgi/Chess.svg?branch=Dev-RohloffLukas)](https://travis-ci.org/TomGeorgi/Chess) [![Coverage Status](https://coveralls.io/repos/github/TomGeorgi/Chess/badge.svg?branch=Dev-RohloffLukas)](https://coveralls.io/github/TomGeorgi/Chess?branch=Dev-RohloffLukas) - Lukas
 
 [![Build Status](https://travis-ci.org/TomGeorgi/Chess.svg?branch=Dev-TomGeorgi)](https://travis-ci.org/TomGeorgi/Chess) [![Coverage Status](https://coveralls.io/repos/github/TomGeorgi/Chess/badge.svg?branch=Dev-TomGeorgi)](https://coveralls.io/github/TomGeorgi/Chess?branch=Dev-TomGeorgi) - Tom
 
