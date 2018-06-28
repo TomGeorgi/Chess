@@ -35,6 +35,7 @@ class SwingGui(controller: ControllerInterface) extends Frame {
       })
       contents += new MenuItem(Action("Load") {
         controller.load
+        repaint()
       })
 
       val admin = new MenuItem(Action("Admin") {

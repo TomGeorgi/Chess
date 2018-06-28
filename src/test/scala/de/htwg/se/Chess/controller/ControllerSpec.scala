@@ -241,4 +241,23 @@ class ControllerSpec extends WordSpec with Matchers {
       controller.grid should be(controllerTest.grid)
     }
   }
+  "when a game saved and back loaded" should {
+    val smallGrid = new Grid(8)
+    val controller = new Controller(smallGrid, "Player 1", "Player 2")
+    controller.save
+    val grid = controller.grid
+    controller.turn(7 - 4, 1, 7 - 5, 1)
+    controller.load
+    "be the same Grid" in {
+      controller.grid should be(grid)
+    }
+  }
+  "when player not at turn" should {
+    val player = ("Player", "otherPlayer")
+    val controller = new Controller(new Grid(8), player._1, player._2)
+    "should be the other Player" in {
+      controller.playerNotAtTurnToString should be(player._2)
+    }
+  }
+
 }
