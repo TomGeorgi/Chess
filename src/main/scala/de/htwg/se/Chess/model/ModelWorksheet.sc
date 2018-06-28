@@ -1,12 +1,11 @@
-case class Cell(x:Int, y:Int)
 
-val cell1 = Cell(4,5)
-cell1.x
-cell1.y
+import de.htwg.se.Chess.model._
+import de.htwg.se.Chess.model.figureComponent.{Color, FigureType}
+import de.htwg.se.Chess.model.gridComponent.gridBaseImpl.Grid
 
-case class Field(cells: Array[Cell])
+val grid1 = new Grid(4)
 
-val field1 = Field(Array.ofDim[Cell](1))
-field1.cells(0)=cell1
-field1.cells(0).x
-field1.cells(0).y
+grid1.set(1, 3, FigureType.PAWN, Color.WHITE)
+
+grid1.cell(1, 3).isSet
+//grid1.turn(1, 0, "4")
