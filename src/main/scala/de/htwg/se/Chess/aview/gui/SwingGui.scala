@@ -171,6 +171,8 @@ class SwingGui(controller: ControllerInterface) extends Frame {
       labelpanel.label.text = controller.playerAtTurn.name + " is at turn"
       if (controller.gameStatus == NEXT_PLAYER) {
         labelpanel.label2.text = ""
+      } else if (controller.gameStatus == CHECK_MATE) {
+        labelpanel.label2.text = "\n" + controller.playerNotAtTurnToString + GameStatus.message(controller.gameStatus)
       } else {
         labelpanel.label2.text = "\n" + controller.playerAtTurn.toString + GameStatus.message(controller.gameStatus)
       }
