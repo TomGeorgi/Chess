@@ -25,7 +25,7 @@ class Board(val controller: ControllerInterface, var componentSize: Dimension) e
   val blackColor = new Color(254, 206, 157)
   //val highlighted = new Color(232, 172, 112)
   val highlighted = new Color(65, 205, 0)
-  var graphic: Graphics2D = ImageIO.read(getClass.getResource("pieces2.png")).createGraphics()
+  var graphic: Graphics2D = ImageIO.read(getClass.getResource("/pieces2.png")).createGraphics()
 
   override def paintComponent(g: Graphics2D) = {
     listenTo(controller)
