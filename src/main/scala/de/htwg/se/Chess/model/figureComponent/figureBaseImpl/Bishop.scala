@@ -54,8 +54,8 @@ case class Bishop @AssistedInject() (@Assisted c: Color.Value) extends Figure {
 
   override def toString: String = {
     color match {
-      case Color.BLACK => "♝"
-      case Color.WHITE => "♗"
+      case Color.BLACK => "\u265D"
+      case Color.WHITE => "\u2657"
     }
   }
 

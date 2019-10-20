@@ -78,8 +78,8 @@ case class Pawn @AssistedInject() (@Assisted c: Color.Value) extends Figure {
 
   override def toString: String = {
     color match {
-      case Color.BLACK => "♟"
-      case Color.WHITE => "♙"
+      case Color.BLACK => "\u265F"
+      case Color.WHITE => "\u2659"
     }
   }
 
