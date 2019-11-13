@@ -2,6 +2,7 @@ package de.htwg.se.Chess.model.gridComponent
 
 import de.htwg.se.Chess.model.figureComponent.{Color, Figure}
 import de.htwg.se.Chess.model.gridComponent.gridBaseImpl.Matrix
+import play.api.libs.json.JsValue
 
 trait GridInterface {
 
@@ -16,6 +17,8 @@ trait GridInterface {
   def getAllOtherColorAndCheck(kingPos: (Int, Int), revColor: Color.Value, gridC: GridInterface): Boolean
   def isCheckMate(colorToMate: Color.Value): Boolean
 
+  def gridToJson: JsValue
+  def getPossibleMove(row: Int, col: Int): JsValue
 }
 
 trait GridFactory {

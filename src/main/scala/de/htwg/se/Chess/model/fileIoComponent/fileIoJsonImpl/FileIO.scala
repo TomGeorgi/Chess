@@ -36,9 +36,9 @@ class FileIO extends FileIOInterface {
       case None => return None
     }
 
-    val gameStatus = GameStatus.fromString((json \ "state").get.toString.drop(1).dropRight(1).trim) match{
+    val gameStatus = GameStatus.fromString((json \ "state").get.toString.drop(1).dropRight(1).trim) match {
       case Some(gameStatusFromString) => (gameStatusFromString)
-      case None    =>  return None
+      case None => return None
     }
 
     val injector = Guice.createInjector(new ChessModule)
@@ -62,7 +62,7 @@ class FileIO extends FileIOInterface {
         case "ROOK" => grid = grid.set(row, col, Some(injector.instance[FigureFactory].createRook(color)))
         case "KNIGHT" => grid = grid.set(row, col, Some(injector.instance[FigureFactory].createKnight(color)))
         case "BISHOP" => grid = grid.set(row, col, Some(injector.instance[FigureFactory].createBishop(color)))
-        case "QUEEN" => grid =grid.set(row, col, Some(injector.instance[FigureFactory].createQueen(color)))
+        case "QUEEN" => grid = grid.set(row, col, Some(injector.instance[FigureFactory].createQueen(color)))
         case "KING" => grid = grid.set(row, col, Some(injector.instance[FigureFactory].createKing(color)))
         case "None" => grid = grid.set(row, col, None)
       }
@@ -110,4 +110,6 @@ class FileIO extends FileIOInterface {
       "col" -> JsNumber(col)
     )
   }
+
+  override def gridToIO(grid: GridInterface, state: GameStatus, player: (PlayerInterface, PlayerInterface)): JsValue = controllerToJson(grid, state, player)
 }

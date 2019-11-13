@@ -6742,3 +6742,233 @@ Player 2 is at turn
 23:35:40.793 [AWT-EventQueue-1] INFO  de.htwg.se.Chess.aview.Tui - 
 Player 2
 The Game was saved
+
+18:21:55.898 [run-main-0] INFO  de.htwg.se.Chess.aview.Tui - Chess from Tom Georgi and Lukas Rohloff
+
+18:21:55.901 [run-main-0] INFO  de.htwg.se.Chess.aview.Tui - Input format: column - row - new column - new row
+
+18:21:55.901 [run-main-0] INFO  de.htwg.se.Chess.aview.Tui - column: from A to H
+
+18:21:55.901 [run-main-0] INFO  de.htwg.se.Chess.aview.Tui - Row: from 1 to 8
+
+18:21:55.902 [run-main-0] INFO  de.htwg.se.Chess.aview.Tui - For More Information type help
+
+18:21:56.520 [run-main-0] INFO  de.htwg.se.Chess.aview.Tui - 
+
+    A   B   C   D   E   F   G   H
+  |---+---+---+---+---+---+---+---|
+8 | ♜ | ♞ | ♝ | ♛ | ♚ | ♝ | ♞ | ♜ |
+  |---+---+---+---+---+---+---+---|
+7 | ♟ | ♟ | ♟ | ♟ | ♟ | ♟ | ♟ | ♟ |
+  |---+---+---+---+---+---+---+---|
+6 |   |   |   |   |   |   |   |   |
+  |---+---+---+---+---+---+---+---|
+5 |   |   |   |   |   |   |   |   |
+  |---+---+---+---+---+---+---+---|
+4 |   |   |   |   |   |   |   |   |
+  |---+---+---+---+---+---+---+---|
+3 |   |   |   |   |   |   |   |   |
+  |---+---+---+---+---+---+---+---|
+2 | ♙ | ♙ | ♙ | ♙ | ♙ | ♙ | ♙ | ♙ |
+  |---+---+---+---+---+---+---+---|
+1 | ♖ | ♘ | ♗ | ♛ | ♔ | ♗ | ♘ | ♖ |
+  |---+---+---+---+---+---+---+---|
+
+
+18:21:56.523 [run-main-0] INFO  de.htwg.se.Chess.aview.Tui - 
+Player 1
+
+18:22:00.720 [run-main-0] INFO  de.htwg.se.Chess.aview.Tui - {"grid":{"size":8,"cells":[{"row":0,"col":0,"cell":"♜"},{"row":0,"col":1,"cell":"♞"},{"row":0,"col":2,"cell":"♝"},{"row":0,"col":3,"cell":"♛"},{"row":0,"col":4,"cell":"♚"},{"row":0,"col":5,"cell":"♝"},{"row":0,"col":6,"cell":"♞"},{"row":0,"col":7,"cell":"♜"},{"row":1,"col":0,"cell":"♟"},{"row":1,"col":1,"cell":"♟"},{"row":1,"col":2,"cell":"♟"},{"row":1,"col":3,"cell":"♟"},{"row":1,"col":4,"cell":"♟"},{"row":1,"col":5,"cell":"♟"},{"row":1,"col":6,"cell":"♟"},{"row":1,"col":7,"cell":"♟"},{"row":2,"col":0,"cell":""},{"row":2,"col":1,"cell":""},{"row":2,"col":2,"cell":""},{"row":2,"col":3,"cell":""},{"row":2,"col":4,"cell":""},{"row":2,"col":5,"cell":""},{"row":2,"col":6,"cell":""},{"row":2,"col":7,"cell":""},{"row":3,"col":0,"cell":""},{"row":3,"col":1,"cell":""},{"row":3,"col":2,"cell":""},{"row":3,"col":3,"cell":""},{"row":3,"col":4,"cell":""},{"row":3,"col":5,"cell":""},{"row":3,"col":6,"cell":""},{"row":3,"col":7,"cell":""},{"row":4,"col":0,"cell":""},{"row":4,"col":1,"cell":""},{"row":4,"col":2,"cell":""},{"row":4,"col":3,"cell":""},{"row":4,"col":4,"cell":""},{"row":4,"col":5,"cell":""},{"row":4,"col":6,"cell":""},{"row":4,"col":7,"cell":""},{"row":5,"col":0,"cell":""},{"row":5,"col":1,"cell":""},{"row":5,"col":2,"cell":""},{"row":5,"col":3,"cell":""},{"row":5,"col":4,"cell":""},{"row":5,"col":5,"cell":""},{"row":5,"col":6,"cell":""},{"row":5,"col":7,"cell":""},{"row":6,"col":0,"cell":"♙"},{"row":6,"col":1,"cell":"♙"},{"row":6,"col":2,"cell":"♙"},{"row":6,"col":3,"cell":"♙"},{"row":6,"col":4,"cell":"♙"},{"row":6,"col":5,"cell":"♙"},{"row":6,"col":6,"cell":"♙"},{"row":6,"col":7,"cell":"♙"},{"row":7,"col":0,"cell":"♖"},{"row":7,"col":1,"cell":"♘"},{"row":7,"col":2,"cell":"♗"},{"row":7,"col":3,"cell":"♛"},{"row":7,"col":4,"cell":"♔"},{"row":7,"col":5,"cell":"♗"},{"row":7,"col":6,"cell":"♘"},{"row":7,"col":7,"cell":"♖"}]}}
+
+19:45:59.884 [run-main-0] INFO  de.htwg.se.Chess.aview.Tui - Chess from Tom Georgi and Lukas Rohloff
+
+19:45:59.887 [run-main-0] INFO  de.htwg.se.Chess.aview.Tui - Input format: column - row - new column - new row
+
+19:45:59.887 [run-main-0] INFO  de.htwg.se.Chess.aview.Tui - column: from A to H
+
+19:45:59.887 [run-main-0] INFO  de.htwg.se.Chess.aview.Tui - Row: from 1 to 8
+
+19:45:59.887 [run-main-0] INFO  de.htwg.se.Chess.aview.Tui - For More Information type help
+
+19:46:00.438 [run-main-0] INFO  de.htwg.se.Chess.aview.Tui - 
+
+    A   B   C   D   E   F   G   H
+  |---+---+---+---+---+---+---+---|
+8 | ♜ | ♞ | ♝ | ♛ | ♚ | ♝ | ♞ | ♜ |
+  |---+---+---+---+---+---+---+---|
+7 | ♟ | ♟ | ♟ | ♟ | ♟ | ♟ | ♟ | ♟ |
+  |---+---+---+---+---+---+---+---|
+6 |   |   |   |   |   |   |   |   |
+  |---+---+---+---+---+---+---+---|
+5 |   |   |   |   |   |   |   |   |
+  |---+---+---+---+---+---+---+---|
+4 |   |   |   |   |   |   |   |   |
+  |---+---+---+---+---+---+---+---|
+3 |   |   |   |   |   |   |   |   |
+  |---+---+---+---+---+---+---+---|
+2 | ♙ | ♙ | ♙ | ♙ | ♙ | ♙ | ♙ | ♙ |
+  |---+---+---+---+---+---+---+---|
+1 | ♖ | ♘ | ♗ | ♛ | ♔ | ♗ | ♘ | ♖ |
+  |---+---+---+---+---+---+---+---|
+
+
+19:46:00.440 [run-main-0] INFO  de.htwg.se.Chess.aview.Tui - 
+Player 1
+
+19:46:24.893 [run-main-0] INFO  de.htwg.se.Chess.aview.Tui - {"grid":{"size":8,"cells":[{"row":0,"col":0,"cellColor":"BLACK","cell":"♜"},{"row":0,"col":1,"cellColor":"BLACK","cell":"♞"},{"row":0,"col":2,"cellColor":"BLACK","cell":"♝"},{"row":0,"col":3,"cellColor":"BLACK","cell":"♛"},{"row":0,"col":4,"cellColor":"BLACK","cell":"♚"},{"row":0,"col":5,"cellColor":"BLACK","cell":"♝"},{"row":0,"col":6,"cellColor":"BLACK","cell":"♞"},{"row":0,"col":7,"cellColor":"BLACK","cell":"♜"},{"row":1,"col":0,"cellColor":"BLACK","cell":"♟"},{"row":1,"col":1,"cellColor":"BLACK","cell":"♟"},{"row":1,"col":2,"cellColor":"BLACK","cell":"♟"},{"row":1,"col":3,"cellColor":"BLACK","cell":"♟"},{"row":1,"col":4,"cellColor":"BLACK","cell":"♟"},{"row":1,"col":5,"cellColor":"BLACK","cell":"♟"},{"row":1,"col":6,"cellColor":"BLACK","cell":"♟"},{"row":1,"col":7,"cellColor":"BLACK","cell":"♟"},{"row":2,"col":0,"cellColor":"","cell":""},{"row":2,"col":1,"cellColor":"","cell":""},{"row":2,"col":2,"cellColor":"","cell":""},{"row":2,"col":3,"cellColor":"","cell":""},{"row":2,"col":4,"cellColor":"","cell":""},{"row":2,"col":5,"cellColor":"","cell":""},{"row":2,"col":6,"cellColor":"","cell":""},{"row":2,"col":7,"cellColor":"","cell":""},{"row":3,"col":0,"cellColor":"","cell":""},{"row":3,"col":1,"cellColor":"","cell":""},{"row":3,"col":2,"cellColor":"","cell":""},{"row":3,"col":3,"cellColor":"","cell":""},{"row":3,"col":4,"cellColor":"","cell":""},{"row":3,"col":5,"cellColor":"","cell":""},{"row":3,"col":6,"cellColor":"","cell":""},{"row":3,"col":7,"cellColor":"","cell":""},{"row":4,"col":0,"cellColor":"","cell":""},{"row":4,"col":1,"cellColor":"","cell":""},{"row":4,"col":2,"cellColor":"","cell":""},{"row":4,"col":3,"cellColor":"","cell":""},{"row":4,"col":4,"cellColor":"","cell":""},{"row":4,"col":5,"cellColor":"","cell":""},{"row":4,"col":6,"cellColor":"","cell":""},{"row":4,"col":7,"cellColor":"","cell":""},{"row":5,"col":0,"cellColor":"","cell":""},{"row":5,"col":1,"cellColor":"","cell":""},{"row":5,"col":2,"cellColor":"","cell":""},{"row":5,"col":3,"cellColor":"","cell":""},{"row":5,"col":4,"cellColor":"","cell":""},{"row":5,"col":5,"cellColor":"","cell":""},{"row":5,"col":6,"cellColor":"","cell":""},{"row":5,"col":7,"cellColor":"","cell":""},{"row":6,"col":0,"cellColor":"WHITE","cell":"♙"},{"row":6,"col":1,"cellColor":"WHITE","cell":"♙"},{"row":6,"col":2,"cellColor":"WHITE","cell":"♙"},{"row":6,"col":3,"cellColor":"WHITE","cell":"♙"},{"row":6,"col":4,"cellColor":"WHITE","cell":"♙"},{"row":6,"col":5,"cellColor":"WHITE","cell":"♙"},{"row":6,"col":6,"cellColor":"WHITE","cell":"♙"},{"row":6,"col":7,"cellColor":"WHITE","cell":"♙"},{"row":7,"col":0,"cellColor":"WHITE","cell":"♖"},{"row":7,"col":1,"cellColor":"WHITE","cell":"♘"},{"row":7,"col":2,"cellColor":"WHITE","cell":"♗"},{"row":7,"col":3,"cellColor":"WHITE","cell":"♛"},{"row":7,"col":4,"cellColor":"WHITE","cell":"♔"},{"row":7,"col":5,"cellColor":"WHITE","cell":"♗"},{"row":7,"col":6,"cellColor":"WHITE","cell":"♘"},{"row":7,"col":7,"cellColor":"WHITE","cell":"♖"}]}}
+
+10:14:58.058 [run-main-0] INFO  de.htwg.se.Chess.aview.Tui - Chess from Tom Georgi and Lukas Rohloff
+
+10:14:58.061 [run-main-0] INFO  de.htwg.se.Chess.aview.Tui - Input format: column - row - new column - new row
+
+10:14:58.061 [run-main-0] INFO  de.htwg.se.Chess.aview.Tui - column: from A to H
+
+10:14:58.061 [run-main-0] INFO  de.htwg.se.Chess.aview.Tui - Row: from 1 to 8
+
+10:14:58.061 [run-main-0] INFO  de.htwg.se.Chess.aview.Tui - For More Information type help
+
+10:14:58.603 [run-main-0] INFO  de.htwg.se.Chess.aview.Tui - 
+
+    A   B   C   D   E   F   G   H
+  |---+---+---+---+---+---+---+---|
+8 | ♜ | ♞ | ♝ | ♛ | ♚ | ♝ | ♞ | ♜ |
+  |---+---+---+---+---+---+---+---|
+7 | ♟ | ♟ | ♟ | ♟ | ♟ | ♟ | ♟ | ♟ |
+  |---+---+---+---+---+---+---+---|
+6 |   |   |   |   |   |   |   |   |
+  |---+---+---+---+---+---+---+---|
+5 |   |   |   |   |   |   |   |   |
+  |---+---+---+---+---+---+---+---|
+4 |   |   |   |   |   |   |   |   |
+  |---+---+---+---+---+---+---+---|
+3 |   |   |   |   |   |   |   |   |
+  |---+---+---+---+---+---+---+---|
+2 | ♙ | ♙ | ♙ | ♙ | ♙ | ♙ | ♙ | ♙ |
+  |---+---+---+---+---+---+---+---|
+1 | ♖ | ♘ | ♗ | ♛ | ♔ | ♗ | ♘ | ♖ |
+  |---+---+---+---+---+---+---+---|
+
+
+10:14:58.605 [run-main-0] INFO  de.htwg.se.Chess.aview.Tui - 
+Player 1
+
+10:15:02.512 [run-main-0] INFO  de.htwg.se.Chess.aview.Tui - {"cell":{"moves":[]}}
+
+10:17:45.817 [run-main-0] INFO  de.htwg.se.Chess.aview.Tui - Chess from Tom Georgi and Lukas Rohloff
+
+10:17:45.819 [run-main-0] INFO  de.htwg.se.Chess.aview.Tui - Input format: column - row - new column - new row
+
+10:17:45.819 [run-main-0] INFO  de.htwg.se.Chess.aview.Tui - column: from A to H
+
+10:17:45.819 [run-main-0] INFO  de.htwg.se.Chess.aview.Tui - Row: from 1 to 8
+
+10:17:45.819 [run-main-0] INFO  de.htwg.se.Chess.aview.Tui - For More Information type help
+
+10:17:46.538 [run-main-0] INFO  de.htwg.se.Chess.aview.Tui - 
+
+    A   B   C   D   E   F   G   H
+  |---+---+---+---+---+---+---+---|
+8 | ♜ | ♞ | ♝ | ♛ | ♚ | ♝ | ♞ | ♜ |
+  |---+---+---+---+---+---+---+---|
+7 | ♟ | ♟ | ♟ | ♟ | ♟ | ♟ | ♟ | ♟ |
+  |---+---+---+---+---+---+---+---|
+6 |   |   |   |   |   |   |   |   |
+  |---+---+---+---+---+---+---+---|
+5 |   |   |   |   |   |   |   |   |
+  |---+---+---+---+---+---+---+---|
+4 |   |   |   |   |   |   |   |   |
+  |---+---+---+---+---+---+---+---|
+3 |   |   |   |   |   |   |   |   |
+  |---+---+---+---+---+---+---+---|
+2 | ♙ | ♙ | ♙ | ♙ | ♙ | ♙ | ♙ | ♙ |
+  |---+---+---+---+---+---+---+---|
+1 | ♖ | ♘ | ♗ | ♛ | ♔ | ♗ | ♘ | ♖ |
+  |---+---+---+---+---+---+---+---|
+
+
+10:17:46.540 [run-main-0] INFO  de.htwg.se.Chess.aview.Tui - 
+Player 1
+
+10:19:23.887 [run-main-0] INFO  de.htwg.se.Chess.aview.Tui - Chess from Tom Georgi and Lukas Rohloff
+
+10:19:23.889 [run-main-0] INFO  de.htwg.se.Chess.aview.Tui - Input format: column - row - new column - new row
+
+10:19:23.889 [run-main-0] INFO  de.htwg.se.Chess.aview.Tui - column: from A to H
+
+10:19:23.889 [run-main-0] INFO  de.htwg.se.Chess.aview.Tui - Row: from 1 to 8
+
+10:19:23.889 [run-main-0] INFO  de.htwg.se.Chess.aview.Tui - For More Information type help
+
+10:19:24.395 [run-main-0] INFO  de.htwg.se.Chess.aview.Tui - 
+
+    A   B   C   D   E   F   G   H
+  |---+---+---+---+---+---+---+---|
+8 | ♜ | ♞ | ♝ | ♛ | ♚ | ♝ | ♞ | ♜ |
+  |---+---+---+---+---+---+---+---|
+7 | ♟ | ♟ | ♟ | ♟ | ♟ | ♟ | ♟ | ♟ |
+  |---+---+---+---+---+---+---+---|
+6 |   |   |   |   |   |   |   |   |
+  |---+---+---+---+---+---+---+---|
+5 |   |   |   |   |   |   |   |   |
+  |---+---+---+---+---+---+---+---|
+4 |   |   |   |   |   |   |   |   |
+  |---+---+---+---+---+---+---+---|
+3 |   |   |   |   |   |   |   |   |
+  |---+---+---+---+---+---+---+---|
+2 | ♙ | ♙ | ♙ | ♙ | ♙ | ♙ | ♙ | ♙ |
+  |---+---+---+---+---+---+---+---|
+1 | ♖ | ♘ | ♗ | ♛ | ♔ | ♗ | ♘ | ♖ |
+  |---+---+---+---+---+---+---+---|
+
+
+10:19:24.396 [run-main-0] INFO  de.htwg.se.Chess.aview.Tui - 
+Player 1
+
+10:19:28.692 [run-main-0] INFO  de.htwg.se.Chess.aview.Tui - {"cell":{"moves":""}}
+
+10:20:29.623 [run-main-0] INFO  de.htwg.se.Chess.aview.Tui - Chess from Tom Georgi and Lukas Rohloff
+
+10:20:29.625 [run-main-0] INFO  de.htwg.se.Chess.aview.Tui - Input format: column - row - new column - new row
+
+10:20:29.625 [run-main-0] INFO  de.htwg.se.Chess.aview.Tui - column: from A to H
+
+10:20:29.625 [run-main-0] INFO  de.htwg.se.Chess.aview.Tui - Row: from 1 to 8
+
+10:20:29.626 [run-main-0] INFO  de.htwg.se.Chess.aview.Tui - For More Information type help
+
+10:20:30.142 [run-main-0] INFO  de.htwg.se.Chess.aview.Tui - 
+
+    A   B   C   D   E   F   G   H
+  |---+---+---+---+---+---+---+---|
+8 | ♜ | ♞ | ♝ | ♛ | ♚ | ♝ | ♞ | ♜ |
+  |---+---+---+---+---+---+---+---|
+7 | ♟ | ♟ | ♟ | ♟ | ♟ | ♟ | ♟ | ♟ |
+  |---+---+---+---+---+---+---+---|
+6 |   |   |   |   |   |   |   |   |
+  |---+---+---+---+---+---+---+---|
+5 |   |   |   |   |   |   |   |   |
+  |---+---+---+---+---+---+---+---|
+4 |   |   |   |   |   |   |   |   |
+  |---+---+---+---+---+---+---+---|
+3 |   |   |   |   |   |   |   |   |
+  |---+---+---+---+---+---+---+---|
+2 | ♙ | ♙ | ♙ | ♙ | ♙ | ♙ | ♙ | ♙ |
+  |---+---+---+---+---+---+---+---|
+1 | ♖ | ♘ | ♗ | ♛ | ♔ | ♗ | ♘ | ♖ |
+  |---+---+---+---+---+---+---+---|
+
+
+10:20:30.143 [run-main-0] INFO  de.htwg.se.Chess.aview.Tui - 
+Player 1
+
+10:20:35.311 [run-main-0] INFO  de.htwg.se.Chess.aview.Tui - {"cell":{"moves":[[5,0],[4,0]]}}
+
+10:21:07.513 [run-main-0] INFO  de.htwg.se.Chess.aview.Tui - {"cell":{"moves":""}}
+
+10:21:14.486 [run-main-0] INFO  de.htwg.se.Chess.aview.Tui - {"cell":{"moves":[[5,0],[4,0]]}}
+
+10:21:21.943 [run-main-0] INFO  de.htwg.se.Chess.aview.Tui - {"cell":{"moves":[[5,1],[4,1]]}}
+
+10:21:34.510 [run-main-0] INFO  de.htwg.se.Chess.aview.Tui - {"cell":{"moves":[[5,0],[5,2]]}}
+
+10:21:38.328 [run-main-0] INFO  de.htwg.se.Chess.aview.Tui - {"cell":{"moves":[[5,0],[5,2]]}}

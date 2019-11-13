@@ -4,6 +4,7 @@ import com.google.inject.assistedinject.{Assisted, AssistedInject}
 import de.htwg.se.Chess.model.figureComponent.figureBaseImpl._
 import de.htwg.se.Chess.model.figureComponent.{Color, Figure}
 import de.htwg.se.Chess.model.gridComponent.{CellInterface, GridInterface}
+import play.api.libs.json.{JsArray, JsNumber, JsObject, JsString, JsValue, Json}
 
 case class Grid @AssistedInject() (@Assisted cells:Matrix[CellInterface]) extends GridInterface {
 
@@ -129,4 +130,39 @@ case class Grid @AssistedInject() (@Assisted cells:Matrix[CellInterface]) extend
     box
   }
 
+  override def gridToJson: JsValue = {
+    Json.obj("grid" -> Json.obj(
+        "size" -> JsNumber(size),
+        "cells" -> Json.toJson(
+          for {row <- 0 until size;
+               col <- 0 until size} yield {
+            Json.obj(
+              "row" -> row,
+              "col" -> col,
+              "cellColor" -> JsString(cell(row, col).value match {
+                case Some(res) => res.color.toString
+                case None => ""
+              }),
+              "cell" -> JsString(cell(row, col).value match {
+                case Some(res) => res.toString
+                case None => ""
+              })
+            )
+          }
+        )
+      )
+    )
+  }
+
+  override def getPossibleMove(row: Int, col: Int): JsValue = {
+    Json.obj(
+      "cell" -> Json.obj(
+        "moves" -> (cell(row, col).value match {
+          case Some(res) => res.moveAll(row, col, this)
+          case None => ""
+        })
+
+      )
+    )
+  }
 }

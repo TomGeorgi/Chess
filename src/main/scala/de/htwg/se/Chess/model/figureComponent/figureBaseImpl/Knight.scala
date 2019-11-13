@@ -37,7 +37,7 @@ case class Knight @AssistedInject() (@Assisted c: Color.Value) extends Figure {
   override def toString: String = {
     color match {
       case Color.BLACK => "\u265E"
-      case Color.WHITE => "\u2657"
+      case Color.WHITE => "\u2658"
     }
   }
 

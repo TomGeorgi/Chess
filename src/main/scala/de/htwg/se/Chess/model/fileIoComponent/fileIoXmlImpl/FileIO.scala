@@ -9,6 +9,7 @@ import de.htwg.se.Chess.model.fileIoComponent.FileIOInterface
 import de.htwg.se.Chess.model.gridComponent.{GridFactory, GridInterface}
 import de.htwg.se.Chess.model.playerComponent.{PlayerFactory, PlayerInterface}
 import net.codingwell.scalaguice.InjectorExtensions._
+import play.api.libs.json.{JsValue, Json}
 
 class FileIO extends FileIOInterface {
 
@@ -120,4 +121,6 @@ class FileIO extends FileIOInterface {
       </cellFigure>
     </cell>
   }
+
+  override def gridToIO(grid: GridInterface, state: GameStatus, player: (PlayerInterface, PlayerInterface)): JsValue = Json.obj("" -> "")
 }

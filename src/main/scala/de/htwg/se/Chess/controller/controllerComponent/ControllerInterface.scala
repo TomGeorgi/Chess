@@ -3,6 +3,7 @@ package de.htwg.se.Chess.controller.controllerComponent
 import de.htwg.se.Chess.controller.controllerComponent.GameStatus.GameStatus
 import de.htwg.se.Chess.model.gridComponent.GridInterface
 import de.htwg.se.Chess.model.playerComponent.PlayerInterface
+import play.api.libs.json.JsValue
 
 import scala.swing.Publisher
 
@@ -24,6 +25,8 @@ trait ControllerInterface extends Publisher {
   def redo: Unit
   def save: Unit
   def load: Unit
+  def gridToJson: JsValue
+  def getPossibleMoves(row: Int, col: Int): JsValue
 
 }
 

@@ -7,6 +7,7 @@ import de.htwg.se.Chess.model.gridComponent.GridInterface
 import de.htwg.se.Chess.model.gridComponent.gridMockImpl.Grid
 import de.htwg.se.Chess.model.playerComponent.PlayerInterface
 import de.htwg.se.Chess.model.playerComponent.playerBaseImpl.Player
+import play.api.libs.json.{JsString, JsValue, Json}
 
 
 class Controller(var grid: GridInterface, var player: (PlayerInterface, PlayerInterface)) extends ControllerInterface{
@@ -44,4 +45,8 @@ class Controller(var grid: GridInterface, var player: (PlayerInterface, PlayerIn
   override def save: Unit = {}
 
   override def load: Unit = {}
+
+  override def gridToJson: JsValue = JsString("")
+
+  override def getPossibleMoves(row: Int, col: Int): JsValue = JsString("")
 }

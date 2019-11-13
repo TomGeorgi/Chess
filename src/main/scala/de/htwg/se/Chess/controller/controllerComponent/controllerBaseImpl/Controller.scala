@@ -12,6 +12,7 @@ import de.htwg.se.Chess.model.fileIoComponent.FileIOInterface
 import de.htwg.se.Chess.model.playerComponent.{PlayerFactory, PlayerInterface}
 import de.htwg.se.Chess.model.playerComponent.playerBaseImpl.Player
 import de.htwg.se.Chess.util.UndoManager
+import play.api.libs.json.JsValue
 
 import scala.swing.Publisher
 
@@ -76,6 +77,10 @@ class Controller @AssistedInject() (@Assisted var grid: GridInterface, @Assisted
     gameStatus = SAVED
     publish(new Played)
   }
+
+  def gridToJson: JsValue = grid.gridToJson
+
+  def getPossibleMoves(row: Int, col: Int): JsValue = grid.getPossibleMove(row, col)
 
   override def load: Unit = {
     val gridOption = fileIo.load
