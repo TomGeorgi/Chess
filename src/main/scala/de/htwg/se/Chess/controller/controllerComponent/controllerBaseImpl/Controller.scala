@@ -80,7 +80,7 @@ class Controller @AssistedInject() (@Assisted var grid: GridInterface, @Assisted
 
   def gridToJson: JsValue = grid.gridToJson
 
-  def getPossibleMoves(row: Int, col: Int): JsValue = grid.getPossibleMove(row, col)
+  def getPossibleMove(row: Int, col: Int): JsValue = grid.getPossibleMove(row, col)
 
   override def load: Unit = {
     val gridOption = fileIo.load

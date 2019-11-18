@@ -26,7 +26,7 @@ trait ControllerInterface extends Publisher {
   def save: Unit
   def load: Unit
   def gridToJson: JsValue
-  def getPossibleMoves(row: Int, col: Int): JsValue
+  def getPossibleMove(row: Int, col: Int): JsValue
 
 }
 

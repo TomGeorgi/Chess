@@ -23,7 +23,7 @@ class Tui(controller: ControllerInterface) extends Reactor with LazyLogging {
   def processInputLine(input: String): Unit = {
     val in = input.split("[ ]+")
     in(0) match {
-      case "test" => logger.info(""+controller.getPossibleMoves(0, 0))
+      case "test" => logger.info(""+controller.getPossibleMove(0, 0))
       case "q" => System.exit(0)
       case "y" => controller.redo
       case "z" => controller.undo
@@ -59,7 +59,7 @@ class Tui(controller: ControllerInterface) extends Reactor with LazyLogging {
         controller.turn(8 - placeRow.toInt, charToValue(placeCol),8 - newPlaceRow.toInt, charToValue(newPlaceCol))
       case _ :: pC :: pR :: value :: color :: Nil => controller.set(8 - pR.toInt, charToValue(pC),  value, color)
       case _ :: pC :: pR :: Nil => controller.set(8 - pR.toInt, charToValue(pC), "_", "_")
-      case placeCol :: placeRow :: Nil => logger.info(""+controller.getPossibleMoves(8 - placeRow.toInt, charToValue(placeCol)))
+      case placeCol :: placeRow :: Nil => logger.info(""+controller.getPossibleMove(8 - placeRow.toInt, charToValue(placeCol)))
       case _ =>
     }
   }

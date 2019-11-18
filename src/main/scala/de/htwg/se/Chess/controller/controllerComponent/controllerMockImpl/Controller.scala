@@ -48,5 +48,5 @@ class Controller(var grid: GridInterface, var player: (PlayerInterface, PlayerIn
 
   override def gridToJson: JsValue = JsString("")
 
-  override def getPossibleMoves(row: Int, col: Int): JsValue = JsString("")
+  override def getPossibleMove(row: Int, col: Int): JsValue = JsString("")
 }
